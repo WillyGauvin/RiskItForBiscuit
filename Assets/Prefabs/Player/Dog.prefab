@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6484020896157862099}
+  - component: {fileID: 8729595762072791659}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -29,11 +30,26 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4147458648186581479}
   - {fileID: 4027019471045890686}
   - {fileID: 7981229558732019179}
   m_Father: {fileID: 7866121819613619177}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8729595762072791659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645651362956366309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d1fa5267cddc8b428059ba4df1dd7c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hinge: {fileID: 6049334279684778421}
+  topDetector: {fileID: 4969100015349785922}
+  bottomDetector: {fileID: 2030890529864613395}
+  bottomJawRB: {fileID: 5303314034081583424}
 --- !u!1 &2832074035916570473
 GameObject:
   m_ObjectHideFlags: 0
@@ -46,6 +62,9 @@ GameObject:
   - component: {fileID: 8721524916628274401}
   - component: {fileID: 2014565508943714663}
   - component: {fileID: 5903575545165657451}
+  - component: {fileID: 4969100015349785922}
+  - component: {fileID: 5715005399214896595}
+  - component: {fileID: 8110891733672422762}
   m_Layer: 0
   m_Name: TopMouth
   m_TagString: Untagged
@@ -62,7 +81,7 @@ Transform:
   m_GameObject: {fileID: 2832074035916570473}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.030999545, y: 0.08699989, z: 0.8149997}
+  m_LocalPosition: {x: 0.031, y: 0.08699989, z: 0.495}
   m_LocalScale: {x: 0.8576249, y: 0.13, z: 0.6099999}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -142,73 +161,63 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &4375147646432432894
-GameObject:
+--- !u!114 &4969100015349785922
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4147458648186581479}
-  - component: {fileID: 2317845207773224402}
-  - component: {fileID: 8329703923108978939}
-  m_Layer: 0
-  m_Name: CatchDetector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4147458648186581479
-Transform:
+  m_GameObject: {fileID: 2832074035916570473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fb424b33cadb6144a61398d429082cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchingFrisbee: 0
+  frisbee: {fileID: 0}
+--- !u!54 &5715005399214896595
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4375147646432432894}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.071, z: 0.701}
-  m_LocalScale: {x: 0.07999999, y: 0.01, z: 0.07999999}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6484020896157862099}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2317845207773224402
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4375147646432432894}
-  m_Material: {fileID: 0}
+  m_GameObject: {fileID: 2832074035916570473}
+  serializedVersion: 5
+  m_Mass: 0.0000001
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8329703923108978939
-MonoBehaviour:
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!138 &8110891733672422762
+FixedJoint:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4375147646432432894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2590fd97d5bfa404da6e1ec1abd088ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bottomJaw: {fileID: 6049334279684778421}
+  m_GameObject: {fileID: 2832074035916570473}
+  serializedVersion: 1
+  m_ConnectedBody: {fileID: 7925957916032878655}
+  m_ConnectedArticulationBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
 --- !u!1 &5516773333961904078
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,6 +232,7 @@ GameObject:
   - component: {fileID: 1315243709617181985}
   - component: {fileID: 5303314034081583424}
   - component: {fileID: 6049334279684778421}
+  - component: {fileID: 2030890529864613395}
   m_Layer: 0
   m_Name: BottomMouth
   m_TagString: Untagged
@@ -239,7 +249,7 @@ Transform:
   m_GameObject: {fileID: 5516773333961904078}
   serializedVersion: 2
   m_LocalRotation: {x: 0.17386842, y: -0.6853975, z: -0.17386842, w: 0.6853975}
-  m_LocalPosition: {x: 0.03, y: -0.352, z: 0.682}
+  m_LocalPosition: {x: 0.03, y: -0.389, z: 0.462}
   m_LocalScale: {x: 0.85208577, y: 0.13000001, z: 0.61}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -368,14 +378,14 @@ HingeJoint:
   m_UseMotor: 1
   m_Motor:
     targetVelocity: 0
-    force: 100
+    force: 10000
     freeSpin: 0
   m_UseLimits: 1
   m_ExtendedLimits: 0
   m_UseAcceleration: 0
   m_Limits:
     min: -4.210684
-    max: 47.852608
+    max: 33.97633
     bounciness: 0
     bounceMinVelocity: 0.2
     contactDistance: 0
@@ -385,6 +395,20 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &2030890529864613395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5516773333961904078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fb424b33cadb6144a61398d429082cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchingFrisbee: 0
+  frisbee: {fileID: 0}
 --- !u!1 &8998372774377999039
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,6 +540,9 @@ MonoBehaviour:
   projection: {fileID: 3023763661538049832}
   myTrainer: {fileID: 0}
   bottomJaw: {fileID: 6049334279684778421}
+  FollowCam: {fileID: 0}
+  DockCam: {fileID: 0}
+  frisbeeCatchDetection: {fileID: 8729595762072791659}
   isRunning: 0
   isCharging: 0
   hasJumped: 0
@@ -532,9 +559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _line: {fileID: 6883902252839084787}
-  _maxPhysicsFrameIterations: 100
-  Dock: {fileID: 0}
-  ghostDogPrefab: {fileID: 8998372774377999039, guid: 580612728d0fa994babc5bf3202c8859, type: 3}
+  timeStep: 0.02
 --- !u!120 &6883902252839084787
 LineRenderer:
   serializedVersion: 2
@@ -582,7 +607,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  - {x: 1, y: 1, z: 1}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -603,7 +628,7 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 1, g: 0, b: 0, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -628,7 +653,7 @@ LineRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
+      m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
