@@ -25,11 +25,14 @@ public class Dog : MonoBehaviour
 
     [Header("BodyParts")]
     [SerializeField] HingeJoint bottomJaw;
-    [SerializeField] CatchDetector detector;
+    //[SerializeField] CatchDetector detector;
 
     [Header("Cameras")]
     [SerializeField] CinemachineCamera FollowCam; 
     [SerializeField] CinemachineCamera DockCam;
+
+    [Header("Detection")]
+    [SerializeField] FrisbeeCatchDetection frisbeeCatchDetection;
 
 
 
@@ -78,8 +81,9 @@ public class Dog : MonoBehaviour
         currentSpeed = 0.0f;
         jumpForce = Vector3.zero;
         hasJumped = false;
-        detector.Reset();
+        //detector.Reset();
         DockCam.enabled = true;
+        frisbeeCatchDetection.Reset();
     }
 
     public void BeginRun()
@@ -138,7 +142,7 @@ public class Dog : MonoBehaviour
 
     public void OpenMouth()
     {
-        if (!detector.caught)
+        //if (!detector.caught)
         {
             JointMotor motor = bottomJaw.motor;
             motor.targetVelocity = -100f;
@@ -148,7 +152,7 @@ public class Dog : MonoBehaviour
 
     public void CloseMouth()
     {
-        if (!detector.caught)
+        //if (!detector.caught)
         {
             JointMotor motor = bottomJaw.motor;
             motor.targetVelocity = 100f;
