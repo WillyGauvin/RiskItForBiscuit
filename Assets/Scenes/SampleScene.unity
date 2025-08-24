@@ -523,8 +523,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22975294, y: -0.000000036256356, z: 0.000000008558964, w: 0.973249}
-  m_LocalPosition: {x: -13.53, y: 11.38, z: -20}
+  m_LocalRotation: {x: -0.00000004579605, y: 7.2008905e-15, z: 3.2977233e-22, w: 1}
+  m_LocalPosition: {x: 14.99, y: 1, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -606,7 +606,7 @@ MonoBehaviour:
   WorldUpOverride: {fileID: 0}
   ChannelMask: -1
   UpdateMethod: 2
-  BlendUpdateMethod: 1
+  BlendUpdateMethod: 0
   LensModeOverride:
     Enabled: 0
     DefaultMode: 2
@@ -1347,7 +1347,7 @@ MonoBehaviour:
     AngularDampingMode: 0
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
-  FollowOffset: {x: 0, y: 10, z: -20}
+  FollowOffset: {x: 0, y: 0, z: -20}
 --- !u!114 &1414842437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1361,7 +1361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Priority:
-    Enabled: 0
+    Enabled: 1
     m_Value: 0
   OutputChannel: 1
   StandbyUpdate: 2
@@ -1399,8 +1399,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1414842434}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22975291, y: -0.000000036256353, z: 0.000000008558963, w: 0.973249}
-  m_LocalPosition: {x: -13.53, y: 11.38, z: -20}
+  m_LocalRotation: {x: 8.0819795e-10, y: 0.000000010454093, z: -1.0036592e-15, w: 1}
+  m_LocalPosition: {x: -13.53, y: 1.38, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1819,6 +1819,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1233123538170772015, guid: b238442299314fd41826a6dcfffc2f53, type: 3}
+      propertyPath: DockCam
+      value: 
+      objectReference: {fileID: 2086772810}
+    - target: {fileID: 1233123538170772015, guid: b238442299314fd41826a6dcfffc2f53, type: 3}
+      propertyPath: FollowCam
+      value: 
+      objectReference: {fileID: 1414842437}
+    - target: {fileID: 1233123538170772015, guid: b238442299314fd41826a6dcfffc2f53, type: 3}
       propertyPath: myTrainer
       value: 
       objectReference: {fileID: 1407054714}
@@ -1936,6 +1944,131 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 306438309730669078, guid: 9079219ce1ecb31489da4b42c1b2e53d, type: 3}
   m_PrefabInstance: {fileID: 8507804341202379075}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2086772809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2086772813}
+  - component: {fileID: 2086772810}
+  - component: {fileID: 2086772812}
+  - component: {fileID: 2086772811}
+  m_Layer: 0
+  m_Name: DockCam
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2086772810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086772809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Priority:
+    Enabled: 1
+    m_Value: 1
+  OutputChannel: 1
+  StandbyUpdate: 2
+  m_StreamingVersion: 20241001
+  m_LegacyPriority: 0
+  Target:
+    TrackingTarget: {fileID: 459928439}
+    LookAtTarget: {fileID: 0}
+    CustomLookAtTarget: 0
+  Lens:
+    FieldOfView: 60.000004
+    OrthographicSize: 5
+    NearClipPlane: 0.3
+    FarClipPlane: 1000
+    Dutch: 0
+    ModeOverride: 0
+    PhysicalProperties:
+      GateFit: 2
+      SensorSize: {x: 21.946, y: 16.002}
+      LensShift: {x: 0, y: 0}
+      FocusDistance: 10
+      Iso: 200
+      ShutterSpeed: 0.005
+      Aperture: 16
+      BladeCount: 5
+      Curvature: {x: 2, y: 11}
+      BarrelClipping: 0.25
+      Anamorphism: 0
+  BlendHint: 0
+--- !u!114 &2086772811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086772809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f38bda98361e1de48a4ca2bd86ea3c17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Composition:
+    ScreenPosition: {x: 0, y: 0}
+    DeadZone:
+      Enabled: 0
+      Size: {x: 0.2, y: 0.2}
+    HardLimits:
+      Enabled: 0
+      Size: {x: 0.8, y: 0.8}
+      Offset: {x: 0, y: 0}
+  CenterOnActivate: 1
+  TargetOffset: {x: 0, y: 0, z: 0}
+  Damping: {x: 0.5, y: 0.5}
+  Lookahead:
+    Enabled: 0
+    Time: 0
+    Smoothing: 0
+    IgnoreY: 0
+--- !u!114 &2086772812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086772809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b617507da6d07e749b7efdb34e1173e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TrackerSettings:
+    BindingMode: 4
+    PositionDamping: {x: 0, y: 0, z: 0}
+    AngularDampingMode: 0
+    RotationDamping: {x: 1, y: 1, z: 1}
+    QuaternionDamping: 1
+  FollowOffset: {x: 0, y: 0, z: -30}
+--- !u!4 &2086772813
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086772809}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.00000004579605, y: 7.2008905e-15, z: -1.4862133e-15, w: 1}
+  m_LocalPosition: {x: 14.99, y: 1, z: -30}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &755244723737209865
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2337,6 +2470,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2090245561258925192, guid: 698accd45fcf13048892553724a9cdb3, type: 3}
+      propertyPath: percentageOfArcToThrowTo
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4678491339280083437, guid: 698accd45fcf13048892553724a9cdb3, type: 3}
       propertyPath: m_Name
       value: Trainer
@@ -2459,6 +2596,7 @@ SceneRoots:
   - {fileID: 1831690935}
   - {fileID: 91068793}
   - {fileID: 1414842438}
+  - {fileID: 2086772813}
   - {fileID: 575737079}
   - {fileID: 2016595082}
   - {fileID: 459928439}
