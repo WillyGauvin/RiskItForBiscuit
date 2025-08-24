@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6254285682718123877}
+  - component: {fileID: 8317939814660195501}
+  - component: {fileID: 6938230967804988856}
   m_Layer: 0
   m_Name: DogRagdoll
   m_TagString: Untagged
@@ -43,6 +45,105 @@ Transform:
   - {fileID: 3424789734110875927}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8317939814660195501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112808811236652119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6938230967804988856}
+        m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
+        m_MethodName: OnBite
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e02cefb9-0c10-42ed-8c8b-e922bcfb6909
+    m_ActionName: 'Player/Bite[/Keyboard/k]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c95b2375-e6d9-4b88-9c4c-c5e76515df4b
+    m_ActionName: 'UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7607c7b6-cd76-4816-beef-bd0341cfe950
+    m_ActionName: 'UI/Submit[/Keyboard/enter]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 15cef263-9014-4fd5-94d9-4e4a6234a6ef
+    m_ActionName: 'UI/Cancel[/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 32b35790-4ed0-4e9a-aa41-69ac6d629449
+    m_ActionName: 'UI/Point[/Mouse/position]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3c7022bf-7922-4f7c-a998-c437916075ad
+    m_ActionName: 'UI/Click[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 44b200b1-1557-4083-816c-b22cbdf77ddf
+    m_ActionName: 'UI/RightClick[/Mouse/rightButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: dad70c86-b58c-4b17-88ad-f5e53adf419e
+    m_ActionName: 'UI/MiddleClick[/Mouse/middleButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0489e84a-4833-4c40-bfae-cea84b696689
+    m_ActionName: 'UI/ScrollWheel[/Mouse/scroll]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 24908448-c609-4bc3-a128-ea258674378a
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
+    m_ActionName: UI/TrackedDeviceOrientation
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: Keyboard&Mouse
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &6938230967804988856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112808811236652119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7ba358426498024e8041e621e4297bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bottomMouth: {fileID: 1348762785150987593}
 --- !u!1 &338533827686448317
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,8 +484,8 @@ CharacterJoint:
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
-    spring: 0
-    damper: 0
+    spring: 50
+    damper: 10
   m_LowTwistLimit:
     limit: -109.215515
     bounciness: 0
@@ -442,13 +543,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 994114639444904754}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.826, y: 1.554, z: 0.029}
-  m_LocalScale: {x: 0.67, y: 0.13, z: 0.61}
+  m_LocalRotation: {x: -0, y: -0, z: -0.24588709, w: 0.9692985}
+  m_LocalPosition: {x: 5.091, y: 1.081, z: 0.029}
+  m_LocalScale: {x: 1.5, y: 0.13, z: 0.61}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6254285682718123877}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -28.469}
 --- !u!33 &9215144800067266826
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -569,17 +670,17 @@ HingeJoint:
     spring: 0
     damper: 0
     targetPosition: 0
-  m_UseMotor: 0
+  m_UseMotor: 1
   m_Motor:
     targetVelocity: 0
-    force: 0
+    force: 100
     freeSpin: 0
   m_UseLimits: 1
   m_ExtendedLimits: 0
   m_UseAcceleration: 0
   m_Limits:
-    min: -57.84665
-    max: 21.937166
+    min: -4.210684
+    max: 47.852608
     bounciness: 0
     bounceMinVelocity: 0.2
     contactDistance: 0
@@ -744,8 +845,8 @@ CharacterJoint:
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
-    spring: 0
-    damper: 0
+    spring: 50
+    damper: 10
   m_LowTwistLimit:
     limit: -109.215515
     bounciness: 0
@@ -1798,8 +1899,8 @@ CharacterJoint:
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
-    spring: 0
-    damper: 0
+    spring: 50
+    damper: 10
   m_LowTwistLimit:
     limit: -109.215515
     bounciness: 0
@@ -1858,8 +1959,8 @@ Transform:
   m_GameObject: {fileID: 7352625251251747733}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.894, y: 1.762, z: 0.029}
-  m_LocalScale: {x: 0.67, y: 0.13, z: 0.61}
+  m_LocalPosition: {x: 5.341, y: 1.762, z: 0.029}
+  m_LocalScale: {x: 1.5, y: 0.13, z: 0.61}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6254285682718123877}
@@ -2136,8 +2237,8 @@ CharacterJoint:
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
-    spring: 0
-    damper: 0
+    spring: 50
+    damper: 10
   m_LowTwistLimit:
     limit: -109.215515
     bounciness: 0
