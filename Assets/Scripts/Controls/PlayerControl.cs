@@ -10,16 +10,19 @@ public class PlayerControl : MonoBehaviour
 
     public void OnBite(InputAction.CallbackContext context)
     {
-        if (context.canceled)
+        //If the button is pressed, change the motor to be closing
+        if (context.started)
+        {
+            //Since it is a struct, we have to replace it, we can't just set the target velocity on its own
+            JointMotor motor = bottomMouth.motor;
+            motor.targetVelocity = 100f;
+            bottomMouth.motor = motor;
+        }
+        //If the button is no longer being pressed, change the motor to be opening
+        else if (context.canceled)
         {
             JointMotor motor = bottomMouth.motor;
             motor.targetVelocity = -100f;
-            bottomMouth.motor = motor;
-        }
-        else if (context.started)
-        {
-            JointMotor motor = bottomMouth.motor;
-            motor.targetVelocity = 100f;
             bottomMouth.motor = motor;
         }
     }
