@@ -15,12 +15,18 @@ public class PlayerController : MonoBehaviour
     }
 
     PlayerInput input;
+    private InputAction jumpAction;
+    Dog myDog;
 
     private void OnEnable()
     {
+        jumpAction.started += ctx => OnPlayerJump(ctx);
+        jumpAction.canceled += ctx => OnPlayerJump(ctx);
     }
     private void OnDisable()
     {
+        jumpAction.started -= ctx => OnPlayerJump(ctx);
+        jumpAction.canceled -= ctx => OnPlayerJump(ctx);
     }
 
     private void Awake()
@@ -33,6 +39,9 @@ public class PlayerController : MonoBehaviour
         instance = this;
 
         input = GetComponent<PlayerInput>();
+        myDog = GetComponent<Dog>();
+
+        jumpAction = input.actions["Jump"];
     }
 
 
@@ -73,5 +82,30 @@ public class PlayerController : MonoBehaviour
         {
             GameMenuManager.instance.UnPause();
         }
+    }
+
+    void OnBeginRun(InputValue value)
+    {
+        if (value.isPressed)
+        {
+            myDog.BeginRun();
+        }
+    }
+
+    public void OnPlayerJump(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            myDog.ChargeJump();
+        }
+        else if (context.canceled)
+        {
+            myDog.Jump();
+        }
+    }
+
+    public void OnReset(InputValue value)
+    {
+        myDog.Reset();
     }
 }
