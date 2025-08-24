@@ -21,7 +21,9 @@ public class Dog : MonoBehaviour
     [Header("Trainer")]
     [SerializeField] Trainer myTrainer;
 
-
+    [Header("BodyParts")]
+    [SerializeField] HingeJoint bottomJaw;
+    [SerializeField] CatchDetector detector;
 
     Vector3 jumpForce;
     Vector3 startingPos;
@@ -29,6 +31,7 @@ public class Dog : MonoBehaviour
 
     private Rigidbody body;
 
+    [Header("States")]
     public bool isRunning = false;
     public bool isCharging = false;
     public bool hasJumped = false;
@@ -66,6 +69,7 @@ public class Dog : MonoBehaviour
         currentSpeed = 0.0f;
         jumpForce = Vector3.zero;
         hasJumped = false;
+        detector.Reset();
     }
 
     public void BeginRun()
@@ -118,6 +122,26 @@ public class Dog : MonoBehaviour
             currentJumpForce = Mathf.MoveTowards(currentJumpForce, maxJumpForce, jumpAccelerationRate * Time.fixedDeltaTime);
 
             yield return new WaitForFixedUpdate();
+        }
+    }
+
+    public void OpenMouth()
+    {
+        if (!detector.caught)
+        {
+            JointMotor motor = bottomJaw.motor;
+            motor.targetVelocity = -100f;
+            bottomJaw.motor = motor;
+        }
+    }
+
+    public void CloseMouth()
+    {
+        if (!detector.caught)
+        {
+            JointMotor motor = bottomJaw.motor;
+            motor.targetVelocity = 100f;
+            bottomJaw.motor = motor;
         }
     }
 

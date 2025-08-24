@@ -16,17 +16,23 @@ public class PlayerController : MonoBehaviour
 
     PlayerInput input;
     private InputAction jumpAction;
+    private InputAction biteAction;
     Dog myDog;
 
     private void OnEnable()
     {
         jumpAction.started += ctx => OnPlayerJump(ctx);
         jumpAction.canceled += ctx => OnPlayerJump(ctx);
+        biteAction.started += ctx => OnPlayerBite(ctx);
+        biteAction.canceled += ctx => OnPlayerBite(ctx);
+
     }
     private void OnDisable()
     {
         jumpAction.started -= ctx => OnPlayerJump(ctx);
         jumpAction.canceled -= ctx => OnPlayerJump(ctx);
+        biteAction.started += ctx => OnPlayerBite(ctx);
+        biteAction.canceled += ctx => OnPlayerBite(ctx);
     }
 
     private void Awake()
@@ -42,6 +48,7 @@ public class PlayerController : MonoBehaviour
         myDog = GetComponent<Dog>();
 
         jumpAction = input.actions["Jump"];
+        biteAction = input.actions["Bite"];
     }
 
 
@@ -101,6 +108,20 @@ public class PlayerController : MonoBehaviour
         else if (context.canceled)
         {
             myDog.Jump();
+        }
+    }
+
+    public void OnPlayerBite(InputAction.CallbackContext context)
+    {
+        //If the button is pressed, change the motor to be closing
+        if (context.started)
+        {
+            myDog.CloseMouth();
+        }
+        //If the button is no longer being pressed, change the motor to be opening
+        else if (context.canceled)
+        {
+            myDog.OpenMouth();
         }
     }
 

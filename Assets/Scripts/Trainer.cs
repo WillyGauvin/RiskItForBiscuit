@@ -26,6 +26,9 @@ public class Trainer : MonoBehaviour
 
         Vector3 r = pointAndTime.Item1 - transform.position;
 
+        r.x += 1.3f;
+        r.y += .25f;
+
         Vector3 launchVelocity = (r - 0.5f * Physics.gravity * pointAndTime.Item2 * pointAndTime.Item2) / pointAndTime.Item2;
 
         GameObject Frisbee = Instantiate(FrisbeePrefab, transform.position, Quaternion.identity);

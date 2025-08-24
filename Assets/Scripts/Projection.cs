@@ -33,8 +33,8 @@ public class Projection : MonoBehaviour
 
         ghostDog = Instantiate(ghostDogPrefab, Vector3.zero, Quaternion.identity);
         SceneManager.MoveGameObjectToScene(ghostDog, _simulationScene);
-        ghostRb = ghostDog.GetComponent<Rigidbody>();
-        ghostDog.GetComponent<Renderer>().enabled = false;
+        ghostRb = ghostDog.GetComponentInChildren<Rigidbody>();
+        ghostDog.GetComponentInChildren<Renderer>().enabled = false;
     }
     public void SimulateTrajectory(Vector3 pos, Vector3 launchForce, Vector3 currentVelocity)
     {
