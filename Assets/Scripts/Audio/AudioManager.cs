@@ -28,11 +28,7 @@ public class AudioManager : MonoBehaviour
     private EventInstance ambienceEventInstance;
     private EventInstance musicEventInstance;
 
-    private EventInstance snapShotInstance;
-
     public static AudioManager instance { get; private set; }
-
-    private static bool webGLMusicAllowed = false;
 
     private void Awake()
     {
@@ -54,7 +50,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         //InitializeAmbience(FMODEvents.instance.ambience);
-        InitializeMusic(FMODEvents.instance.gameMusic);
+        //InitializeMusic(FMODEvents.instance.gameMusic);
         LoadPlayerPrefs();
     }
 
