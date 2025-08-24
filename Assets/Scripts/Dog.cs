@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.LookDev;
@@ -20,6 +21,10 @@ public class Dog : MonoBehaviour
 
     [Header("Trainer")]
     [SerializeField] Trainer myTrainer;
+
+    [Header("Cameras")]
+    [SerializeField] CinemachineCamera FollowCam; 
+    [SerializeField] CinemachineCamera DockCam;
 
 
 
@@ -66,6 +71,9 @@ public class Dog : MonoBehaviour
         currentSpeed = 0.0f;
         jumpForce = Vector3.zero;
         hasJumped = false;
+
+        DockCam.enabled = true;
+
     }
 
     public void BeginRun()
@@ -108,6 +116,7 @@ public class Dog : MonoBehaviour
         body.AddForce(jumpForce, ForceMode.Impulse);
 
         myTrainer.ThrowFrisbee(projection);
+        DockCam.enabled = false;
     }
 
     IEnumerator ChargeDogJump()

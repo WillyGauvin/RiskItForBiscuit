@@ -1,82 +1,56 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Projection : MonoBehaviour
 {
     [SerializeField] private LineRenderer _line;
-    [SerializeField] private int _maxPhysicsFrameIterations = 50;
-    [SerializeField] private GameObject Dock;
+    [SerializeField] private float timeStep = 0.02f; // simulation interval per point
 
-    private Scene _simulationScene;
-    private PhysicsScene _physicsScene;
-
-    [SerializeField] private GameObject ghostDogPrefab;
-    private GameObject ghostDog;
-    private Rigidbody ghostRb;
-
-    private void Start()
+    /// <summary>
+    /// Simulates the trajectory analytically from start to landing
+    /// </summary>
+    public void SimulateTrajectory(Vector3 startPos, Vector3 launchForce, Vector3 currentVelocity)
     {
-        _line.positionCount = _maxPhysicsFrameIterations;
-        CreatePhysicsScene();
-    }
+        if (_line == null) return;
 
-    private void CreatePhysicsScene()
-    {
-        _simulationScene = SceneManager.CreateScene("Simulation", new CreateSceneParameters(LocalPhysicsMode.Physics3D));
-        _physicsScene = _simulationScene.GetPhysicsScene();
+        Vector3 initialVelocity = currentVelocity + launchForce;
 
-        GameObject ghostObj = Instantiate(Dock, Dock.transform.position, Dock.transform.rotation);
-        ghostObj.GetComponent<Renderer>().enabled = false;
-        SceneManager.MoveGameObjectToScene(ghostObj, _simulationScene);
+        // Solve for total flight time using quadratic equation: y = y0 + vy*t + 0.5*g*t^2
+        float a = 0.5f * Physics.gravity.y;
+        float b = initialVelocity.y;
+        float c = startPos.y;
 
-        ghostDog = Instantiate(ghostDogPrefab, Vector3.zero, Quaternion.identity);
-        SceneManager.MoveGameObjectToScene(ghostDog, _simulationScene);
-        ghostRb = ghostDog.GetComponent<Rigidbody>();
-        ghostDog.GetComponent<Renderer>().enabled = false;
-    }
-    public void SimulateTrajectory(Vector3 pos, Vector3 launchForce, Vector3 currentVelocity)
-    {
-        ghostDog.transform.position = pos;
-
-        ghostRb.linearVelocity = currentVelocity;
-        ghostRb.AddForce(launchForce, ForceMode.Impulse);
-
-        for (int i = 0; i < _maxPhysicsFrameIterations; i++)
+        float discriminant = b * b - 4 * a * c;
+        float totalTime = 0f;
+        if (discriminant >= 0f)
         {
-            _physicsScene.Simulate(Time.fixedDeltaTime);
-            _line.SetPosition(i, ghostDog.transform.position);
+            float t1 = (-b + Mathf.Sqrt(discriminant)) / (2f * a);
+            float t2 = (-b - Mathf.Sqrt(discriminant)) / (2f * a);
+            totalTime = Mathf.Max(t1, t2); // choose the positive, realistic time
+        }
+
+        int pointsCount = Mathf.CeilToInt(totalTime / timeStep) + 1;
+        _line.positionCount = pointsCount;
+
+        for (int i = 0; i < pointsCount; i++)
+        {
+            float t = i * timeStep;
+            Vector3 position = startPos + initialVelocity * t + 0.5f * Physics.gravity * t * t;
+            _line.SetPosition(i, position);
         }
     }
 
+    /// <summary>
+    /// Returns a point along the arc as a percentage (0 = start, 1 = end)
+    /// </summary>
     public Tuple<Vector3, float> GetPoint(float percentageOfArcCompleted)
     {
-        //Get all points above initial point y value;
-        List<Vector3> myPoints = new List<Vector3>();
-        Vector3[] linePoints = new Vector3[_line.positionCount];
-        _line.GetPositions(linePoints);
+        Vector3[] points = new Vector3[_line.positionCount];
+        _line.GetPositions(points);
 
-        float initialY = linePoints[0].y;
+        int index = Mathf.Clamp(Mathf.RoundToInt(points.Length * percentageOfArcCompleted), 0, points.Length - 1);
+        float time = index * timeStep;
 
-        for(int i = 1; i < linePoints.Length; i++)
-        {
-            if (linePoints[i].y >= initialY)
-            {
-                myPoints.Add(linePoints[i]);
-            }
-        }
-
-        //Get size of array and select point where percentageOfArc will be completed;
-
-        int index = (int)((float)myPoints.Count * percentageOfArcCompleted);
-
-        if (index >= myPoints.Count) index = myPoints.Count - 1;
-        Vector3 point = myPoints[index];
-
-        //Get amount of time until that point is reached;
-        float time = Time.fixedDeltaTime * index + Time.fixedDeltaTime;
-
-        return new Tuple<Vector3, float>(point, time);
+        return new Tuple<Vector3, float>(points[index], time);
     }
 }
