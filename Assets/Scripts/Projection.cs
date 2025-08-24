@@ -19,7 +19,7 @@ public class Projection : MonoBehaviour
         float a = 0.5f * Physics.gravity.y;
         float b = initialVelocity.y;
         float c = startPos.y;
-
+        
         float discriminant = b * b - 4 * a * c;
         float totalTime = 0f;
         if (discriminant >= 0f)
