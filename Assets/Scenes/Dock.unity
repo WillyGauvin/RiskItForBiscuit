@@ -239,9 +239,9 @@ GameObject:
   - component: {fileID: 91068792}
   - component: {fileID: 91068791}
   - component: {fileID: 91068790}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Dock (1)
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2639,7 +2639,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8578958821908815768, guid: 9079219ce1ecb31489da4b42c1b2e53d, type: 3}
       propertyPath: m_Name
-      value: Managers
+      value: GameManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2657,6 +2657,7 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 8507804341202379075}
+  - {fileID: 644693564483152142}
   - {fileID: 755244723737209865}
   - {fileID: 1828408120}
   - {fileID: 1831690935}
@@ -2667,4 +2668,3 @@ SceneRoots:
   - {fileID: 2016595082}
   - {fileID: 459928439}
   - {fileID: 3409671789002862288}
-  - {fileID: 644693564483152142}
