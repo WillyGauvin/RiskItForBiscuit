@@ -9,6 +9,8 @@ public class FrisbeeCatchDetection : MonoBehaviour
     [SerializeField] Rigidbody bottomJawRB;
     private GameObject frisbee;
 
+    [SerializeField] uint frisbeeCatchScore = 1000;
+
     void Update()
     {
         if (frisbee == null)
@@ -21,6 +23,9 @@ public class FrisbeeCatchDetection : MonoBehaviour
                 frisbee.GetComponent<Collider>().enabled = false;
                 frisbee.transform.parent = this.gameObject.transform;
                 bottomJawRB.freezeRotation = true;
+
+                // You caught the frisbee! Add additional score!
+                ScoreManager.instance.AddToScore(frisbeeCatchScore);
             }
         }
     }

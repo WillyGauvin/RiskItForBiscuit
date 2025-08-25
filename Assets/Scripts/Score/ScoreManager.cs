@@ -1,5 +1,14 @@
 using UnityEngine;
 
+/// <summary>
+/// Score is to accumulated via:
+/// 
+/// Frisbee caught.
+/// Distance travelled before hitting water.
+/// Tricks performed while airborn.
+/// 
+/// </summary>
+
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance { get; private set; }

@@ -33,6 +33,10 @@ public class Dog : MonoBehaviour
 
     [Header("Detection")]
     [SerializeField] FrisbeeCatchDetection frisbeeCatchDetection;
+    [SerializeField] LayerMask waterLayer;
+
+    [Header("Score")]
+    [SerializeField] float scoreMultiplier = 10.0f;
 
 
 
@@ -163,5 +167,30 @@ public class Dog : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Jump();
+    }
+
+    /// <summary>
+    /// When collided with water, add score.
+    /// </summary>
+    /// <param name="collision">Collided object.</param>
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Water"))
+        {
+            AccumulateScore();
+        }
+    }
+
+    /// <summary>
+    /// Add score based on distance travelled and a score multiplier.
+    /// </summary>
+    private void AccumulateScore()
+    {
+        if (!hasJumped || myTrainer == null) { return; }
+
+        float distanceTravelled = Vector3.Distance(transform.position, myTrainer.transform.position);
+        distanceTravelled *= scoreMultiplier;
+
+        ScoreManager.instance.AddToScore((uint)distanceTravelled);
     }
 }

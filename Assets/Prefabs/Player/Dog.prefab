@@ -543,6 +543,9 @@ MonoBehaviour:
   FollowCam: {fileID: 0}
   DockCam: {fileID: 0}
   frisbeeCatchDetection: {fileID: 8729595762072791659}
+  waterLayer:
+    serializedVersion: 2
+    m_Bits: 16
   isRunning: 0
   isCharging: 0
   hasJumped: 0
