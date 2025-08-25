@@ -36,6 +36,21 @@ public class ScoreManager : MonoBehaviour
         ResetMoney();
     }
 
+#if UNITY_EDITOR
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Minus))
+        {
+            AddToScore(500);
+        }
+
+        if (Input.GetKey(KeyCode.Equals))
+        {
+            AddMoney(500);
+        }
+    }
+#endif
+
     #region Score and Value Resets
 
     /// <summary>
@@ -66,6 +81,15 @@ public class ScoreManager : MonoBehaviour
     #endregion
 
     #region Money
+
+    /// <summary>
+    /// Adds an amount to your current funds.
+    /// </summary>
+    /// <param name="value">Amount of money to add.</param>
+    public void AddMoney(uint value)
+    {
+        currentMoney += value;
+    }
 
     /// <summary>
     /// Converts earned score into money to spend using a conversion value.
