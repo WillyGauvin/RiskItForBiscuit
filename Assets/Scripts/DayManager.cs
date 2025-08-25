@@ -12,11 +12,15 @@ public class DayManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null)
+        if (instance == null)
         {
-            Debug.LogError("Found more than one Day Night Manager in the scene.");
+            instance = this;
+            DontDestroyOnLoad(gameObject);
         }
-        instance = this;
+        else
+        {
+            Destroy(gameObject);
+        }
 
         currentDay = 0;
     }
@@ -45,14 +49,16 @@ public class DayManager : MonoBehaviour
     /// Reduces dives remaining. 
     /// If no more dives remain, end the day.
     /// </summary>
-    public void DivePerformed()
+    public bool DivePerformed()
     {
         numDivesRemaining--;
 
         if (numDivesRemaining <= 0)
         {
             EndCurrentDay();
+            return false;
         }
+        return true;
     }
 
     /// <summary>

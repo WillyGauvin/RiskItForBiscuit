@@ -178,8 +178,8 @@ public class Dog : MonoBehaviour
         {
             AccumulateScore();
 
-            DayManager.instance.DivePerformed();
-            if (DayManager.instance.numDivesRemaining > 0)
+            // If dives remain after being performed...
+            if (DayManager.instance.DivePerformed())
             {
                 Reset();
             }
