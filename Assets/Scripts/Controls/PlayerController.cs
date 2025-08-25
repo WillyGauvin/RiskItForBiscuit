@@ -129,4 +129,9 @@ public class PlayerController : MonoBehaviour
     {
         myDog.Reset();
     }
+
+    public void OnLoadLevel(InputValue value)
+    {
+        LevelLoader.Instance.LoadNextLevel();
+    }
 }
