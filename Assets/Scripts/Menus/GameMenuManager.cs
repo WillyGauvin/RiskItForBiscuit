@@ -9,11 +9,15 @@ public class GameMenuManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null)
+        if (instance == null)
         {
-            Debug.LogError("Found more than one Menu Manager in the scene.");
+            instance = this;
+            DontDestroyOnLoad(gameObject);
         }
-        instance = this;
+        else
+        {
+            Destroy(gameObject);
+        }
 
         pauseMenu = Object.FindFirstObjectByType<PauseMenu>(FindObjectsInactive.Include).gameObject;
         settingsMenu = Object.FindFirstObjectByType<SettingsMenu>(FindObjectsInactive.Include).gameObject;
