@@ -11,22 +11,21 @@ public class ShopTemplate : MonoBehaviour, IPointerClickHandler
 
     void Start()
     {
-        //find the shop ui in the scene
-        shopUIRef = FindAnyObjectByType<ShopUI>();
 
         if (shopUIRef == null)
         {
             Debug.LogError("Add shopUI to Scene");
         }
-
-        //add this shop to the shopUI's list of shops
-        shopUIRef.listOfItems.Add(this);
+        else
+        {            //add this shop to the shopUI's list of shops
+            shopUIRef.listOfItems.Add(this);
+        }
     }
 
     //open the shop UI using this shop's data
     public void OpenShop()
     {
-        
+
         if (shopUIRef != null)
         {
             shopUIRef.gameObject.SetActive(true); //  Show UI
@@ -51,6 +50,6 @@ public class ShopTemplate : MonoBehaviour, IPointerClickHandler
             CloseShop();
         //  Opens the shop when clicked
         else
-            OpenShop(); 
+            OpenShop();
     }
 }

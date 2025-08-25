@@ -171,6 +171,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ObstacleShop Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7096804360193038420, guid: 12ca065d4d7036749976d5117ae2bf1e, type: 3}
+      propertyPath: shopUIRef
+      value: 
+      objectReference: {fileID: 1214754419}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -514,6 +518,10 @@ PrefabInstance:
       value: TrainerShop Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2547418854220069419, guid: 7d1d7ae950fee5b41931b525a087cfa9, type: 3}
+      propertyPath: shopUIRef
+      value: 
+      objectReference: {fileID: 1214754419}
+    - target: {fileID: 2547418854220069419, guid: 7d1d7ae950fee5b41931b525a087cfa9, type: 3}
       propertyPath: listOfItems.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -708,6 +716,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DebtShop Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3230678360445073451, guid: 8afa1f294512c2e46a1dd9afce9d5513, type: 3}
+      propertyPath: shopUIRef
+      value: 
+      objectReference: {fileID: 1214754419}
     - target: {fileID: 7580352279966489768, guid: 8afa1f294512c2e46a1dd9afce9d5513, type: 3}
       propertyPath: m_LocalPosition.x
       value: -941.5
@@ -877,6 +889,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3525027020740997015, guid: 7785e6f5ee3a6a249a2d701c31a05f19, type: 3}
   m_PrefabInstance: {fileID: 304705080609940030}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1214754419 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5463088322508663425, guid: 7785e6f5ee3a6a249a2d701c31a05f19, type: 3}
+  m_PrefabInstance: {fileID: 304705080609940030}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee39ef38baafed47b29c1dd596ca0a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1372060283 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7580352279966489768, guid: 8afa1f294512c2e46a1dd9afce9d5513, type: 3}
