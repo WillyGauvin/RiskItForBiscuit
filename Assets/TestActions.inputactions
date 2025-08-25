@@ -1,0 +1,114 @@
+{
+    "name": "TestActions",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "eef635cf-5158-4800-954b-0299fa6b427f",
+            "actions": [
+                {
+                    "name": "ContractBackCalf",
+                    "type": "Button",
+                    "id": "8edb995a-7719-4fa8-8a14-3d2cce3d0f8b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ContractBackThigh",
+                    "type": "Button",
+                    "id": "f19796e1-0d8d-4104-a026-238d0de0f179",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ContractFrontCalf",
+                    "type": "Button",
+                    "id": "2b41088d-9525-43b6-91d8-c4cdb3531381",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ContractFrontThigh",
+                    "type": "Button",
+                    "id": "7dfdb42c-dcb2-44db-923d-19661d7d6cab",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "WagTail",
+                    "type": "Button",
+                    "id": "99a914d2-5632-48ca-8cbe-d182a1284251",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "3e883ebe-eee3-4144-9f0f-55dac255227e",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ContractBackCalf",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2c4da81a-c642-409f-88ee-ac5e0e607ec5",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ContractBackThigh",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6df6e709-72c6-412a-8ca3-7b398e1f2642",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ContractFrontCalf",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "907476f7-8c9f-4230-99d5-73a1922732bb",
+                    "path": "<Keyboard>/n",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ContractFrontThigh",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5139af0b-f4b2-4854-be98-579a244f9a8c",
+                    "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WagTail",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
