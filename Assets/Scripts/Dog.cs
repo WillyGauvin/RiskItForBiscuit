@@ -178,6 +178,8 @@ public class Dog : MonoBehaviour
         if (collision.collider.CompareTag("Water"))
         {
             AccumulateScore();
+
+            DayManager.instance.DivePerformed();
         }
     }
 

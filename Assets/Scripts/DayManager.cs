@@ -5,7 +5,7 @@ public class DayManager : MonoBehaviour
     public static DayManager instance;
 
     public uint currentDay {get; private set;}
-    [SerializeField] int totalDays = 25;
+    const int totalDays = 30;
 
     public uint numDivesRemaining { get; private set; }
     const int numDivesPerDay = 3;
@@ -61,5 +61,10 @@ public class DayManager : MonoBehaviour
     void EndCurrentDay()
     {
         ScoreManager.instance.ConvertScoreToMoney();
+
+        LevelLoader.Instance.LoadNextLevel();
+
+        // For now, just immediately start the next day.
+        StartNewDay();
     }
 }
