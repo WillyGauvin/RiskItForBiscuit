@@ -28,12 +28,11 @@ public class Dog : MonoBehaviour
     //[SerializeField] CatchDetector detector;
 
     [Header("Cameras")]
-    [SerializeField] CinemachineCamera FollowCam; 
+    [SerializeField] CinemachineCamera FollowCam;
     [SerializeField] CinemachineCamera DockCam;
 
     [Header("Detection")]
     [SerializeField] FrisbeeCatchDetection frisbeeCatchDetection;
-    [SerializeField] LayerMask waterLayer;
 
     [Header("Score")]
     [SerializeField] float scoreMultiplier = 10.0f;
@@ -86,7 +85,7 @@ public class Dog : MonoBehaviour
         jumpForce = Vector3.zero;
         hasJumped = false;
         //detector.Reset();
-        DockCam.enabled = true;
+        if (DockCam != null) { DockCam.enabled = true; }
         frisbeeCatchDetection.Reset();
     }
 
@@ -129,8 +128,8 @@ public class Dog : MonoBehaviour
         body.linearVelocity = transform.forward * currentSpeed;
         body.AddForce(jumpForce, ForceMode.Impulse);
 
-        myTrainer.ThrowFrisbee(projection);
-        DockCam.enabled = false;
+        if (myTrainer != null) { myTrainer.ThrowFrisbee(projection); }
+        if (DockCam != null) { DockCam.enabled = false; }
     }
 
     IEnumerator ChargeDogJump()
@@ -178,6 +177,12 @@ public class Dog : MonoBehaviour
         if (collision.collider.CompareTag("Water"))
         {
             AccumulateScore();
+
+            // If dives remain after being performed...
+            if (DayManager.instance.DivePerformed())
+            {
+                Reset();
+            }
         }
     }
 

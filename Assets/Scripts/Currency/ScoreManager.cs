@@ -6,6 +6,7 @@ using UnityEngine;
 /// Frisbee caught.
 /// Distance travelled before hitting water.
 /// Tricks performed while airborn.
+/// Colliding with beneficial obstacles during a dive.
 /// 
 /// </summary>
 
@@ -18,19 +19,21 @@ public class ScoreManager : MonoBehaviour
     [SerializeField, Range(0, 1)] float scoreMoneyConversion = 0.1f;
 
     public float currentMoney { get; private set; }
-    public float debtInterest {  get; private set; }
 
     private void Awake()
     {
-        if (instance != null)
+        if (instance == null)
         {
-            Debug.LogError("Found more than one Score Manager in the scene.");
+            instance = this;
+            DontDestroyOnLoad(gameObject);
         }
-        instance = this;
+        else
+        {
+            Destroy(gameObject);
+        }
 
         ResetScore();
         ResetMoney();
-        SetDebtInterest();
     }
 
     #region Score and Value Resets
@@ -49,16 +52,6 @@ public class ScoreManager : MonoBehaviour
     public void ResetMoney()
     {
         currentMoney = 0.0f;
-    }
-
-    /// <summary>
-    /// Set the debt interest.
-    /// Can be changed day-to-day if necessary.
-    /// </summary>
-    /// <param name="interest">Interest to apply to negative funds.</param>
-    public void SetDebtInterest(float interest = 1.13f)
-    {
-        debtInterest = interest;
     }
 
     /// <summary>
@@ -92,20 +85,10 @@ public class ScoreManager : MonoBehaviour
     /// <param name="price">Price of item/upgrade purchased.</param>
     public void SpendMoney(uint price)
     {
-        if (price <= 0) { return; }
+        if (price <= 0 || 
+            currentMoney - price < 0) { return; }
 
         currentMoney -= price;
-    }
-
-    /// <summary>
-    /// Accumulate a player debt by interest rate.
-    /// To be applied at the end of every day if money is in the negatives.
-    /// </summary>
-    public void AccumulateDebt()
-    {
-        if (currentMoney >= 0) { return; }
-
-        currentMoney *= debtInterest;
     }
 
     #endregion
