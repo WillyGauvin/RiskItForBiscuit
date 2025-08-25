@@ -239,9 +239,9 @@ GameObject:
   - component: {fileID: 91068792}
   - component: {fileID: 91068791}
   - component: {fileID: 91068790}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Dock (1)
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
