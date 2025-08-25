@@ -49,15 +49,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "LoadLevel",
-                    "type": "Button",
-                    "id": "5575a1ec-6ee9-4490-90d8-b20ec227bc82",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -124,17 +115,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Bite",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "43e621a5-13e7-4554-9e19-00870b5bae81",
-                    "path": "<Keyboard>/g",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "LoadLevel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

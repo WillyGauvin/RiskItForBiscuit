@@ -6,7 +6,7 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CircleWipe
+  m_Name: CircleWipeLeft
   m_Controller: {fileID: 9100000, guid: 861572f42afab304090ebcf26ecb2d82, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: 77f9ae6c2588fce4ba374ad823be6918, type: 2}
