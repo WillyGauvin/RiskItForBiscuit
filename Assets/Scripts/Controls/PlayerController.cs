@@ -29,7 +29,6 @@ public class PlayerController : MonoBehaviour
     private InputAction mousePositionAction;
     private InputAction placeObstacleAction;
     private InputAction exitObstacleAction;
-    Dog myDog;
 
     public Vector2 mousePosition;
 
@@ -220,6 +219,7 @@ public class PlayerController : MonoBehaviour
     public void OnTailWag(InputAction.CallbackContext context)
     {
         legControls.OnTailWag(context);
+    }
 
     public void OnMouseMove(InputAction.CallbackContext context)
     {
