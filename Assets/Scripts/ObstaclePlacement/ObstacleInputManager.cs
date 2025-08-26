@@ -26,7 +26,7 @@ public class ObstacleInputManager : MonoBehaviour
         Ray ray = sceneCamera.ScreenPointToRay(mousePos);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 100, placementLayerMask))
+        if (Physics.Raycast(ray, out hit, 300, placementLayerMask))
         {
             lastPosition = hit.point;
         }

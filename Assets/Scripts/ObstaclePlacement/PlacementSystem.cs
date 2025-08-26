@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using Unity.Cinemachine;
+using UnityEngine.EventSystems;
 
 public class PlacementSystem : MonoBehaviour
 {
@@ -26,8 +27,6 @@ public class PlacementSystem : MonoBehaviour
 
     private bool pendingClick = false;
     private Vector2 pendingClickPosition;
-
-    [SerializeField] CinemachineCamera obstacleCamera;
 
     private void Start()
     {
@@ -59,7 +58,6 @@ public class PlacementSystem : MonoBehaviour
     public void StartPlacement(int ID)
     {
         StopPlacement();
-        gridVisualization.SetActive(true);
         buildingState = new PlacementState(ID, grid, preview, dataBase, obstacleData, objectPlacer);
 
         PlayerController.instance.OnClicked += QuePlacement;
@@ -69,9 +67,6 @@ public class PlacementSystem : MonoBehaviour
 
     private void StopPlacement()
     {
-
-        gridVisualization.SetActive(false);
-
         if(buildingState == null) return;
 
         buildingState.EndState();
@@ -85,7 +80,6 @@ public class PlacementSystem : MonoBehaviour
     {
 
         StopPlacement();
-        gridVisualization.SetActive(true);
         buildingState = new RemovingState(grid, preview, obstacleData, objectPlacer);
 
         PlayerController.instance.OnClicked += QuePlacement;
@@ -114,11 +108,11 @@ public class PlacementSystem : MonoBehaviour
 
     public void EnterBuildMode()
     {
-        obstacleCamera.gameObject.SetActive(true);
+        gridVisualization.SetActive(true);
     }
 
     public void ExitBuildMode()
     {
-        obstacleCamera.gameObject.SetActive(false);
+        gridVisualization.SetActive(false);
     }
 }
