@@ -35,11 +35,13 @@ public class ScoreManager : MonoBehaviour
     [SerializeField, Range(0, 1)] float scoreMoneyConversion = 0.1f;
 
     [field: SerializeField] public float currentMoney { get; private set; }
+    const float startingFunds = 50.0f;
 
     private void Awake()
     {
         ResetScore();
         ResetMoney();
+        currentMoney = startingFunds;
     }
 
 #if UNITY_EDITOR
