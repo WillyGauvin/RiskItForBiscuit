@@ -1821,6 +1821,14 @@ PrefabInstance:
       propertyPath: myTrainer
       value: 
       objectReference: {fileID: 1407054714}
+    - target: {fileID: 6359281716852063176, guid: b238442299314fd41826a6dcfffc2f53, type: 3}
+      propertyPath: canFlip
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6359281716852063176, guid: b238442299314fd41826a6dcfffc2f53, type: 3}
+      propertyPath: canWagTail
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7866121819613619177, guid: b238442299314fd41826a6dcfffc2f53, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.25
