@@ -28,13 +28,29 @@ public class AudioManager : MonoBehaviour
     private EventInstance ambienceEventInstance;
     private EventInstance musicEventInstance;
 
-    public static AudioManager instance { get; private set; }
+    private static AudioManager thisInstance;
+
+    public static AudioManager instance
+    {
+        get
+        {
+            if (!thisInstance)
+            {
+                // Spawns GameManager prefab and sets component reference.
+                GameObject manager = Instantiate(Resources.Load<GameObject>("Managers/AudioManager"));
+            }
+
+            return thisInstance;
+        }
+
+        private set => thisInstance = value;
+    }
 
     private void Awake()
     {
-        if (instance == null)
+        if (thisInstance == null)
         {
-            instance = this;
+            thisInstance = this;
             DontDestroyOnLoad(gameObject);
         }
         else

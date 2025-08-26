@@ -2,7 +2,22 @@ using UnityEngine;
 
 public class DayManager : MonoBehaviour
 {
-    public static DayManager instance;
+    private static DayManager thisInstance;
+
+    public static DayManager instance
+    {
+        get
+        {
+            if (!thisInstance)
+            {
+                thisInstance = GameManager.instance.DayManager;
+            }
+
+            return thisInstance;
+        }
+
+        private set => thisInstance = value;
+    }
 
     public uint currentDay {get; private set;}
     const int totalDays = 30;
@@ -12,16 +27,6 @@ public class DayManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
         currentDay = 0;
     }
 
@@ -39,7 +44,14 @@ public class DayManager : MonoBehaviour
 
         if (currentDay >= totalDays)
         {
-            // Debt was not paid on time. Game Over.
+            // Debt was not paid off on time. Game Over.
+            Debug.Log("Debt was not paid off on time. Game Over.");
+        }
+
+        // Apply weekly debt interest.
+        if ((currentDay % 7) == 0)
+        {
+            LoanSystem.instance.ApplyDebtInterest();
         }
 
         numDivesRemaining = numDivesPerDay;

@@ -12,7 +12,22 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    public static ScoreManager instance { get; private set; }
+    private static ScoreManager thisInstance;
+
+    public static ScoreManager instance
+    {
+        get
+        {
+            if (!thisInstance)
+            {
+                thisInstance = GameManager.instance.ScoreManager;
+            }
+
+            return thisInstance;
+        }
+
+        private set => thisInstance = value;
+    }
 
     public uint currentScore { get; private set; }
     // Allows for score and money to not be 1:1. Huge score = dopamine, but not infinite money.
@@ -22,16 +37,6 @@ public class ScoreManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
         ResetScore();
         ResetMoney();
     }
@@ -39,15 +44,17 @@ public class ScoreManager : MonoBehaviour
 #if UNITY_EDITOR
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Minus))
-        {
-            AddToScore(500);
-        }
+        // Apparently these don't work anymore in Unity 6 with the Input System :p
 
-        if (Input.GetKey(KeyCode.Equals))
-        {
-            AddMoney(500);
-        }
+        //if (Input.GetKey(KeyCode.Minus))
+        //{
+        //    AddToScore(500);
+        //}
+
+        //if (Input.GetKey(KeyCode.Equals))
+        //{
+        //    AddMoney(500);
+        //}
     }
 #endif
 
