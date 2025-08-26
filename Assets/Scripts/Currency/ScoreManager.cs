@@ -30,11 +30,11 @@ public class ScoreManager : MonoBehaviour
         private set => thisInstance = value;
     }
 
-    [SerializeField] public int currentScore { get; private set; }
+    [field: SerializeField] public int currentScore { get; private set; }
     // Allows for score and money to not be 1:1. Huge score = dopamine, but not infinite money.
     [SerializeField, Range(0, 1)] float scoreMoneyConversion = 0.1f;
 
-    [SerializeField] public float currentMoney { get; private set; }
+    [field: SerializeField] public float currentMoney { get; private set; }
 
     private void Awake()
     {

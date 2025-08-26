@@ -20,10 +20,10 @@ public class DayManager : MonoBehaviour
         private set => thisInstance = value;
     }
 
-    public uint currentDay {get; private set;}
+    [field: SerializeField] public uint currentDay {get; private set;}
     const int totalDays = 30;
 
-    public uint numDivesRemaining { get; private set; }
+    [field: SerializeField] public uint numDivesRemaining { get; private set; }
     const int numDivesPerDay = 3;
 
     private void Awake()
