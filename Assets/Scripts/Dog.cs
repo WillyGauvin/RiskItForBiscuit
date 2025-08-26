@@ -24,7 +24,7 @@ public class Dog : MonoBehaviour
 
 
     [Header("BodyParts")]
-    [SerializeField] HingeJoint bottomJaw;
+    [SerializeField] HingeJoint2D bottomJaw;
     //[SerializeField] CatchDetector detector;
 
     [Header("Cameras")]
@@ -32,19 +32,21 @@ public class Dog : MonoBehaviour
     [SerializeField] CinemachineCamera DockCam;
 
     [Header("Detection")]
-    [SerializeField] FrisbeeCatchDetection frisbeeCatchDetection;
+    [SerializeField] TestFrisbeeCatcher frisbeeCatchDetection;
 
     [Header("Score")]
     [SerializeField] float scoreMultiplier = 10.0f;
 
-
+    [Header("AnimationSettings")]
+    [SerializeField] DogAnimationManager animationManager;
 
 
     Vector3 jumpForce;
     Vector3 startingPos;
+    Quaternion startingRot;
 
 
-    private Rigidbody body;
+    private Rigidbody2D body;
 
     [Header("States")]
     public bool isRunning = false;
@@ -53,12 +55,13 @@ public class Dog : MonoBehaviour
 
     private void Awake()
     {
-        body = GetComponent<Rigidbody>();
+        body = GetComponent<Rigidbody2D>();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         startingPos = transform.position;
+        startingRot = transform.rotation;
         Reset();
     }
 
@@ -77,6 +80,7 @@ public class Dog : MonoBehaviour
         GetComponent<LineRenderer>().enabled = false;
         body.linearVelocity = Vector3.zero;
         transform.position = startingPos;
+        transform.rotation = startingRot;
         StopAllCoroutines();
         isRunning = false;
         isCharging = false;
@@ -87,6 +91,7 @@ public class Dog : MonoBehaviour
         //detector.Reset();
         if (DockCam != null) { DockCam.enabled = true; }
         frisbeeCatchDetection.Reset();
+        animationManager.Reset();
     }
 
     public void BeginRun()
@@ -125,8 +130,22 @@ public class Dog : MonoBehaviour
         hasJumped = true;
         StopAllCoroutines();
 
+        animationManager.ActivateRigidbody();
+
+        StartCoroutine(RealJump());
+
+        // body.linearVelocity = transform.forward * currentSpeed;
+        // body.AddForce(jumpForce, ForceMode2D.Impulse);
+
+        // if (myTrainer != null) { myTrainer.ThrowFrisbee(projection); }
+        // if (DockCam != null) { DockCam.enabled = false; }
+    }
+
+    IEnumerator RealJump()
+    {
+        yield return null;
         body.linearVelocity = transform.forward * currentSpeed;
-        body.AddForce(jumpForce, ForceMode.Impulse);
+        body.AddForce(jumpForce, ForceMode2D.Impulse);
 
         if (myTrainer != null) { myTrainer.ThrowFrisbee(projection); }
         if (DockCam != null) { DockCam.enabled = false; }
@@ -147,8 +166,8 @@ public class Dog : MonoBehaviour
     {
         //if (!detector.caught)
         {
-            JointMotor motor = bottomJaw.motor;
-            motor.targetVelocity = -100f;
+            JointMotor2D motor = bottomJaw.motor;
+            motor.motorSpeed = 100f;
             bottomJaw.motor = motor;
         }
     }
@@ -157,8 +176,8 @@ public class Dog : MonoBehaviour
     {
         //if (!detector.caught)
         {
-            JointMotor motor = bottomJaw.motor;
-            motor.targetVelocity = 100f;
+            JointMotor2D motor = bottomJaw.motor;
+            motor.motorSpeed = -100f;
             bottomJaw.motor = motor;
         }
     }
@@ -189,7 +208,7 @@ public class Dog : MonoBehaviour
     /// <summary>
     /// Add score based on distance travelled and a score multiplier.
     /// </summary>
-    private void AccumulateScore()
+    public void AccumulateScore()
     {
         if (!hasJumped || myTrainer == null) { return; }
 

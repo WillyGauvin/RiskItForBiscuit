@@ -49,6 +49,51 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "BackCalf",
+                    "type": "Button",
+                    "id": "f713ae95-dc33-4cea-9bea-f5b5919e0b64",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "BackThigh",
+                    "type": "Button",
+                    "id": "1c8a9f6e-6e61-453a-8a98-fd3b79ba7f5d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "FrontCalf",
+                    "type": "Button",
+                    "id": "1acab708-3822-4560-aafa-d64c24ac5d77",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "FrontThigh",
+                    "type": "Button",
+                    "id": "a7dfec6c-6777-48b2-aa92-9da6358cac0c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "WagTail",
+                    "type": "Button",
+                    "id": "626a356e-d5e3-479c-be72-23e4cf689387",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -110,11 +155,66 @@
                 {
                     "name": "",
                     "id": "0c3f04fc-2822-49c1-9fee-44d5ccfc2cf2",
-                    "path": "<Keyboard>/k",
+                    "path": "<Keyboard>/b",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Bite",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eb5e3088-b1ef-4d43-823b-ba109b66417a",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BackCalf",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a56864e0-3b69-4cea-a35c-3b33ce3d3b1f",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BackThigh",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b8555fd3-16e5-4db2-9315-8fbf8d0b64c0",
+                    "path": "<Keyboard>/n",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FrontCalf",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3a0ca322-8054-4119-991e-8207845089b6",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FrontThigh",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "370ea989-ba6b-41f8-b72c-f5de83aefa3f",
+                    "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WagTail",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

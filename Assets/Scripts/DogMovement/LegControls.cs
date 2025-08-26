@@ -45,7 +45,14 @@ public class LegControls : MonoBehaviour
 
     [SerializeField] HingeJoint2D head;
 
+
+    [Header("Unlockables")]
+    public bool canFlip;
+    public bool canTouchToes;
+    public bool canWagTail;
+
     private float desiredAngle = 0;
+    private bool touchScored;
 
     void Start()
     {
@@ -56,82 +63,97 @@ public class LegControls : MonoBehaviour
 
     public void OnContractBackCalf(InputAction.CallbackContext context)
     {
-        if (context.canceled)
+        if (canFlip)
         {
-            contractingBackCalf = false;
-            backCalf.ResetHinge();
-        }
-        else
-        {
-            contractingBackCalf = true;
-            backCalf.SetSpeed(onMotorSpeed);
+            if (context.canceled)
+            {
+                contractingBackCalf = false;
+                backCalf.ResetHinge();
+            }
+            else
+            {
+                contractingBackCalf = true;
+                backCalf.SetSpeed(onMotorSpeed);
+            }
         }
     }
 
     public void OnContractBackThigh(InputAction.CallbackContext context)
     {
-        if (context.canceled)
+        if (canFlip)
         {
-            contractingBackThigh = false;
-            backThigh.ResetHinge();
-        }
-        else
-        {
-            contractingBackThigh = true;
-            backThigh.SetSpeed(onMotorSpeed);
+            if (context.canceled)
+            {
+                contractingBackThigh = false;
+                backThigh.ResetHinge();
+            }
+            else
+            {
+                contractingBackThigh = true;
+                backThigh.SetSpeed(onMotorSpeed);
+            }
         }
 
     }
 
     public void OnContractFrontCalf(InputAction.CallbackContext context)
     {
-        if (context.canceled)
+        if (canFlip)
         {
-            contractingFrontCalf = false;
-            frontCalf.ResetHinge();
-        }
-        else
-        {
-            contractingFrontCalf = true;
-            frontCalf.SetSpeed(onMotorSpeed);
+            if (context.canceled)
+            {
+                contractingFrontCalf = false;
+                frontCalf.ResetHinge();
+            }
+            else
+            {
+                contractingFrontCalf = true;
+                frontCalf.SetSpeed(onMotorSpeed);
+            }
         }
 
     }
 
     public void OnContractFrontThigh(InputAction.CallbackContext context)
     {
-        if (context.canceled)
+        if (canFlip)
         {
-            contractingFrontThigh = false;
-            frontThigh.ResetHinge();
-        }
-        else
-        {
-            contractingFrontThigh = true;
-            frontThigh.SetSpeed(onMotorSpeed);
+            if (context.canceled)
+            {
+                contractingFrontThigh = false;
+                frontThigh.ResetHinge();
+            }
+            else
+            {
+                contractingFrontThigh = true;
+                frontThigh.SetSpeed(onMotorSpeed);
+            }
         }
 
     }
 
-    public void OnWagTail(InputAction.CallbackContext context)
+    public void OnTailWag(InputAction.CallbackContext context)
     {
-        if (context.canceled)
+        if (canWagTail)
         {
-            waggingTail = false;
-            foreach (HingeJoint2D joint in tailPieces)
+            if (context.canceled)
             {
-                JointMotor2D motor2D = joint.motor;
-                motor2D.motorSpeed = 0f;
-                joint.motor = motor2D;
-                joint.useMotor = false;
+                waggingTail = false;
+                foreach (HingeJoint2D joint in tailPieces)
+                {
+                    JointMotor2D motor2D = joint.motor;
+                    motor2D.motorSpeed = 0f;
+                    joint.motor = motor2D;
+                    joint.useMotor = false;
+                }
             }
-        }
-        else
-        {
-            waggingTail = true;
-            foreach (HingeJoint2D joint in tailPieces)
+            else
             {
-                joint.useMotor = true;
+                waggingTail = true;
+                foreach (HingeJoint2D joint in tailPieces)
+                {
+                    joint.useMotor = true;
+                }
             }
         }
 
@@ -146,35 +168,74 @@ public class LegControls : MonoBehaviour
             backThigh.SetSpeed(-onMotorSpeed * 2f);
             frontCalf.SetSpeed(-onMotorSpeed * 2f);
             frontThigh.SetSpeed(onMotorSpeed * 2f);
-
             //Check if all at limit for toe touching
         }
         else if (touchingToes == true)
         {
             touchingToes = false;
+            touchScored = false;
+        }
+        if (contractingBackCalf && contractingBackThigh && contractingFrontCalf && contractingFrontThigh)
+        {
+            if (backCalf.AtMin() && backThigh.AtMin() && frontCalf.AtMin() && frontThigh.AtMax() && touchScored == false)
+            {
+                Debug.Log("Toes scored");
+                touchScored = true;
+                ScoreManager.instance.AddToScore(500);
+            }
         }
     }
 
     #endregion
 
 
+
     void FixedUpdate()
     {
-        TouchToes();
-        WagTail();
+        if (canTouchToes)
+            TouchToes();
+        if (canWagTail)
+            WagTail();
 
         torqueBackFlipAmount = 0f;
         torqueFrontFlipAmount = 0f;
-        if (!touchingToes)
+
+        if (canFlip)
         {
-            TorqueBackFlip();
-            TorqueFrontFlip();
+            if (!touchingToes)
+            {
+                TorqueBackFlip();
+                TorqueFrontFlip();
+            }
+
+            rb2d.AddTorque(torqueFrontFlipAmount + torqueBackFlipAmount);
         }
 
-        rb2d.AddTorque(torqueFrontFlipAmount + torqueBackFlipAmount);
-
         desiredAngle = torqueFrontFlipAmount + torqueBackFlipAmount;
-        Debug.Log(desiredAngle);
+        //HeadAngle();
+    }
+
+    float accumulatedAngle = 0;
+    float currentAngle = 0;
+    float previousAngle = 0;
+
+    void Update()
+    {
+        currentAngle = rb2d.rotation;
+        accumulatedAngle += currentAngle - previousAngle;
+        previousAngle = currentAngle;
+        if (accumulatedAngle < -360 && rb2d.angularVelocity < 0f)
+        {
+            Debug.Log("Front flip");
+            ScoreManager.instance.AddToScore(250);
+            accumulatedAngle = 0;
+        }
+        if (accumulatedAngle > 360 && rb2d.angularVelocity > 0f)
+        {
+            Debug.Log("Back flip");
+            ScoreManager.instance.AddToScore(250);
+            accumulatedAngle = 0;
+        }
     }
 
     #region Flip Calculations
@@ -215,25 +276,27 @@ public class LegControls : MonoBehaviour
     #region Extremities Movement
 
     //Test head movement
-    
-    // if ((desiredAngle - head.jointAngle) > 1f)
-    // {
-    //     JointMotor2D motor2D = head.motor;
-    //     motor2D.motorSpeed = -30f;
-    //     head.motor = motor2D;
-    // }
-    // else if ((desiredAngle - head.jointAngle) < -1f)
-    // {
-    //     JointMotor2D motor2D = head.motor;
-    //     motor2D.motorSpeed = 30f;
-    //     head.motor = motor2D;
-    // }
-    // else
-    // {
-    //     JointMotor2D motor2D = head.motor;
-    //     motor2D.motorSpeed = 0f;
-    //     head.motor = motor2D;
-    // }
+    private void HeadAngle()
+    {
+        if ((desiredAngle - head.jointAngle) > 1f)
+        {
+            JointMotor2D motor2D = head.motor;
+            motor2D.motorSpeed = -30f;
+            head.motor = motor2D;
+        }
+        else if ((desiredAngle - head.jointAngle) < -1f)
+        {
+            JointMotor2D motor2D = head.motor;
+            motor2D.motorSpeed = 30f;
+            head.motor = motor2D;
+        }
+        else
+        {
+            JointMotor2D motor2D = head.motor;
+            motor2D.motorSpeed = 0f;
+            head.motor = motor2D;
+        }
+    }
 
     private void WagTail()
     {

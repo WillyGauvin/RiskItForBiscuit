@@ -261,9 +261,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 641284034578953532, guid: 657a2a095a7604544acc4336868f7f05, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.8534481
+      objectReference: {fileID: 0}
+    - target: {fileID: 1004316646738761224, guid: 657a2a095a7604544acc4336868f7f05, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1699482044683069125, guid: 657a2a095a7604544acc4336868f7f05, type: 3}
       propertyPath: m_Name
-      value: DogPrototype 1
+      value: DogPrototype
+      objectReference: {fileID: 0}
+    - target: {fileID: 3556107007112366262, guid: 657a2a095a7604544acc4336868f7f05, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3556581952628327881, guid: 657a2a095a7604544acc4336868f7f05, type: 3}
       propertyPath: m_LocalPosition.x

@@ -17,7 +17,18 @@ public class PlayerController : MonoBehaviour
     PlayerInput input;
     private InputAction jumpAction;
     private InputAction biteAction;
+
+    //Stuff I added
+    private InputAction backCalfAction;
+    private InputAction backThighAction;
+    private InputAction frontCalfAction;
+    private InputAction frontThighAction;
+    private InputAction wagTailAction;
+    LegControls legControls;
+    //End of stuff I added
+
     Dog myDog;
+
 
     private void OnEnable()
     {
@@ -26,13 +37,34 @@ public class PlayerController : MonoBehaviour
         biteAction.started += ctx => OnPlayerBite(ctx);
         biteAction.canceled += ctx => OnPlayerBite(ctx);
 
+        backCalfAction.started += ctx => OnBackCalfContraction(ctx);
+        backCalfAction.canceled += ctx => OnBackCalfContraction(ctx);
+        frontCalfAction.started += ctx => OnFrontCalfContraction(ctx);
+        frontCalfAction.canceled += ctx => OnFrontCalfContraction(ctx);
+        backThighAction.started += ctx => OnBackThighContraction(ctx);
+        backThighAction.canceled += ctx => OnBackThighContraction(ctx);
+        frontThighAction.started += ctx => OnFrontThighContraction(ctx);
+        frontThighAction.canceled += ctx => OnFrontThighContraction(ctx);
+        wagTailAction.started += ctx => OnTailWag(ctx);
+        wagTailAction.canceled += ctx => OnTailWag(ctx);
     }
     private void OnDisable()
     {
         jumpAction.started -= ctx => OnPlayerJump(ctx);
         jumpAction.canceled -= ctx => OnPlayerJump(ctx);
-        biteAction.started += ctx => OnPlayerBite(ctx);
-        biteAction.canceled += ctx => OnPlayerBite(ctx);
+        biteAction.started -= ctx => OnPlayerBite(ctx);
+        biteAction.canceled -= ctx => OnPlayerBite(ctx);
+
+        backCalfAction.started -= ctx => OnBackCalfContraction(ctx);
+        backCalfAction.canceled -= ctx => OnBackCalfContraction(ctx);
+        frontCalfAction.started -= ctx => OnFrontCalfContraction(ctx);
+        frontCalfAction.canceled -= ctx => OnFrontCalfContraction(ctx);
+        backThighAction.started -= ctx => OnBackThighContraction(ctx);
+        backThighAction.canceled -= ctx => OnBackThighContraction(ctx);
+        frontThighAction.started -= ctx => OnFrontThighContraction(ctx);
+        frontThighAction.canceled -= ctx => OnFrontThighContraction(ctx);
+        wagTailAction.started -= ctx => OnTailWag(ctx);
+        wagTailAction.canceled -= ctx => OnTailWag(ctx);
     }
 
     private void Awake()
@@ -46,9 +78,19 @@ public class PlayerController : MonoBehaviour
 
         input = GetComponent<PlayerInput>();
         myDog = GetComponent<Dog>();
+        //Mine
+        legControls = GetComponent<LegControls>();
+        //End of mine
 
         jumpAction = input.actions["Jump"];
         biteAction = input.actions["Bite"];
+        //Stuff I added
+        backCalfAction = input.actions["BackCalf"];
+        backThighAction = input.actions["BackThigh"];
+        frontCalfAction = input.actions["FrontCalf"];
+        frontThighAction = input.actions["FrontThigh"];
+        wagTailAction = input.actions["WagTail"];
+        //End
     }
 
 
@@ -116,17 +158,42 @@ public class PlayerController : MonoBehaviour
         //If the button is pressed, change the motor to be closing
         if (context.started)
         {
-            myDog.CloseMouth();
+            //myDog.CloseMouth();
         }
         //If the button is no longer being pressed, change the motor to be opening
         else if (context.canceled)
         {
-            myDog.OpenMouth();
+            //myDog.OpenMouth();
         }
     }
 
     public void OnReset(InputValue value)
     {
         myDog.Reset();
+    }
+
+    public void OnBackCalfContraction(InputAction.CallbackContext context)
+    {
+        legControls.OnContractBackCalf(context);
+    }
+
+    public void OnBackThighContraction(InputAction.CallbackContext context)
+    {
+        legControls.OnContractBackThigh(context);
+    }
+
+    public void OnFrontCalfContraction(InputAction.CallbackContext context)
+    {
+        legControls.OnContractFrontCalf(context);
+    }
+
+    public void OnFrontThighContraction(InputAction.CallbackContext context)
+    {
+        legControls.OnContractFrontThigh(context);
+    }
+
+    public void OnTailWag(InputAction.CallbackContext context)
+    {
+        legControls.OnTailWag(context);
     }
 }

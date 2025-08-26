@@ -30,6 +30,21 @@ public class HingeSetter : MonoBehaviour
         return hinge.limits.max;
     }
 
+    public float GetMinAngle()
+    {
+        return hinge.limits.min;
+    }
+
+    public bool AtMin()
+    {
+        return (GetAngle() - GetMinAngle()) < 1;
+    }
+
+    public bool AtMax()
+    {
+        return (GetMaxAngle() - GetAngle()) < 1;
+    }
+
     public void ResetHinge()
     {
         hinge.useMotor = false;

@@ -3,10 +3,10 @@ using UnityEngine;
 public class FrisbeeCatchDetection : MonoBehaviour
 {
 
-    [SerializeField] HingeJoint hinge;
+    [SerializeField] HingeJoint2D hinge;
     [SerializeField] FrisbeeDetector topDetector;
     [SerializeField] FrisbeeDetector bottomDetector;
-    [SerializeField] Rigidbody bottomJawRB;
+    [SerializeField] Rigidbody2D bottomJawRB;
     private GameObject frisbee;
 
     [SerializeField] uint frisbeeCatchScore = 1000;
@@ -15,7 +15,7 @@ public class FrisbeeCatchDetection : MonoBehaviour
     {
         if (frisbee == null)
         {
-            if (hinge.angle > 20f && topDetector.touchingFrisbee && bottomDetector.touchingFrisbee)
+            if (hinge.jointAngle > 20f && topDetector.touchingFrisbee && bottomDetector.touchingFrisbee)
             {
                 Debug.Log("Caught");
                 frisbee = topDetector.frisbee;
