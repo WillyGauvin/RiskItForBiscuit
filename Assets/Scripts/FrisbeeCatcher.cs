@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TestFrisbeeCatcher : MonoBehaviour
+public class FrisbeeCatcher : MonoBehaviour
 {
     float timer;
     GameObject frisbee;
