@@ -118,7 +118,7 @@ public class Dog : MonoBehaviour
 
     public void ChargeJump()
     {
-        if (!isCharging)
+        if (!isCharging && isRunning)
         {
             StartCoroutine(ChargeDogJump());
         }
@@ -126,6 +126,7 @@ public class Dog : MonoBehaviour
 
     public void Jump()
     {
+        if (!isCharging) return;
         if (hasJumped) return;
         hasJumped = true;
         StopAllCoroutines();
