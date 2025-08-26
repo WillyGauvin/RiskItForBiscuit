@@ -161,29 +161,31 @@ public class LegControls : MonoBehaviour
 
     public void TouchToes()
     {
-        if (contractingBackCalf && contractingBackThigh && contractingFrontCalf && contractingFrontThigh && touchingToes == false)
+        if (contractingBackCalf && contractingBackThigh && contractingFrontCalf && contractingFrontThigh)
         {
-            touchingToes = true;
-            backCalf.SetSpeed(-onMotorSpeed * 2f);
-            backThigh.SetSpeed(-onMotorSpeed * 2f);
-            frontCalf.SetSpeed(-onMotorSpeed * 2f);
-            frontThigh.SetSpeed(onMotorSpeed * 2f);
-            //Check if all at limit for toe touching
+            if (touchingToes == false)
+            {
+                touchingToes = true;
+                backCalf.SetSpeed(-onMotorSpeed * 2f);
+                backThigh.SetSpeed(-onMotorSpeed * 2f);
+                frontCalf.SetSpeed(-onMotorSpeed * 2f);
+                frontThigh.SetSpeed(onMotorSpeed * 2f);
+            }
         }
-        else if (touchingToes == true)
+        else
         {
             touchingToes = false;
             touchScored = false;
         }
         if (contractingBackCalf && contractingBackThigh && contractingFrontCalf && contractingFrontThigh)
-        {
-            if (backCalf.AtMin() && backThigh.AtMin() && frontCalf.AtMin() && frontThigh.AtMax() && touchScored == false)
             {
-                Debug.Log("Toes scored");
-                touchScored = true;
-                ScoreManager.instance.AddToScore(500);
+                if (backCalf.AtMin() && backThigh.AtMin() && frontCalf.AtMin() && frontThigh.AtMax() && touchScored == false)
+                {
+                    Debug.Log("Toes scored");
+                    touchScored = true;
+                    ScoreManager.instance.AddToScore(500);
+                }
             }
-        }
     }
 
     #endregion

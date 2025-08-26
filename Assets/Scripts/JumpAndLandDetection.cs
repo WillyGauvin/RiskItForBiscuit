@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class WaterDetection : MonoBehaviour
+public class JumpAndLandDetection : MonoBehaviour
 {
 
     [SerializeField] Dog dog;

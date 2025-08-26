@@ -32,7 +32,7 @@ public class Dog : MonoBehaviour
     [SerializeField] CinemachineCamera DockCam;
 
     [Header("Detection")]
-    [SerializeField] TestFrisbeeCatcher frisbeeCatchDetection;
+    [SerializeField] FrisbeeCatcher frisbeeCatchDetection;
 
     [Header("Score")]
     [SerializeField] float scoreMultiplier = 10.0f;
