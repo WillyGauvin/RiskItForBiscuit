@@ -28,7 +28,7 @@ public class DayManager : MonoBehaviour
 
     private void Awake()
     {
-        currentDay = 1;
+        currentDay = 0;
         numDivesRemaining = numDivesPerDay;
     }
 

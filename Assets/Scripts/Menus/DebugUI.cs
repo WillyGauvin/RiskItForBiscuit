@@ -64,9 +64,9 @@ public class DebugUI : MonoBehaviour
             ShowDebtCounter();
         }
 
-        if (Keyboard.current.leftShiftKey.wasPressedThisFrame)
+        if (Keyboard.current.leftShiftKey.wasReleasedThisFrame)
         {
-            ShowDivesCounter();
+            ReduceDivesCounter();
         }
 
         if (Keyboard.current.rightBracketKey.wasPressedThisFrame)
@@ -91,6 +91,10 @@ public class DebugUI : MonoBehaviour
     public void ShowDivesCounter()
     {
         divesCounter.text = DayManager.instance.numDivesRemaining.ToString();
+    }
+    public void ReduceDivesCounter()
+    {
+        divesCounter.text = (DayManager.instance.numDivesRemaining - 1).ToString();
     }
 
     [SerializeField] TMP_Text scoreCounter;
