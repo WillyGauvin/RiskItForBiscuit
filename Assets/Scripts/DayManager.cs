@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DayManager : MonoBehaviour
 {
@@ -35,6 +36,21 @@ public class DayManager : MonoBehaviour
         StartNewDay();
     }
 
+#if UNITY_EDITOR
+    private void Update()
+    {
+        if (Keyboard.current.rightBracketKey.wasPressedThisFrame)
+        {
+            StartNewDay();
+        }
+
+        if (Keyboard.current.leftBracketKey.wasPressedThisFrame)
+        {
+            EndCurrentDay();
+        }
+    }
+#endif
+
     /// <summary>
     /// Begins a new day, increasing day counter and resetting the number of dives available.
     /// </summary>
@@ -48,9 +64,10 @@ public class DayManager : MonoBehaviour
             Debug.Log("Debt was not paid off on time. Game Over.");
         }
 
-        // Apply weekly debt interest.
+        // Apply a weekly debt interest.
         if ((currentDay % 7) == 0)
         {
+            Debug.Log("Womp womp. It's been a week, debt interest time");
             DebtSystem.instance.ApplyDebtInterest();
         }
 

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DebtSystem : MonoBehaviour
 {
@@ -24,6 +25,26 @@ public class DebtSystem : MonoBehaviour
 
     [SerializeField] float debtInterest = 1.045f; // 4.5% interest
     public float DebtInterest => debtInterest;
+
+#if UNITY_EDITOR
+    private void Update()
+    {
+        if (Keyboard.current.backslashKey.wasPressedThisFrame)
+        {
+            ApplyDebtInterest();
+        }
+
+        if (Keyboard.current.semicolonKey.wasPressedThisFrame)
+        {
+            RemoveFromDebt(500);
+        }
+
+        if (Keyboard.current.quoteKey.wasPressedThisFrame)
+        {
+            AddToDebt(500);
+        }
+    }
+#endif
 
     /// <summary>
     /// Adds a given amount to your total debt.

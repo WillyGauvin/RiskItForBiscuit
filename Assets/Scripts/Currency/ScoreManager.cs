@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Score is to accumulated via:
@@ -29,11 +30,11 @@ public class ScoreManager : MonoBehaviour
         private set => thisInstance = value;
     }
 
-    public uint currentScore { get; private set; }
+    [SerializeField] public int currentScore { get; private set; }
     // Allows for score and money to not be 1:1. Huge score = dopamine, but not infinite money.
     [SerializeField, Range(0, 1)] float scoreMoneyConversion = 0.1f;
 
-    public float currentMoney { get; private set; }
+    [SerializeField] public float currentMoney { get; private set; }
 
     private void Awake()
     {
@@ -44,17 +45,21 @@ public class ScoreManager : MonoBehaviour
 #if UNITY_EDITOR
     private void Update()
     {
-        // Apparently these don't work anymore in Unity 6 with the Input System :p
+        if (Keyboard.current.digit0Key.wasPressedThisFrame)
+        {
+            ResetScore();
+            ResetMoney();
+        }
 
-        //if (Input.GetKey(KeyCode.Minus))
-        //{
-        //    AddToScore(500);
-        //}
+        if (Keyboard.current.minusKey.wasPressedThisFrame)
+        {
+            AddToScore(500);
+        }
 
-        //if (Input.GetKey(KeyCode.Equals))
-        //{
-        //    AddMoney(500);
-        //}
+        if (Keyboard.current.equalsKey.wasPressedThisFrame)
+        {
+            AddMoney(500);
+        }
     }
 #endif
 
@@ -82,7 +87,7 @@ public class ScoreManager : MonoBehaviour
     /// <param name="value">Score to add. Unsigned integer to ensure score cannot be negative.</param>
     public void AddToScore(uint value)
     {
-        currentScore += value;
+        currentScore += (int)value;
     }
 
     #endregion
