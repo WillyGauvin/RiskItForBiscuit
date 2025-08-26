@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Score is to accumulated via:
@@ -12,39 +13,52 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    public static ScoreManager instance { get; private set; }
+    private static ScoreManager thisInstance;
 
-    public uint currentScore { get; private set; }
+    public static ScoreManager instance
+    {
+        get
+        {
+            if (!thisInstance)
+            {
+                thisInstance = GameManager.instance.ScoreManager;
+            }
+
+            return thisInstance;
+        }
+
+        private set => thisInstance = value;
+    }
+
+    [field: SerializeField] public int currentScore { get; private set; }
     // Allows for score and money to not be 1:1. Huge score = dopamine, but not infinite money.
     [SerializeField, Range(0, 1)] float scoreMoneyConversion = 0.1f;
 
-    public float currentMoney { get; private set; }
+    [field: SerializeField] public float currentMoney { get; private set; }
+    const float startingFunds = 50.0f;
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
         ResetScore();
         ResetMoney();
+        currentMoney = startingFunds;
     }
 
 #if UNITY_EDITOR
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Minus))
+        if (Keyboard.current.digit0Key.wasPressedThisFrame)
+        {
+            ResetScore();
+            ResetMoney();
+        }
+
+        if (Keyboard.current.minusKey.wasPressedThisFrame)
         {
             AddToScore(500);
         }
 
-        if (Input.GetKey(KeyCode.Equals))
+        if (Keyboard.current.equalsKey.wasPressedThisFrame)
         {
             AddMoney(500);
         }
@@ -75,7 +89,7 @@ public class ScoreManager : MonoBehaviour
     /// <param name="value">Score to add. Unsigned integer to ensure score cannot be negative.</param>
     public void AddToScore(uint value)
     {
-        currentScore += value;
+        currentScore += (int)value;
     }
 
     #endregion

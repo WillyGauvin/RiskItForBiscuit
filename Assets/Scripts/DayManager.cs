@@ -1,34 +1,56 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DayManager : MonoBehaviour
 {
-    public static DayManager instance;
+    private static DayManager thisInstance;
 
-    public uint currentDay {get; private set;}
+    public static DayManager instance
+    {
+        get
+        {
+            if (!thisInstance)
+            {
+                thisInstance = GameManager.instance.DayManager;
+            }
+
+            return thisInstance;
+        }
+
+        private set => thisInstance = value;
+    }
+
+    [field: SerializeField] public uint currentDay {get; private set;}
     const int totalDays = 30;
 
-    public uint numDivesRemaining { get; private set; }
+    [field: SerializeField] public uint numDivesRemaining { get; private set; }
     const int numDivesPerDay = 3;
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
         currentDay = 0;
+        numDivesRemaining = numDivesPerDay;
     }
 
     private void Start()
     {
         StartNewDay();
     }
+
+#if UNITY_EDITOR
+    private void Update()
+    {
+        if (Keyboard.current.rightBracketKey.wasPressedThisFrame)
+        {
+            StartNewDay();
+        }
+
+        if (Keyboard.current.leftBracketKey.wasPressedThisFrame)
+        {
+            EndCurrentDay();
+        }
+    }
+#endif
 
     /// <summary>
     /// Begins a new day, increasing day counter and resetting the number of dives available.
@@ -39,7 +61,15 @@ public class DayManager : MonoBehaviour
 
         if (currentDay >= totalDays)
         {
-            // Debt was not paid on time. Game Over.
+            // Debt was not paid off on time. Game Over.
+            Debug.Log("Debt was not paid off on time. Game Over.");
+        }
+
+        // Apply a weekly debt interest.
+        if ((currentDay % 7) == 0)
+        {
+            Debug.Log("Womp womp. It's been a week, debt interest time");
+            DebtSystem.instance.ApplyDebtInterest();
         }
 
         numDivesRemaining = numDivesPerDay;
