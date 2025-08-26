@@ -26,8 +26,8 @@ public class Trainer : MonoBehaviour
 
         Vector3 r = pointAndTime.Item1 - transform.position;
 
-        r.x += .75f;
-        r.y += .1f;
+        r.x += 1.8f;
+        r.y += .15f;
 
         Vector3 launchVelocity = (r - 0.5f * Physics.gravity * pointAndTime.Item2 * pointAndTime.Item2) / pointAndTime.Item2;
 
