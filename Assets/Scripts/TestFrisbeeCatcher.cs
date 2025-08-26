@@ -10,9 +10,6 @@ public class TestFrisbeeCatcher : MonoBehaviour
     {
         if (other.CompareTag("Frisbee"))
         {
-            timer += Time.deltaTime;
-            if (timer >= .25f)
-            {
                 Debug.Log("Caught");
                 frisbee = other.gameObject;
                 frisbee.GetComponent<Rigidbody>().isKinematic = true;
@@ -22,7 +19,6 @@ public class TestFrisbeeCatcher : MonoBehaviour
 
                 // You caught the frisbee! Add additional score!
                 ScoreManager.instance.AddToScore(frisbeeCatchScore);
-            }
         }
     }
 

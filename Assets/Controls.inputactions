@@ -51,9 +51,36 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "MousePosition",
+                    "type": "Value",
+                    "id": "9061594f-78cc-49db-a743-2c02c05759a5",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "PlaceObstacle",
+                    "type": "Button",
+                    "id": "b64af8ea-9298-4c8f-a098-ecf57d404d5f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ExitPlacement",
+                    "type": "Button",
+                    "id": "89925d63-dc75-451c-ae9d-5a655e9db8d8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "BackCalf",
                     "type": "Button",
-                    "id": "f713ae95-dc33-4cea-9bea-f5b5919e0b64",
+                    "id": "22f5b488-9368-4a28-a831-f51f8dd3a1fa",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -62,7 +89,7 @@
                 {
                     "name": "BackThigh",
                     "type": "Button",
-                    "id": "1c8a9f6e-6e61-453a-8a98-fd3b79ba7f5d",
+                    "id": "11e9f8b2-b34c-46d2-a021-0b7449f1c8c7",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -71,7 +98,7 @@
                 {
                     "name": "FrontCalf",
                     "type": "Button",
-                    "id": "1acab708-3822-4560-aafa-d64c24ac5d77",
+                    "id": "ee7af234-bbf8-42d1-a53c-a8f0260bcce5",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -80,7 +107,7 @@
                 {
                     "name": "FrontThigh",
                     "type": "Button",
-                    "id": "a7dfec6c-6777-48b2-aa92-9da6358cac0c",
+                    "id": "ef79669d-a6aa-494e-85fb-5bb7b38c9017",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -89,7 +116,7 @@
                 {
                     "name": "WagTail",
                     "type": "Button",
-                    "id": "626a356e-d5e3-479c-be72-23e4cf689387",
+                    "id": "0e7f7266-c672-4bff-b72a-0c77a0b87e53",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -155,7 +182,7 @@
                 {
                     "name": "",
                     "id": "0c3f04fc-2822-49c1-9fee-44d5ccfc2cf2",
-                    "path": "<Keyboard>/b",
+                    "path": "<Keyboard>/k",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -165,7 +192,40 @@
                 },
                 {
                     "name": "",
-                    "id": "eb5e3088-b1ef-4d43-823b-ba109b66417a",
+                    "id": "18841e66-c3ca-4aa1-aef2-f01131da2195",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9d60a9bb-8431-4ed7-933e-f2e901f89681",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PlaceObstacle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "02cba686-a862-4e26-9f8e-0bb4c6c1ee92",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExitPlacement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "57417bbd-5c68-48fb-aee4-0f68898a331c",
                     "path": "<Keyboard>/z",
                     "interactions": "",
                     "processors": "",
@@ -176,7 +236,7 @@
                 },
                 {
                     "name": "",
-                    "id": "a56864e0-3b69-4cea-a35c-3b33ce3d3b1f",
+                    "id": "69ee3181-07c9-4b8a-a9ca-34ff5a79295a",
                     "path": "<Keyboard>/x",
                     "interactions": "",
                     "processors": "",
@@ -187,8 +247,8 @@
                 },
                 {
                     "name": "",
-                    "id": "b8555fd3-16e5-4db2-9315-8fbf8d0b64c0",
-                    "path": "<Keyboard>/n",
+                    "id": "35999ab7-1837-4270-8de1-2c892a44a6d4",
+                    "path": "<Keyboard>/m",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -198,8 +258,8 @@
                 },
                 {
                     "name": "",
-                    "id": "3a0ca322-8054-4119-991e-8207845089b6",
-                    "path": "<Keyboard>/m",
+                    "id": "52e8cca0-27ff-4fdc-91d6-2c1eb257bcf9",
+                    "path": "<Keyboard>/n",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -209,7 +269,7 @@
                 },
                 {
                     "name": "",
-                    "id": "370ea989-ba6b-41f8-b72c-f5de83aefa3f",
+                    "id": "e89d6172-5378-4a93-a1ae-d5fbf2f55e29",
                     "path": "<Keyboard>/v",
                     "interactions": "",
                     "processors": "",
