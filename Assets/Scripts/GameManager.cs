@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
 
         scoreManager = gameObject.GetComponent<ScoreManager>();
         dayManager = gameObject.GetComponent<DayManager>();
-        loanSystem = gameObject.GetComponent<LoanSystem>();
+        debtSystem = gameObject.GetComponent<DebtSystem>();
     }
 
     // Score/Currency
@@ -46,6 +46,6 @@ public class GameManager : MonoBehaviour
     public DayManager DayManager => dayManager;
 
     // Loans
-    private static LoanSystem loanSystem;
-    public LoanSystem LoanSystem => loanSystem;
+    private static DebtSystem debtSystem;
+    public DebtSystem DebtSystem => debtSystem;
 }

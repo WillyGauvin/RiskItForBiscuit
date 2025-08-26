@@ -1,16 +1,16 @@
 using UnityEngine;
 
-public class LoanSystem : MonoBehaviour
+public class DebtSystem : MonoBehaviour
 {
-    private static LoanSystem thisInstance;
+    private static DebtSystem thisInstance;
 
-    public static LoanSystem instance
+    public static DebtSystem instance
     {
         get
         {
             if (!thisInstance)
             {
-                thisInstance = GameManager.instance.LoanSystem;
+                thisInstance = GameManager.instance.DebtSystem;
             }
 
             return thisInstance;
@@ -41,10 +41,15 @@ public class LoanSystem : MonoBehaviour
     public void RemoveFromDebt(uint amount) 
     { 
         debtRemaining -= amount;
+
+        if (debtRemaining <= 0)
+        {
+            Debug.Log("You are winner! Bye bye debt");
+        }
     }
 
     /// <summary>
-    /// Applies weekly interest to your debt.
+    /// Applies interest rate to your debt.
     /// </summary>
     public void ApplyDebtInterest()
     {

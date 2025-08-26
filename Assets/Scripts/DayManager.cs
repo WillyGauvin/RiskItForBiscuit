@@ -51,7 +51,7 @@ public class DayManager : MonoBehaviour
         // Apply weekly debt interest.
         if ((currentDay % 7) == 0)
         {
-            LoanSystem.instance.ApplyDebtInterest();
+            DebtSystem.instance.ApplyDebtInterest();
         }
 
         numDivesRemaining = numDivesPerDay;
