@@ -44,16 +44,44 @@ public class PlacementState : IBuildingState
         obstacleData.AddObjectAt(gridPosition, database.objectsData[selectedObjectIndex].Size, database.objectsData[selectedObjectIndex].ID, index);
 
         previewSystem.UpdatePosition(grid.CellToWorld(gridPosition), false);
+
+        ObstacleManager.Instance.RemoveObstacleFromInventory(database.objectsData[selectedObjectIndex].ID);
     }
 
     private bool CheckPlacementValidity(Vector3Int pos, int objectIndex)
     {
-        return obstacleData.CanPlaceObstacleAt(pos, database.objectsData[selectedObjectIndex].Size);
+        return 
+            (
+            obstacleData.CanPlaceObstacleAt(pos, database.objectsData[selectedObjectIndex].Size) 
+            &&
+            CanPlaceOnRow(pos.z)
+            );
     }
 
     public void UpdateState(Vector3Int gridPosition)
     {
         bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
         previewSystem.UpdatePosition(grid.CellToWorld(gridPosition), placementValidity);
+    }
+
+    public bool CanPlaceOnRow(int row)
+    {
+        // If there are explicit allowed rows, only those are valid
+        if (database.objectsData[selectedObjectIndex].allowedRows != null && database.objectsData[selectedObjectIndex].allowedRows.Length > 0)
+        {
+            foreach (int r in database.objectsData[selectedObjectIndex].allowedRows)
+                if (r == row) return true;
+            return false;
+        }
+
+        // Otherwise, block if in the blocked list
+        if (database.objectsData[selectedObjectIndex].blockedRows != null && database.objectsData[selectedObjectIndex].blockedRows.Length > 0)
+        {
+            foreach (int r in database.objectsData[selectedObjectIndex].blockedRows)
+                if (r == row) return false;
+        }
+
+        // Default: valid
+        return true;
     }
 }

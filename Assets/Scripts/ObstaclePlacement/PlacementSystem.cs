@@ -7,6 +7,15 @@ using UnityEngine.EventSystems;
 
 public class PlacementSystem : MonoBehaviour
 {
+    public static PlacementSystem Instance;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
     [SerializeField] private ObstacleInputManager inputManager;
 
     [SerializeField] private Grid grid;
@@ -15,7 +24,7 @@ public class PlacementSystem : MonoBehaviour
 
     [SerializeField] private GameObject gridVisualization;
 
-    private GridData obstacleData;
+    public GridData obstacleData;
 
     [SerializeField] private PreviewSystem preview;
 
@@ -31,8 +40,7 @@ public class PlacementSystem : MonoBehaviour
     private void Start()
     {
         StopPlacement();
-
-        obstacleData = new GridData();
+        LoadObstacles();
     }
 
     private void Update()
@@ -114,5 +122,22 @@ public class PlacementSystem : MonoBehaviour
     public void ExitBuildMode()
     {
         gridVisualization.SetActive(false);
+    }
+
+    private void LoadObstacles()
+    {
+        GridData tempObstacleData = new();
+        if (obstacleData.placedObjects.Count > 0)
+        {
+            foreach(KeyValuePair<Vector3Int,PlacementData> placedObject in obstacleData.placedObjects)
+            {
+                int index = dataBase.objectsData.FindIndex(data => data.ID == placedObject.Value.ID);
+                if (tempObstacleData.CanPlaceObstacleAt(placedObject.Key, dataBase.objectsData[index].Size))
+                {
+                    int ObjectIndex = objectPlacer.PlaceObject(dataBase.objectsData[index].Prefab, grid.CellToWorld(placedObject.Key));
+                    tempObstacleData.AddObjectAt(placedObject.Key, dataBase.objectsData[index].Size, placedObject.Value.ID, ObjectIndex);
+                }
+            }
+        }
     }
 }

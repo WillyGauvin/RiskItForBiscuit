@@ -33,11 +33,15 @@ public class RemovingState : IBuildingState
         gameObjectIndex = obstacleData.GetRepresentationIndex(gridPosition);
         if (gameObjectIndex == -1) return;
 
+        ObstacleManager.Instance.AddObstacleToInventory(obstacleData.placedObjects[gridPosition].ID);
+
         obstacleData.RemoveObjectAt(gridPosition);
         objectPlacer.RemoveObjectAt(gameObjectIndex);
 
         Vector3 cellPosition = grid.CellToWorld(gridPosition);
         previewSystem.UpdatePosition(cellPosition, false);
+
+
     }
 
     public void UpdateState(Vector3Int gridPosition)

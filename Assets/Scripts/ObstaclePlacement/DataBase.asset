@@ -17,7 +17,11 @@ MonoBehaviour:
     <ID>k__BackingField: 0
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 5387413497508719975, guid: 781c843834f25bd4f8991df40de8c24a, type: 3}
+    allowedRows: 
+    blockedRows: 
   - <Name>k__BackingField: BouncePad
     <ID>k__BackingField: 1
     <Size>k__BackingField: {x: 2, y: 1}
     <Prefab>k__BackingField: {fileID: 5784697984092272188, guid: c53aaea007c58194d99d3c0a77bd5d40, type: 3}
+    allowedRows: 00000000
+    blockedRows: 
