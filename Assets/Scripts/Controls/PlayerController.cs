@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance { get; private set; }
@@ -17,18 +18,22 @@ public class PlayerController : MonoBehaviour
     PlayerInput input;
     private InputAction jumpAction;
     private InputAction biteAction;
-
-    //Stuff I added
     private InputAction backCalfAction;
     private InputAction backThighAction;
     private InputAction frontCalfAction;
     private InputAction frontThighAction;
     private InputAction wagTailAction;
     LegControls legControls;
-    //End of stuff I added
 
     Dog myDog;
+    private InputAction mousePositionAction;
+    private InputAction placeObstacleAction;
+    private InputAction exitObstacleAction;
+    Dog myDog;
 
+    public Vector2 mousePosition;
+
+    public event Action OnClicked, OnExit;
 
     private void OnEnable()
     {
@@ -36,6 +41,7 @@ public class PlayerController : MonoBehaviour
         jumpAction.canceled += ctx => OnPlayerJump(ctx);
         biteAction.started += ctx => OnPlayerBite(ctx);
         biteAction.canceled += ctx => OnPlayerBite(ctx);
+
 
         backCalfAction.started += ctx => OnBackCalfContraction(ctx);
         backCalfAction.canceled += ctx => OnBackCalfContraction(ctx);
@@ -47,6 +53,11 @@ public class PlayerController : MonoBehaviour
         frontThighAction.canceled += ctx => OnFrontThighContraction(ctx);
         wagTailAction.started += ctx => OnTailWag(ctx);
         wagTailAction.canceled += ctx => OnTailWag(ctx);
+
+        mousePositionAction.performed += ctx => OnMouseMove(ctx);
+
+        placeObstacleAction.performed += ctx => OnClicked?.Invoke();
+        exitObstacleAction.performed += ctx => OnExit?.Invoke();
     }
     private void OnDisable()
     {
@@ -54,6 +65,7 @@ public class PlayerController : MonoBehaviour
         jumpAction.canceled -= ctx => OnPlayerJump(ctx);
         biteAction.started -= ctx => OnPlayerBite(ctx);
         biteAction.canceled -= ctx => OnPlayerBite(ctx);
+
 
         backCalfAction.started -= ctx => OnBackCalfContraction(ctx);
         backCalfAction.canceled -= ctx => OnBackCalfContraction(ctx);
@@ -65,6 +77,12 @@ public class PlayerController : MonoBehaviour
         frontThighAction.canceled -= ctx => OnFrontThighContraction(ctx);
         wagTailAction.started -= ctx => OnTailWag(ctx);
         wagTailAction.canceled -= ctx => OnTailWag(ctx);
+
+        mousePositionAction.performed -= ctx => OnMouseMove(ctx);
+
+
+        placeObstacleAction.performed -= ctx => OnClicked?.Invoke();
+        exitObstacleAction.performed -= ctx => OnExit?.Invoke();
     }
 
     private void Awake()
@@ -84,6 +102,7 @@ public class PlayerController : MonoBehaviour
 
         jumpAction = input.actions["Jump"];
         biteAction = input.actions["Bite"];
+
         //Stuff I added
         backCalfAction = input.actions["BackCalf"];
         backThighAction = input.actions["BackThigh"];
@@ -91,6 +110,11 @@ public class PlayerController : MonoBehaviour
         frontThighAction = input.actions["FrontThigh"];
         wagTailAction = input.actions["WagTail"];
         //End
+
+        mousePositionAction = input.actions["MousePosition"];
+        placeObstacleAction = input.actions["PlaceObstacle"];
+        exitObstacleAction = input.actions["ExitPlacement"];
+
     }
 
 
@@ -172,6 +196,7 @@ public class PlayerController : MonoBehaviour
         myDog.Reset();
     }
 
+
     public void OnBackCalfContraction(InputAction.CallbackContext context)
     {
         legControls.OnContractBackCalf(context);
@@ -195,5 +220,9 @@ public class PlayerController : MonoBehaviour
     public void OnTailWag(InputAction.CallbackContext context)
     {
         legControls.OnTailWag(context);
+
+    public void OnMouseMove(InputAction.CallbackContext context)
+    {
+        mousePosition = context.ReadValue<Vector2>();
     }
 }
