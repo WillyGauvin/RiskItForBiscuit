@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance { get; private set; }
@@ -17,7 +18,14 @@ public class PlayerController : MonoBehaviour
     PlayerInput input;
     private InputAction jumpAction;
     private InputAction biteAction;
+    private InputAction mousePositionAction;
+    private InputAction placeObstacleAction;
+    private InputAction exitObstacleAction;
     Dog myDog;
+
+    public Vector2 mousePosition;
+
+    public event Action OnClicked, OnExit;
 
     private void OnEnable()
     {
@@ -26,13 +34,25 @@ public class PlayerController : MonoBehaviour
         biteAction.started += ctx => OnPlayerBite(ctx);
         biteAction.canceled += ctx => OnPlayerBite(ctx);
 
+        mousePositionAction.performed += ctx => OnMouseMove(ctx);
+
+        placeObstacleAction.performed += ctx => OnClicked?.Invoke();
+        exitObstacleAction.performed += ctx => OnExit?.Invoke();
+
     }
     private void OnDisable()
     {
         jumpAction.started -= ctx => OnPlayerJump(ctx);
         jumpAction.canceled -= ctx => OnPlayerJump(ctx);
-        biteAction.started += ctx => OnPlayerBite(ctx);
-        biteAction.canceled += ctx => OnPlayerBite(ctx);
+        biteAction.started -= ctx => OnPlayerBite(ctx);
+        biteAction.canceled -= ctx => OnPlayerBite(ctx);
+
+        mousePositionAction.performed -= ctx => OnMouseMove(ctx);
+
+
+        placeObstacleAction.performed -= ctx => OnClicked?.Invoke();
+        exitObstacleAction.performed -= ctx => OnExit?.Invoke();
+
     }
 
     private void Awake()
@@ -49,6 +69,9 @@ public class PlayerController : MonoBehaviour
 
         jumpAction = input.actions["Jump"];
         biteAction = input.actions["Bite"];
+        mousePositionAction = input.actions["MousePosition"];
+        placeObstacleAction = input.actions["PlaceObstacle"];
+        exitObstacleAction = input.actions["ExitPlacement"];
     }
 
 
@@ -128,5 +151,10 @@ public class PlayerController : MonoBehaviour
     public void OnReset(InputValue value)
     {
         myDog.Reset();
+    }
+
+    public void OnMouseMove(InputAction.CallbackContext context)
+    {
+        mousePosition = context.ReadValue<Vector2>();
     }
 }
