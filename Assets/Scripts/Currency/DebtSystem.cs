@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class DebtSystem : MonoBehaviour
@@ -25,6 +26,8 @@ public class DebtSystem : MonoBehaviour
 
     [SerializeField] float debtInterest = 1.045f; // 4.5% interest
     public float DebtInterest => debtInterest;
+
+    [SerializeField] public UnityEvent UpdateDebt = new UnityEvent();
 
 #if UNITY_EDITOR
     private void Update()
@@ -53,6 +56,8 @@ public class DebtSystem : MonoBehaviour
     public void AddToDebt(uint amount)
     {
         debtRemaining += amount;
+
+        UpdateDebt.Invoke();
     }
     
     /// <summary>
@@ -62,6 +67,8 @@ public class DebtSystem : MonoBehaviour
     public void RemoveFromDebt(uint amount) 
     { 
         debtRemaining -= amount;
+
+        UpdateDebt.Invoke();
 
         if (debtRemaining <= 0)
         {
@@ -75,5 +82,7 @@ public class DebtSystem : MonoBehaviour
     public void ApplyDebtInterest()
     {
         debtRemaining *= debtInterest;
+
+        UpdateDebt.Invoke();
     }
 }

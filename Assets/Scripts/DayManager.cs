@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class DayManager : MonoBehaviour
@@ -25,6 +26,9 @@ public class DayManager : MonoBehaviour
 
     [field: SerializeField] public uint numDivesRemaining { get; private set; }
     const int numDivesPerDay = 3;
+
+    [SerializeField] public UnityEvent UpdateDayCount = new UnityEvent();
+    [SerializeField] public UnityEvent UpdateDivesCount = new UnityEvent();
 
     private void Awake()
     {
@@ -73,6 +77,8 @@ public class DayManager : MonoBehaviour
         }
 
         numDivesRemaining = numDivesPerDay;
+
+        UpdateDayCount.Invoke();
     }
 
     /// <summary>
@@ -82,6 +88,8 @@ public class DayManager : MonoBehaviour
     public bool DivePerformed()
     {
         numDivesRemaining--;
+
+        UpdateDivesCount.Invoke();
 
         if (numDivesRemaining <= 0)
         {

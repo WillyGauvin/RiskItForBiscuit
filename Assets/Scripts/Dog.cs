@@ -21,7 +21,7 @@ public class Dog : MonoBehaviour
 
     [Header("Trainer")]
     [SerializeField] Trainer myTrainer;
-
+    public Trainer MyTrainer => myTrainer;
 
     [Header("BodyParts")]
     [SerializeField] HingeJoint2D bottomJaw;
@@ -33,9 +33,7 @@ public class Dog : MonoBehaviour
 
     [Header("Detection")]
     [SerializeField] FrisbeeCatcher frisbeeCatchDetection;
-
-    [Header("Score")]
-    [SerializeField] float scoreMultiplier = 10.0f;
+    [SerializeField] JumpAndLandDetection jumpLandDetection;
 
     [Header("AnimationSettings")]
     [SerializeField] DogAnimationManager animationManager;
@@ -77,11 +75,12 @@ public class Dog : MonoBehaviour
 
     public void Reset()
     {
+        StopAllCoroutines();
+
         GetComponent<LineRenderer>().enabled = false;
         body.linearVelocity = Vector3.zero;
         transform.position = startingPos;
         transform.rotation = startingRot;
-        StopAllCoroutines();
         isRunning = false;
         isCharging = false;
         currentJumpForce = 0.0f;
@@ -148,6 +147,9 @@ public class Dog : MonoBehaviour
         body.linearVelocity = transform.forward * currentSpeed;
         body.AddForce(jumpForce, ForceMode2D.Impulse);
 
+        // Start tracking score while airborn.
+        jumpLandDetection.IncrementScore();
+
         if (myTrainer != null) { myTrainer.ThrowFrisbee(projection); }
         if (DockCam != null) { DockCam.enabled = false; }
     }
@@ -189,33 +191,30 @@ public class Dog : MonoBehaviour
     }
 
     /// <summary>
-    /// When collided with water, add score.
+    /// Can be called from other scripts to begin dog swimming.
     /// </summary>
-    /// <param name="collision">Collided object.</param>
-    private void OnCollisionEnter(Collision collision)
+    public void SwimAfterDive()
     {
-        if (collision.collider.CompareTag("Water"))
-        {
-            AccumulateScore();
+        if (!hasJumped) { return; }
 
-            // If dives remain after being performed...
-            if (DayManager.instance.DivePerformed())
-            {
-                Reset();
-            }
-        }
+        StartCoroutine(BeginSwim());
     }
 
     /// <summary>
-    /// Add score based on distance travelled and a score multiplier.
+    /// Moves dog towards the left along the water.
     /// </summary>
-    public void AccumulateScore()
+    /// <returns></returns>
+    IEnumerator BeginSwim()
     {
-        if (!hasJumped || myTrainer == null) { return; }
+        body.linearVelocity = Vector3.zero;
+        currentSpeed = 0.0f;
+        while (true)
+        {
+            currentSpeed = Mathf.MoveTowards(currentSpeed, maxSpeed, (accelerationRate / 2.0f) * Time.fixedDeltaTime);
 
-        float distanceTravelled = Vector3.Distance(transform.position, myTrainer.transform.position);
-        distanceTravelled *= scoreMultiplier;
+            body.linearVelocity = -transform.forward * currentSpeed;
 
-        ScoreManager.instance.AddToScore((uint)distanceTravelled);
+            yield return new WaitForFixedUpdate();
+        }
     }
 }

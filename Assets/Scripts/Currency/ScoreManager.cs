@@ -1,15 +1,25 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 /// <summary>
 /// Score is to accumulated via:
 /// 
-/// Frisbee caught.
 /// Distance travelled before hitting water.
 /// Tricks performed while airborn.
 /// Colliding with beneficial obstacles during a dive.
 /// 
 /// </summary>
+/// 
+public enum ScoreStats
+{
+    Flip,
+    Hoop,
+    Frisbee,
+    EarnedScore,
+    Max
+}
 
 public class ScoreManager : MonoBehaviour
 {
@@ -30,17 +40,36 @@ public class ScoreManager : MonoBehaviour
         private set => thisInstance = value;
     }
 
-    [field: SerializeField] public int currentScore { get; private set; }
+    // Score
+    [Header("Score")]
+    [SerializeField] float reductionMultiplier = 0.5f;
+
+    [field: SerializeField] public int numFlips { get; private set; }
+    const int scoreForFlip = 250;
+    [field: SerializeField] public int numHoops { get; private set; }
+    const int scoreForHoop = 250;
+    [field: SerializeField] public bool wasFrisbeeCaught { get; private set; }
+
+    [field: SerializeField] public int earnedScoreForJump { get; private set; }
+
+    [field: SerializeField] public int totalScore { get; private set; }
     // Allows for score and money to not be 1:1. Huge score = dopamine, but not infinite money.
     [SerializeField, Range(0, 1)] float scoreMoneyConversion = 0.1f;
 
+    // Money
+    [Header("Money")]
     [field: SerializeField] public float currentMoney { get; private set; }
     const float startingFunds = 50.0f;
+
+    [Header("Events")]
+    [SerializeField] public UnityEvent UpdateTotalScore = new UnityEvent();
+    [SerializeField] public UnityEvent UpdateMoney = new UnityEvent();
 
     private void Awake()
     {
         ResetScore();
         ResetMoney();
+
         currentMoney = startingFunds;
     }
 
@@ -65,31 +94,90 @@ public class ScoreManager : MonoBehaviour
     }
 #endif
 
-    #region Score and Value Resets
+    #region Value Resets
 
     /// <summary>
-    /// Reset current score back to default.
+    /// Reset the tracked stats for an individual dive.
     /// </summary>
-    public void ResetScore()
+    public void ResetDive()
     {
-        currentScore = 0;
+        wasFrisbeeCaught = false;
+        numFlips = 0;
+        numHoops = 0;
+        earnedScoreForJump = 0;
+    }
+
+    /// <summary>
+    /// Reset total score back to default.
+    /// </summary>
+    void ResetScore()
+    {
+        ResetDive();
+        totalScore = 0;
     }
 
     /// <summary>
     /// Reset current money back to default.
     /// </summary>
-    public void ResetMoney()
+    void ResetMoney()
     {
         currentMoney = 0.0f;
+        UpdateMoney.Invoke();
     }
 
+    #endregion
+
+    #region Score
+
     /// <summary>
-    /// Add a value into score.
+    /// Add a value into earned score for that jump.
     /// </summary>
     /// <param name="value">Score to add. Unsigned integer to ensure score cannot be negative.</param>
     public void AddToScore(uint value)
     {
-        currentScore += (int)value;
+        earnedScoreForJump += (int)value;
+    }
+
+    /// <summary>
+    /// Flip performed during a dive.
+    /// </summary>
+    public void FlipPerformed()
+    {
+        numFlips++;
+        earnedScoreForJump += scoreForFlip;
+    }
+
+    /// <summary>
+    /// Hoop jumped through during a dive.
+    /// </summary>
+    public void HoopPerformed()
+    {
+        numHoops++;
+        earnedScoreForJump += scoreForHoop;
+    }
+
+    /// <summary>
+    /// Frisbee caught during a dive.
+    /// </summary>
+    public void SetFrisbeeCaught()
+    {
+        wasFrisbeeCaught = true;
+    }
+
+    /// <summary>
+    /// Add the points earned during a jump into the total points for the day.
+    /// Multiply by the penalty if frisbee was not caught.
+    /// </summary>
+    public void TotalPointsForJump()
+    {
+        // Keep all points if frisbee was caught- else, point penalty.
+        if (!wasFrisbeeCaught)
+        {
+            // Half score
+            earnedScoreForJump = (int)(earnedScoreForJump * reductionMultiplier);
+        }
+        totalScore += earnedScoreForJump;
+        UpdateTotalScore.Invoke();
     }
 
     #endregion
@@ -103,6 +191,8 @@ public class ScoreManager : MonoBehaviour
     public void AddMoney(uint value)
     {
         currentMoney += value;
+
+        UpdateMoney.Invoke();
     }
 
     /// <summary>
@@ -110,9 +200,11 @@ public class ScoreManager : MonoBehaviour
     /// </summary>
     public void ConvertScoreToMoney()
     {
-        if (currentScore <= 0) { return; }
+        if (totalScore <= 0) { return; }
 
-        currentMoney = currentScore * scoreMoneyConversion;
+        currentMoney = totalScore * scoreMoneyConversion;
+
+        UpdateTotalScore.Invoke();
 
         ResetScore();
     }
@@ -123,10 +215,12 @@ public class ScoreManager : MonoBehaviour
     /// <param name="price">Price of item/upgrade purchased.</param>
     public void SpendMoney(uint price)
     {
-        if (price <= 0 || 
+        if (price <= 0 ||
             currentMoney - price < 0) { return; }
 
         currentMoney -= price;
+
+        UpdateMoney.Invoke();
     }
 
     #endregion
