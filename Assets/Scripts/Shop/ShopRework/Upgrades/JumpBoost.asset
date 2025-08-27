@@ -15,6 +15,6 @@ MonoBehaviour:
   type: 0
   abilityID: JumpBoost
   description: Charge your Jump 25% faster
-  price: 0
+  price: 40
   isUnlocked: 0
   multiplier: 1.25

@@ -33,7 +33,7 @@ public class UpgradeItemUI : MonoBehaviour
         }
         else
         {
-            price.text = "PURCHASED";
+            price.text = "SOLD";
             purchaseButton.interactable = false;
         }
     }

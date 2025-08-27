@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   abilityID: DockIncrease
-  description: Increases the length of the dock. Allows you to reach higher speeds
+  description: Increases the length of the dock. More time to Run!
   price: 50
   isUnlocked: 0
   multiplier: 2
