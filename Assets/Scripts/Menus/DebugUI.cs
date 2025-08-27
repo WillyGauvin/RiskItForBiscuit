@@ -100,7 +100,7 @@ public class DebugUI : MonoBehaviour
     [SerializeField] TMP_Text scoreCounter;
     public void ShowScoreCounter()
     {
-        scoreCounter.text = ScoreManager.instance.currentScore.ToString();
+        scoreCounter.text = ScoreManager.instance.totalScore.ToString();
     }
 
     [SerializeField] TMP_Text moneyCounter;
