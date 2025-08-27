@@ -37,15 +37,19 @@ public class UpgradeManager : MonoBehaviour
         switch (upgradeData.type)
         {
             case UpgradeType.DogStat:
+                Debug.Log($"Applied Dog Stat: {upgradeData.abilityID}");
                 break;
 
             case UpgradeType.AbilityUnlock:
+                Debug.Log($"Applied Ability Unlock: {upgradeData.abilityID}");
                 break;
 
             case UpgradeType.ScoringModifier:
+                Debug.Log($"Applied Scoring Modifier: {upgradeData.abilityID}");
                 break;
 
             case UpgradeType.SceneModifier:
+                Debug.Log($"Applied Scene Modifier: {upgradeData.abilityID}");
                 break;
         }
     }
@@ -57,6 +61,7 @@ public class UpgradeManager : MonoBehaviour
     public void AddUpgrade(UpgradeDataSO upgradeData)
     {
         runtimeData.AddUpgrade(upgradeData);
+        Debug.Log($"Added Upgrade: {upgradeData.abilityID}");
     }
 
     /// <summary>

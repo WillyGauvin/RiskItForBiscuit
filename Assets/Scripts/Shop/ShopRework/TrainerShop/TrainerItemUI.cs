@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class TrainerItemUI : MonoBehaviour
 {
     [SerializeField] Button purchaseButton;
-    [SerializeField] Button equipButton;
+    [SerializeField] Toggle equipButton;
 
     [SerializeField] Image icon;
     [SerializeField] TextMeshProUGUI price;
@@ -14,13 +14,25 @@ public class TrainerItemUI : MonoBehaviour
     [SerializeField] GameObject PermanentUpgradeParent;
     [SerializeField] UpgradeItemUI UpgradeItemUIPrefab;
 
-    private DogTrainer myTrainer;
+    public DogTrainer myTrainer;
 
-    public void Init(DogTrainer trainer)
+    public void Init(DogTrainer trainer, bool isTrainerEquipped)
     {
         myTrainer = trainer;
 
-        purchaseButton.onClick.AddListener(OnButtonClick);
+        if (myTrainer.isUnlocked)
+        {
+            equipButton.onValueChanged.AddListener(OnActivateToggle);
+            if (isTrainerEquipped)
+            {
+                equipButton.isOn = true;
+            }
+
+        }
+        else
+        {
+            purchaseButton.onClick.AddListener(OnButtonClick);
+        }
 
         icon.sprite = myTrainer.icon;
         trainerName.text = myTrainer.name;
@@ -31,32 +43,61 @@ public class TrainerItemUI : MonoBehaviour
             item.Init(upgrade);
         }
 
+        price.text = myTrainer.price.ToString();
+        perkDescription.text = myTrainer.activatedUpgrade.description;
+
         UpdateUI();
     }
     public void OnDestroy()
     {
         purchaseButton.onClick.RemoveAllListeners();
+        equipButton.onValueChanged.RemoveAllListeners();
     }
 
     private void OnButtonClick()
     {
         //Check if we can purchase item
 
-        //Add to inventory
-
 
         //Call currency manager to remove price of item
+        PurchaseTrainer();
 
-        //Increase price of item
 
         //UpdateUI
         UpdateUI();
     }
 
+    private void PurchaseTrainer()
+    {
+        if (!myTrainer.isUnlocked)
+        {
+            myTrainer.isUnlocked = true;
+
+            purchaseButton.onClick.RemoveAllListeners();
+            equipButton.onValueChanged.AddListener(OnActivateToggle);
+
+            UpdateUI();
+        }
+    }
+
     private void UpdateUI()
     {
         //Check if we can afford this item
+        if (myTrainer.isUnlocked)
+        {
+            purchaseButton.gameObject.SetActive(false);
+            equipButton.gameObject.SetActive(true);
+        }
+    }
 
-        price.text = myTrainer.price.ToString();
+    private void OnActivateToggle(bool isActive)
+    {
+        TrainerShop.Instance.SetTrainer((isActive) ? myTrainer : null);
+        UpdateUI();
+    }
+
+    public void ToggleOff()
+    {
+        equipButton.isOn = false;
     }
 }
