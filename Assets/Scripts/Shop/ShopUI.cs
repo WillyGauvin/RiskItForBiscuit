@@ -7,7 +7,7 @@ public class ShopUI : MonoBehaviour
 {
     [SerializeField] public List<ShopTemplate> listOfItems;   // All shops
     [SerializeField] public ShopTemplate activeShop;          // Currently open shop
-    [SerializeField] public GameObject itemListUI;            // Panel with GridLayoutGroup
+    [SerializeField] public GameObject itemListUI;            // Panel with GridLayoutGroup (assign the child container)
     [SerializeField] private GameObject itemCardPrefab;       // Prefab for UI item (drag in Inspector)
     [SerializeField] private TextMeshProUGUI shopNameRef;     // Name of the shop
 
@@ -28,7 +28,8 @@ public class ShopUI : MonoBehaviour
             //Make UI visible
             gameObject.SetActive(true);
             //Set The Shops Name
-            shopNameRef.text = item.ShopName;
+            if (shopNameRef != null)
+                shopNameRef.text = item.ShopName;
             //Refresh the items shown
             UpdateShop();
         }
@@ -61,11 +62,8 @@ public class ShopUI : MonoBehaviour
         // Destroy direct children safely (iterate backwards to prevent error)
         for (int i = container.childCount - 1; i >= 0; i--)
         {
-            //find child of layout object
             Transform child = container.GetChild(i);
-
-            //kill it :)
-            Destroy(child.gameObject); 
+            Destroy(child.gameObject);
         }
 
         // If no active shop, nothing more to do
@@ -82,15 +80,15 @@ public class ShopUI : MonoBehaviour
                 continue;
             }
 
-            //since C# sucks and thers no pointers, heres my solution updating the shops true values with the new child copy created for the UI
-            cardTemplate.BindTo(item); 
-            //update the card's name
+            // Initialize the card with the source item's data and refresh its UI
+            cardTemplate.InitializeFrom(item);
+
+            // Update GameObject name for clarity in hierarchy
             card.name = $"Card - {item.GetItemName()}";
         }
 
         // Make layout update immediately so GridLayoutGroup arranges the new children now
         RectTransform rt = container as RectTransform;
-        if (rt != null) LayoutRebuilder.ForceRebuildLayoutImmediate(rt);
+        if (rt != null) UnityEngine.UI.LayoutRebuilder.ForceRebuildLayoutImmediate(rt);
     }
-
 }

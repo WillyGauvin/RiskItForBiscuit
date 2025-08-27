@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &651310900295392058
+--- !u!1001 &455270711473735505
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,6 +8,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3311568014591564491, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3311568014591564491, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3311568014591564491, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3311568014591564491, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3311568014591564491, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3311568014591564491, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3311568014591564491, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3311568014591564491, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3311568014591564491, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -18,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3311568014591564491, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.7370548
+      value: 1.468401
       objectReference: {fileID: 0}
     - target: {fileID: 3311568014591564491, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -37,6 +69,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3311568014591564491, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -22.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 3311568014591564491, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3311568014591564491, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -50,45 +90,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6287688146380292653, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
       propertyPath: ItemName
-      value: Starting Trainer
+      value: AddDebtCard
       objectReference: {fileID: 0}
     - target: {fileID: 6287688146380292653, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
       propertyPath: buyButton
       value: 
-      objectReference: {fileID: 1985697876007818296}
+      objectReference: {fileID: 1501392123449821267}
     - target: {fileID: 6287688146380292653, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
       propertyPath: CostOfItem
-      value: 50
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 6287688146380292653, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
-      propertyPath: NumOfUpgrades
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6287688146380292653, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
-      propertyPath: PriceIncreaseFactor
-      value: 1.2
+      propertyPath: canAddDebt
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6844310223993585492, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
       propertyPath: m_Name
-      value: Trainer1 Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 8293263317531063757, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8293263317531063757, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: AddDebtCard Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
---- !u!114 &1985697876007818296 stripped
+--- !u!114 &1501392123449821267 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1335165980783136514, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
-  m_PrefabInstance: {fileID: 651310900295392058}
+  m_PrefabInstance: {fileID: 455270711473735505}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1

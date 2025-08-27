@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3311568014591564491, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -37.53376
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3311568014591564491, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0000019073486
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3311568014591564491, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -48,13 +48,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3585852336670600594, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585852336670600594, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6287688146380292653, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
       propertyPath: ItemName
       value: Hoop
       objectReference: {fileID: 0}
     - target: {fileID: 6287688146380292653, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
+      propertyPath: buyButton
+      value: 
+      objectReference: {fileID: 5659720808695388936}
+    - target: {fileID: 6287688146380292653, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
       propertyPath: CostOfItem
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6287688146380292653, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
+      propertyPath: isObstacle
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6287688146380292653, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
       propertyPath: NumOfUpgrades
@@ -73,3 +89,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
+--- !u!114 &5659720808695388936 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1335165980783136514, guid: 2a1f601c5ab1fee46a2bb8ab4391089d, type: 3}
+  m_PrefabInstance: {fileID: 6632720831953703946}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

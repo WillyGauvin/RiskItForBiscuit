@@ -17,6 +17,10 @@ PrefabInstance:
       value: Pro Trainer
       objectReference: {fileID: 0}
     - target: {fileID: 4484659572667177616, guid: 8789271bf19bb8447ad78c7f0ed68cfc, type: 3}
+      propertyPath: buyButton
+      value: 
+      objectReference: {fileID: 7494568965362766945}
+    - target: {fileID: 4484659572667177616, guid: 8789271bf19bb8447ad78c7f0ed68cfc, type: 3}
       propertyPath: CostOfItem
       value: 300
       objectReference: {fileID: 0}
@@ -73,3 +77,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8789271bf19bb8447ad78c7f0ed68cfc, type: 3}
+--- !u!114 &7494568965362766945 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8933342251284469695, guid: 8789271bf19bb8447ad78c7f0ed68cfc, type: 3}
+  m_PrefabInstance: {fileID: 1439909115962967006}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

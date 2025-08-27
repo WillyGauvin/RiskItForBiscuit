@@ -725,6 +725,18 @@ PrefabInstance:
       propertyPath: shopUIRef
       value: 
       objectReference: {fileID: 1214754419}
+    - target: {fileID: 3230678360445073451, guid: 8afa1f294512c2e46a1dd9afce9d5513, type: 3}
+      propertyPath: listOfItems.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3230678360445073451, guid: 8afa1f294512c2e46a1dd9afce9d5513, type: 3}
+      propertyPath: 'listOfItems.Array.data[0]'
+      value: 
+      objectReference: {fileID: 5842058509325600124, guid: 885dd611db9e0424abbdc8d6203f2956, type: 3}
+    - target: {fileID: 3230678360445073451, guid: 8afa1f294512c2e46a1dd9afce9d5513, type: 3}
+      propertyPath: 'listOfItems.Array.data[1]'
+      value: 
+      objectReference: {fileID: 5485540758089388892, guid: eacc71284a260994d8a22999308b57be, type: 3}
     - target: {fileID: 7580352279966489768, guid: 8afa1f294512c2e46a1dd9afce9d5513, type: 3}
       propertyPath: m_LocalPosition.x
       value: -941.5

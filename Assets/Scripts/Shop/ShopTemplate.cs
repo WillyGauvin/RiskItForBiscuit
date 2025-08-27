@@ -11,7 +11,6 @@ public class ShopTemplate : MonoBehaviour, IPointerClickHandler
 
     void Start()
     {
-
         if (shopUIRef == null)
         {
             Debug.LogError("Add shopUI to Scene");
@@ -25,7 +24,6 @@ public class ShopTemplate : MonoBehaviour, IPointerClickHandler
     //open the shop UI using this shop's data
     public void OpenShop()
     {
-
         if (shopUIRef != null)
         {
             shopUIRef.gameObject.SetActive(true); //  Show UI
