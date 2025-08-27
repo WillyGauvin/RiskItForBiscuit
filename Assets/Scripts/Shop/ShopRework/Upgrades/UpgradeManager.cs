@@ -41,6 +41,7 @@ public class UpgradeManager : MonoBehaviour
                 break;
 
             case UpgradeType.AbilityUnlock:
+
                 Debug.Log($"Applied Ability Unlock: {upgradeData.abilityID}");
                 break;
 
