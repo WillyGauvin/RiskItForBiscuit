@@ -22,7 +22,7 @@ public class TrainerItemUI : MonoBehaviour
 
         purchaseButton.onClick.AddListener(OnButtonClick);
 
-        icon = myTrainer.icon;
+        icon.sprite = myTrainer.icon;
         trainerName.text = myTrainer.name;
 
         foreach (UpgradeDataSO upgrade in myTrainer.permanentUpgrades)

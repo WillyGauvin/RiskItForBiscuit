@@ -22,7 +22,7 @@ public class DogTrainer
 
     [field: SerializeField] public bool isUnlocked = false;
 
-    [field: SerializeField] public Image icon;
+    [field: SerializeField] public Sprite icon;
 
     [field: SerializeField] public string name;
 }
