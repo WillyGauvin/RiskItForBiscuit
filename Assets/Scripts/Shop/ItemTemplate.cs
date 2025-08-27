@@ -59,11 +59,6 @@ public class ItemTemplate : MonoBehaviour
         UpdateUI();
     }
 
-    /// <summary>
-    /// Initialize this instantiated card from another ItemTemplate (source).
-    /// This copies item data (not UI refs) so each card has its own runtime values
-    /// and keeps a reference to the source so we can persist changes back.
-    /// </summary>
     public void InitializeFrom(ItemTemplate source)
     {
         if (source == null)
@@ -148,8 +143,6 @@ public class ItemTemplate : MonoBehaviour
 
             UpdateUI();
 
-            // optionally notify a UI manager to refresh global money/debt display
-            // Example: UIManager.instance?.RefreshMoneyDisplay();
         }
         else
         {
