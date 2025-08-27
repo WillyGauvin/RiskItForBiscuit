@@ -23,21 +23,21 @@ public class LevelLoader : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-            StartCoroutine(LoadLevel("Dock"));
+            StartCoroutine(LoadLevel(1));
         }
         else
         {
-            StartCoroutine(LoadLevel("Shop"));
+            StartCoroutine(LoadLevel(0));
         }
     }
 
-    IEnumerator LoadLevel(string levelName)
+    IEnumerator LoadLevel(int levelIndex)
     {
         //Play animation
         transition.SetTrigger("Start");
         //Wait
         yield return new WaitForSeconds(transitionTime);
         //Load Scene
-        SceneManager.LoadScene(levelName);
+        SceneManager.LoadScene(levelIndex);
     }
 }

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6bb540ffd9232b4d9e0c4957b29bb82, type: 3}
+  m_Name: TrainerData
+  m_EditorClassIdentifier: 
+  trainers:
+  - activatedUpgrade: {fileID: 11400000, guid: 2d7f8dfd6edcf3d498655c74addcd19d, type: 2}
+    permanentUpgrades:
+    - {fileID: 11400000, guid: 3ada34c16b052424d9e8d90c3dba89ae, type: 2}
+    - {fileID: 11400000, guid: 4df307f955dcb9f4880b6ca59bcacd1f, type: 2}
+    - {fileID: 11400000, guid: ea61c74d97ccc4141a9faaf66933c600, type: 2}
+    price: 1000
+    isUnlocked: 0
+    icon: {fileID: 0}
+    name: Kujo
+  - activatedUpgrade: {fileID: 11400000, guid: 9394fc2511b43204caaa78144f3490f8, type: 2}
+    permanentUpgrades:
+    - {fileID: 11400000, guid: 1a3dd1e663e901b41b757810afa013c5, type: 2}
+    - {fileID: 11400000, guid: 4df307f955dcb9f4880b6ca59bcacd1f, type: 2}
+    - {fileID: 11400000, guid: 3ada34c16b052424d9e8d90c3dba89ae, type: 2}
+    price: 500
+    isUnlocked: 0
+    icon: {fileID: 0}
+    name: Scout
+  activeTrainer:
+    activatedUpgrade: {fileID: 0}
+    permanentUpgrades: []
+    price: 0
+    isUnlocked: 0
+    icon: {fileID: 0}
+    name: 
