@@ -16,6 +16,9 @@ public class JumpAndLandDetection : MonoBehaviour
 
     [SerializeField] GameObject statsDisplayUI;
     Collider thisCollider;
+    const float timeToDisplay = 1.5f;
+
+    bool hasLanded = false;
 
     private void Start()
     {
@@ -34,13 +37,17 @@ public class JumpAndLandDetection : MonoBehaviour
     {
         if (other.CompareTag("Water"))
         {
+            // Do not allow for a double collision with the water.
+            if (hasLanded) { return; }
+
+            hasLanded = true;
             StopAllCoroutines();
             scoreDisplay.SetActive(false);
 
             ScoreManager.instance.AddToScore((uint)scoreIncrement);
             ScoreManager.instance.TotalPointsForJump();
 
-            ShowDiveStats();
+            StartCoroutine(ShowDiveStats());
         }
 
         if (other.CompareTag("EdgeOfDock"))
@@ -62,12 +69,17 @@ public class JumpAndLandDetection : MonoBehaviour
         ScoreManager.instance.AddToScore((uint)distanceTravelled);
     }
 
-    public IEnumerator IncrementScore()
+    public void IncrementScore()
     {
         scoreIncrement = 0.0f;
         scoreText.text = "0";
         scoreDisplay.SetActive(true);
 
+        StartCoroutine(BeginIncrementScore());
+    }
+
+    IEnumerator BeginIncrementScore()
+    {
         while (true)
         {
             scoreIncrement += Time.fixedDeltaTime * scoreMultiplier;
@@ -78,33 +90,78 @@ public class JumpAndLandDetection : MonoBehaviour
         }
     }
 
-    public IEnumerator ShowDiveStats()
+    IEnumerator ShowDiveStats()
     {
         // Start Dog swimming left...
+        dog.SwimAfterDive();
 
-        for (int i = 0; i < ScoreManager.instance.NumStatsToDisplay; i++)
+        for (int i = 0; i < (int)ScoreStats.Max; i++)
         {
-            GameObject go = Instantiate(statsDisplayUI, transform);
+            switch (i)
+            {
+                case (int)ScoreStats.Flip:
+                    if (ScoreManager.instance.numFlips > 0)
+                    {
+                        StartCoroutine(DisplayStat("Flips: ", ScoreManager.instance.numFlips));
+                        yield return new WaitForSeconds(timeToDisplay);
+                    }
+                    break;
 
-            var ui = go.GetComponent<FloatingUI>();
-            ui.SetupIndicator(transform, thisCollider);
-            ui.SetText("Flips: " + ScoreManager.instance.numFlips);
+                case (int)ScoreStats.Hoop:
+                    if (ScoreManager.instance.numHoops > 0)
+                    {
+                        StartCoroutine(DisplayStat("Hoops: ", ScoreManager.instance.numHoops));
+                        yield return new WaitForSeconds(timeToDisplay);
+                    }
+                    break;
 
-            yield return new WaitForSeconds(1.0f);
+                case (int)ScoreStats.Frisbee:
+                    if (ScoreManager.instance.wasFrisbeeCaught)
+                    {
+                        StartCoroutine(DisplayStat("Frisbee Caught!"));
+                    }
+                    else
+                    {
+                        StartCoroutine(DisplayStat("Frisbee Not Caught! x0.5 Points Earned!"));
+                    }
+                    yield return new WaitForSeconds(timeToDisplay);
+                    break;
+
+                case (int)ScoreStats.EarnedScore:
+                default:
+                    StartCoroutine(DisplayStat("Total Earned Score: ", ScoreManager.instance.earnedScoreForJump));
+                    yield return new WaitForSeconds(timeToDisplay);
+                    break;
+            }
         }
 
-
-        // Create UI
-        // Set Text
-        // Do for flips, hoops, distance
-        // Points earned for this dive
         yield return null;
 
         // If dives remain after being performed...
         if (DayManager.instance.DivePerformed())
         {
+            hasLanded = false;
             ScoreManager.instance.ResetDive();
             dog.Reset();
         }
+    }
+
+    IEnumerator DisplayStat(string statName, int numberToDisplay = 0)
+    {
+        GameObject go = Instantiate(statsDisplayUI, transform.position, Quaternion.identity);
+
+        var ui = go.GetComponent<FloatingUI>();
+        ui.SetupIndicator(transform.position, thisCollider);
+
+        if (numberToDisplay > 0)
+        {
+            ui.SetText(statName + numberToDisplay);
+        }
+        else
+        {
+            ui.SetText(statName);
+        }
+
+        yield return null;
     }
 }

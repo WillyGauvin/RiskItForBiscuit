@@ -94,7 +94,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e548c82fb435fcb4d90b6504e193588b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frisbeeCatchScore: 1000
 --- !u!1 &998484595941248531
 GameObject:
   m_ObjectHideFlags: 0
@@ -2294,7 +2293,7 @@ MonoBehaviour:
   scoreText: {fileID: 8096649496747868067}
   scoreIncrement: 0
   scoreMultiplier: 50
-  statsDisplayUI: {fileID: 8085498179547902405, guid: 4d602f164adc9da44b1a1e2e5da608a4, type: 3}
+  statsDisplayUI: {fileID: 2551117022450449839, guid: 28d949377492a8743adce3c56c71bbc0, type: 3}
 --- !u!1 &9118779517923308678
 GameObject:
   m_ObjectHideFlags: 0

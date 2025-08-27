@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +10,15 @@ using UnityEngine.InputSystem;
 /// Colliding with beneficial obstacles during a dive.
 /// 
 /// </summary>
+/// 
+public enum ScoreStats
+{
+    Flip,
+    Hoop,
+    Frisbee,
+    EarnedScore,
+    Max
+}
 
 public class ScoreManager : MonoBehaviour
 {
@@ -39,10 +49,7 @@ public class ScoreManager : MonoBehaviour
     const int scoreForHoop = 250;
     [field: SerializeField] public bool wasFrisbeeCaught { get; private set; }
 
-    int earnedScoreForJump = 0;
-
-    const int numStatsToDisplay = 4;
-    public int NumStatsToDisplay => numStatsToDisplay;
+    [field: SerializeField] public int earnedScoreForJump { get; private set; }
 
     [field: SerializeField] public int totalScore { get; private set; }
     // Allows for score and money to not be 1:1. Huge score = dopamine, but not infinite money.
@@ -57,6 +64,7 @@ public class ScoreManager : MonoBehaviour
     {
         ResetScore();
         ResetMoney();
+
         currentMoney = startingFunds;
     }
 
@@ -157,16 +165,12 @@ public class ScoreManager : MonoBehaviour
     public void TotalPointsForJump()
     {
         // Keep all points if frisbee was caught- else, point penalty.
-        if (wasFrisbeeCaught)
-        {
-            // Full score
-            totalScore += earnedScoreForJump;
-        }
-        else
+        if (!wasFrisbeeCaught)
         {
             // Half score
-            totalScore += (int)(earnedScoreForJump * reductionMultiplier);
+            earnedScoreForJump = (int)(earnedScoreForJump * reductionMultiplier);
         }
+        totalScore += earnedScoreForJump;
     }
 
     #endregion
@@ -200,7 +204,7 @@ public class ScoreManager : MonoBehaviour
     /// <param name="price">Price of item/upgrade purchased.</param>
     public void SpendMoney(uint price)
     {
-        if (price <= 0 || 
+        if (price <= 0 ||
             currentMoney - price < 0) { return; }
 
         currentMoney -= price;

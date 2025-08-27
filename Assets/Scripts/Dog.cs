@@ -75,11 +75,12 @@ public class Dog : MonoBehaviour
 
     public void Reset()
     {
+        StopAllCoroutines();
+
         GetComponent<LineRenderer>().enabled = false;
         body.linearVelocity = Vector3.zero;
         transform.position = startingPos;
         transform.rotation = startingRot;
-        StopAllCoroutines();
         isRunning = false;
         isCharging = false;
         currentJumpForce = 0.0f;
@@ -147,7 +148,7 @@ public class Dog : MonoBehaviour
         body.AddForce(jumpForce, ForceMode2D.Impulse);
 
         // Start tracking score while airborn.
-        StartCoroutine(jumpLandDetection.IncrementScore());
+        jumpLandDetection.IncrementScore();
 
         if (myTrainer != null) { myTrainer.ThrowFrisbee(projection); }
         if (DockCam != null) { DockCam.enabled = false; }
@@ -187,5 +188,26 @@ public class Dog : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Jump();
+    }
+
+    public void SwimAfterDive()
+    {
+        if (!hasJumped) { return; }
+
+        StartCoroutine(BeginSwim());
+    }
+
+    IEnumerator BeginSwim()
+    {
+        body.linearVelocity = Vector3.zero;
+        currentSpeed = 0.0f;
+        while (true)
+        {
+            currentSpeed = Mathf.MoveTowards(currentSpeed, maxSpeed, (accelerationRate / 2.0f) * Time.fixedDeltaTime);
+
+            body.linearVelocity = -transform.forward * currentSpeed;
+
+            yield return new WaitForFixedUpdate();
+        }
     }
 }

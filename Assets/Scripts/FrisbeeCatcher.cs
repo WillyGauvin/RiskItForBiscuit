@@ -4,7 +4,6 @@ public class FrisbeeCatcher : MonoBehaviour
 {
     float timer;
     GameObject frisbee;
-    [SerializeField] uint frisbeeCatchScore = 1000;
 
     void OnTriggerStay(Collider other)
     {
