@@ -229,13 +229,13 @@ public class LegControls : MonoBehaviour
         if (accumulatedAngle < -360 && rb2d.angularVelocity < 0f)
         {
             Debug.Log("Front flip");
-            ScoreManager.instance.AddToScore(250);
+            ScoreManager.instance.FlipPerformed();
             accumulatedAngle = 0;
         }
         if (accumulatedAngle > 360 && rb2d.angularVelocity > 0f)
         {
             Debug.Log("Back flip");
-            ScoreManager.instance.AddToScore(250);
+            ScoreManager.instance.FlipPerformed();
             accumulatedAngle = 0;
         }
     }

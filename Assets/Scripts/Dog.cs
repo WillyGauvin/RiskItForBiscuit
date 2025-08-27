@@ -21,7 +21,7 @@ public class Dog : MonoBehaviour
 
     [Header("Trainer")]
     [SerializeField] Trainer myTrainer;
-
+    public Trainer MyTrainer => myTrainer;
 
     [Header("BodyParts")]
     [SerializeField] HingeJoint2D bottomJaw;
@@ -33,9 +33,6 @@ public class Dog : MonoBehaviour
 
     [Header("Detection")]
     [SerializeField] FrisbeeCatcher frisbeeCatchDetection;
-
-    [Header("Score")]
-    [SerializeField] float scoreMultiplier = 10.0f;
 
     [Header("AnimationSettings")]
     [SerializeField] DogAnimationManager animationManager;
@@ -186,36 +183,5 @@ public class Dog : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Jump();
-    }
-
-    /// <summary>
-    /// When collided with water, add score.
-    /// </summary>
-    /// <param name="collision">Collided object.</param>
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.CompareTag("Water"))
-        {
-            AccumulateScore();
-
-            // If dives remain after being performed...
-            if (DayManager.instance.DivePerformed())
-            {
-                Reset();
-            }
-        }
-    }
-
-    /// <summary>
-    /// Add score based on distance travelled and a score multiplier.
-    /// </summary>
-    public void AccumulateScore()
-    {
-        if (!hasJumped || myTrainer == null) { return; }
-
-        float distanceTravelled = Vector3.Distance(transform.position, myTrainer.transform.position);
-        distanceTravelled *= scoreMultiplier;
-
-        ScoreManager.instance.AddToScore((uint)distanceTravelled);
     }
 }

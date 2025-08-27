@@ -10,15 +10,15 @@ public class FrisbeeCatcher : MonoBehaviour
     {
         if (other.CompareTag("Frisbee"))
         {
-                Debug.Log("Caught");
-                frisbee = other.gameObject;
-                frisbee.GetComponent<Rigidbody>().isKinematic = true;
-                frisbee.GetComponent<Collider>().enabled = false;
-                frisbee.transform.parent = this.gameObject.transform;
-                frisbee.transform.localPosition = Vector3.zero;
+            Debug.Log("Caught");
+            frisbee = other.gameObject;
+            frisbee.GetComponent<Rigidbody>().isKinematic = true;
+            frisbee.GetComponent<Collider>().enabled = false;
+            frisbee.transform.parent = this.gameObject.transform;
+            frisbee.transform.localPosition = Vector3.zero;
 
-                // You caught the frisbee! Add additional score!
-                ScoreManager.instance.AddToScore(frisbeeCatchScore);
+            // You caught the frisbee! No point penalty!
+            ScoreManager.instance.SetFrisbeeCaught();
         }
     }
 
