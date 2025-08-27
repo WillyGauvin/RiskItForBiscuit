@@ -44,6 +44,10 @@ public class FloatingUI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Sets the starting offset from the parent.
+    /// </summary>
+    /// <returns>Position for the UI to spawn.</returns>
     Vector3 GetOffsetPosition()
     {
         Vector3 direction = (focusPosition - Vector3.up).normalized;
@@ -68,6 +72,10 @@ public class FloatingUI : MonoBehaviour
         endPos = startPos + endOffset;
     }
 
+    /// <summary>
+    /// Sets the text of the UI text element.
+    /// </summary>
+    /// <param name="textToDisplay">String to print.</param>
     public void SetText(string textToDisplay)
     {
         text.text = textToDisplay;
@@ -75,6 +83,10 @@ public class FloatingUI : MonoBehaviour
         StartCoroutine(RemoveAfterDelay());
     }
 
+    /// <summary>
+    /// Will begin the fade out and remove the object after time.
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator RemoveAfterDelay()
     {
         yield return new WaitForSeconds(duration);

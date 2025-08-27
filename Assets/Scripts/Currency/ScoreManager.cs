@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 /// <summary>
@@ -60,6 +61,10 @@ public class ScoreManager : MonoBehaviour
     [field: SerializeField] public float currentMoney { get; private set; }
     const float startingFunds = 50.0f;
 
+    [Header("Events")]
+    [SerializeField] public UnityEvent UpdateTotalScore = new UnityEvent();
+    [SerializeField] public UnityEvent UpdateMoney = new UnityEvent();
+
     private void Awake()
     {
         ResetScore();
@@ -117,6 +122,7 @@ public class ScoreManager : MonoBehaviour
     void ResetMoney()
     {
         currentMoney = 0.0f;
+        UpdateMoney.Invoke();
     }
 
     #endregion
@@ -171,6 +177,7 @@ public class ScoreManager : MonoBehaviour
             earnedScoreForJump = (int)(earnedScoreForJump * reductionMultiplier);
         }
         totalScore += earnedScoreForJump;
+        UpdateTotalScore.Invoke();
     }
 
     #endregion
@@ -184,6 +191,8 @@ public class ScoreManager : MonoBehaviour
     public void AddMoney(uint value)
     {
         currentMoney += value;
+
+        UpdateMoney.Invoke();
     }
 
     /// <summary>
@@ -194,6 +203,8 @@ public class ScoreManager : MonoBehaviour
         if (totalScore <= 0) { return; }
 
         currentMoney = totalScore * scoreMoneyConversion;
+
+        UpdateTotalScore.Invoke();
 
         ResetScore();
     }
@@ -208,6 +219,8 @@ public class ScoreManager : MonoBehaviour
             currentMoney - price < 0) { return; }
 
         currentMoney -= price;
+
+        UpdateMoney.Invoke();
     }
 
     #endregion

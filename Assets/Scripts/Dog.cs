@@ -190,6 +190,9 @@ public class Dog : MonoBehaviour
         Jump();
     }
 
+    /// <summary>
+    /// Can be called from other scripts to begin dog swimming.
+    /// </summary>
     public void SwimAfterDive()
     {
         if (!hasJumped) { return; }
@@ -197,6 +200,10 @@ public class Dog : MonoBehaviour
         StartCoroutine(BeginSwim());
     }
 
+    /// <summary>
+    /// Moves dog towards the left along the water.
+    /// </summary>
+    /// <returns></returns>
     IEnumerator BeginSwim()
     {
         body.linearVelocity = Vector3.zero;

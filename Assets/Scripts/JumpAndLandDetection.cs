@@ -69,6 +69,9 @@ public class JumpAndLandDetection : MonoBehaviour
         ScoreManager.instance.AddToScore((uint)distanceTravelled);
     }
 
+    /// <summary>
+    /// Sets up and begins the score increment.
+    /// </summary>
     public void IncrementScore()
     {
         scoreIncrement = 0.0f;
@@ -78,6 +81,10 @@ public class JumpAndLandDetection : MonoBehaviour
         StartCoroutine(BeginIncrementScore());
     }
 
+    /// <summary>
+    /// Increases score over time as the dog is airborn.
+    /// </summary>
+    /// <returns></returns>
     IEnumerator BeginIncrementScore()
     {
         while (true)
@@ -90,6 +97,11 @@ public class JumpAndLandDetection : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Displays the dive stats after a successful dive. Will reset or end the day at the end.
+    /// Only shows relevant information.
+    /// </summary>
+    /// <returns></returns>
     IEnumerator ShowDiveStats()
     {
         // Start Dog swimming left...
@@ -146,6 +158,12 @@ public class JumpAndLandDetection : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Displays an individual statistic.
+    /// </summary>
+    /// <param name="statName">Header for the stat.</param>
+    /// <param name="numberToDisplay">Number to display alongside. Leave as 0 to only use statName.</param>
+    /// <returns></returns>
     IEnumerator DisplayStat(string statName, int numberToDisplay = 0)
     {
         GameObject go = Instantiate(statsDisplayUI, transform.position, Quaternion.identity);
