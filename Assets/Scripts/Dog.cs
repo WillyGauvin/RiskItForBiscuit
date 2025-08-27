@@ -33,6 +33,7 @@ public class Dog : MonoBehaviour
 
     [Header("Detection")]
     [SerializeField] FrisbeeCatcher frisbeeCatchDetection;
+    [SerializeField] JumpAndLandDetection jumpLandDetection;
 
     [Header("AnimationSettings")]
     [SerializeField] DogAnimationManager animationManager;
@@ -144,6 +145,9 @@ public class Dog : MonoBehaviour
         yield return null;
         body.linearVelocity = transform.forward * currentSpeed;
         body.AddForce(jumpForce, ForceMode2D.Impulse);
+
+        // Start tracking score while airborn.
+        StartCoroutine(jumpLandDetection.IncrementScore());
 
         if (myTrainer != null) { myTrainer.ThrowFrisbee(projection); }
         if (DockCam != null) { DockCam.enabled = false; }

@@ -1991,6 +1991,14 @@ PrefabInstance:
       propertyPath: myTrainer
       value: 
       objectReference: {fileID: 1407054714}
+    - target: {fileID: 5758722062610881185, guid: b238442299314fd41826a6dcfffc2f53, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.57720643
+      objectReference: {fileID: 0}
+    - target: {fileID: 5758722062610881185, guid: b238442299314fd41826a6dcfffc2f53, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.8534485
+      objectReference: {fileID: 0}
     - target: {fileID: 6359281716852063176, guid: b238442299314fd41826a6dcfffc2f53, type: 3}
       propertyPath: canFlip
       value: 1

@@ -35,13 +35,14 @@ public class ScoreManager : MonoBehaviour
 
     [field: SerializeField] public int numFlips { get; private set; }
     const int scoreForFlip = 250;
-
     [field: SerializeField] public int numHoops { get; private set; }
     const int scoreForHoop = 250;
-
     [field: SerializeField] public bool wasFrisbeeCaught { get; private set; }
 
     int earnedScoreForJump = 0;
+
+    const int numStatsToDisplay = 4;
+    public int NumStatsToDisplay => numStatsToDisplay;
 
     [field: SerializeField] public int totalScore { get; private set; }
     // Allows for score and money to not be 1:1. Huge score = dopamine, but not infinite money.
@@ -82,6 +83,9 @@ public class ScoreManager : MonoBehaviour
 
     #region Value Resets
 
+    /// <summary>
+    /// Reset the tracked stats for an individual dive.
+    /// </summary>
     public void ResetDive()
     {
         wasFrisbeeCaught = false;
@@ -91,7 +95,7 @@ public class ScoreManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Reset current score back to default.
+    /// Reset total score back to default.
     /// </summary>
     void ResetScore()
     {
