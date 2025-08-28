@@ -172,7 +172,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (context.canceled)
         {
-            myDog.Jump();
+            myDog.Jump(false);
         }
     }
 

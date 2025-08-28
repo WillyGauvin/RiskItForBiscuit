@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   abilityID: Tail
-  description: Increases the length of the dock. More time to Run!
-  price: 50
+  description: Wag your tail for more points!
+  price: 2000
   isUnlocked: 0
   multiplier: 2
