@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 283541452853653935}
   - component: {fileID: 7157377973671431097}
   - component: {fileID: 6686747989192682822}
-  - component: {fileID: 8018850485106430912}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -59,7 +58,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e60448ec7d67a6b4f9c12ed88973cb77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reductionMultiplier: 0.5
+  <numFlips>k__BackingField: 0
+  <numHoops>k__BackingField: 0
+  <wasFrisbeeCaught>k__BackingField: 0
+  <earnedScoreForJump>k__BackingField: 0
+  <totalScore>k__BackingField: 0
   scoreMoneyConversion: 0.1
+  <currentMoney>k__BackingField: 0
+  UpdateTotalScore:
+    m_PersistentCalls:
+      m_Calls: []
+  UpdateMoney:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6686747989192682822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,17 +84,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bdc21333724db648a3a45fc019995e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8018850485106430912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8578958821908815768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fccc869dfa448344904d3ee96b527ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debtRemaining: 20000
-  debtInterest: 1.045
+  <currentDay>k__BackingField: 0
+  <numDivesRemaining>k__BackingField: 0
+  UpdateDayCount:
+    m_PersistentCalls:
+      m_Calls: []
+  UpdateDivesCount:
+    m_PersistentCalls:
+      m_Calls: []

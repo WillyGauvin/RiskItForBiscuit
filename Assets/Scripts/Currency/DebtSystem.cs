@@ -4,85 +4,29 @@ using UnityEngine.InputSystem;
 
 public class DebtSystem : MonoBehaviour
 {
-    private static DebtSystem thisInstance;
+    public static DebtSystem Instance { get; private set; }
 
-    public static DebtSystem instance
+    [SerializeField] private DebtDataSO debtDataAsset;
+    public static DebtDataSO runtimeData;
+
+    private void Awake()
     {
-        get
+        if (Instance == null)
         {
-            if (!thisInstance)
+            Instance = this;
+        }
+
+        if (runtimeData == null)
+        {
+            // First time: make the clone
+            runtimeData = Instantiate(debtDataAsset);
+        }
+        else
+        {
+            foreach (Loan loan in runtimeData.loans)
             {
-                thisInstance = GameManager.instance.DebtSystem;
+                loan.ApplyInterest();
             }
-
-            return thisInstance;
         }
-
-        private set => thisInstance = value;
-    }
-
-    [SerializeField] float debtRemaining = 20000;
-    public float DebtRemaining => debtRemaining;
-
-    [SerializeField] float debtInterest = 1.045f; // 4.5% interest
-    public float DebtInterest => debtInterest;
-
-    [SerializeField] public UnityEvent UpdateDebt = new UnityEvent();
-
-#if UNITY_EDITOR
-    private void Update()
-    {
-        if (Keyboard.current.backslashKey.wasPressedThisFrame)
-        {
-            ApplyDebtInterest();
-        }
-
-        if (Keyboard.current.semicolonKey.wasPressedThisFrame)
-        {
-            RemoveFromDebt(500);
-        }
-
-        if (Keyboard.current.quoteKey.wasPressedThisFrame)
-        {
-            AddToDebt(500);
-        }
-    }
-#endif
-
-    /// <summary>
-    /// Adds a given amount to your total debt.
-    /// </summary>
-    /// <param name="amount">Amount to add to debt.</param>
-    public void AddToDebt(uint amount)
-    {
-        debtRemaining += amount;
-
-        UpdateDebt.Invoke();
-    }
-    
-    /// <summary>
-    /// Removes a given amount from your debt.
-    /// </summary>
-    /// <param name="amount">Amount to subtract from debt.</param>
-    public void RemoveFromDebt(uint amount) 
-    { 
-        debtRemaining -= amount;
-
-        UpdateDebt.Invoke();
-
-        if (debtRemaining <= 0)
-        {
-            Debug.Log("You are winner! Bye bye debt");
-        }
-    }
-
-    /// <summary>
-    /// Applies interest rate to your debt.
-    /// </summary>
-    public void ApplyDebtInterest()
-    {
-        debtRemaining *= debtInterest;
-
-        UpdateDebt.Invoke();
     }
 }

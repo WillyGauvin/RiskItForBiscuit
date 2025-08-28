@@ -122,7 +122,7 @@ public class ScoreManager : MonoBehaviour
     void ResetMoney()
     {
         currentMoney = 0.0f;
-        UpdateMoney.Invoke();
+        UpdateMoney?.Invoke();
     }
 
     #endregion
@@ -177,7 +177,7 @@ public class ScoreManager : MonoBehaviour
             earnedScoreForJump = (int)(earnedScoreForJump * reductionMultiplier);
         }
         totalScore += earnedScoreForJump;
-        UpdateTotalScore.Invoke();
+        UpdateTotalScore?.Invoke();
     }
 
     #endregion
@@ -192,7 +192,7 @@ public class ScoreManager : MonoBehaviour
     {
         currentMoney += value;
 
-        UpdateMoney.Invoke();
+        UpdateMoney?.Invoke();
     }
 
     /// <summary>
@@ -204,7 +204,7 @@ public class ScoreManager : MonoBehaviour
 
         currentMoney = totalScore * scoreMoneyConversion;
 
-        UpdateTotalScore.Invoke();
+        UpdateTotalScore?.Invoke();
 
         ResetScore();
     }
@@ -220,7 +220,12 @@ public class ScoreManager : MonoBehaviour
 
         currentMoney -= price;
 
-        UpdateMoney.Invoke();
+        UpdateMoney?.Invoke();
+    }
+
+    public bool CanAfford(uint price)
+    {
+        return (currentMoney - price > 0);
     }
 
     #endregion
