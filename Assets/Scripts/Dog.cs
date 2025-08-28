@@ -47,7 +47,7 @@ public class Dog : MonoBehaviour
     [SerializeField] CinemachineCamera DockCam;
 
     [Header("Detection")]
-    [SerializeField] FrisbeeCatcher frisbeeCatchDetection;
+    [SerializeField] FrisbeeCatcherAndDetector frisbeeCatchDetection;
     [SerializeField] JumpAndLandDetection jumpLandDetection;
 
     [Header("AnimationSettings")]

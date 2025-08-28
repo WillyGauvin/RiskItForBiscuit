@@ -19,11 +19,13 @@ public class MiniDog : MonoBehaviour
     Vector3 startPos;
     Quaternion startRot;
 
+    bool canBite = true;
+
     void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
-        startPos = rectTransform.position;
-        startRot = rectTransform.rotation;
+        startPos = rectTransform.localPosition;
+        startRot = rectTransform.localRotation;
     }
 
     void Start()
@@ -35,8 +37,14 @@ public class MiniDog : MonoBehaviour
     {
         moving = 0;
         rotating = 0;
-        rectTransform.position = startPos;
-        rectTransform.rotation = startRot;
+        rectTransform.localPosition = startPos;
+        rectTransform.localRotation = startRot;
+        canBite = true;
+    }
+
+    public void CantBite()
+    {
+        canBite = false;
     }
 
     public void Move(float value)
@@ -63,13 +71,16 @@ public class MiniDog : MonoBehaviour
 
     public void Bite(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (canBite)
         {
-            mouthHinge.SetSpeed(-800);
-        }
-        else if (context.canceled)
-        {
-            mouthHinge.SetSpeed(800);
+            if (context.started)
+            {
+                mouthHinge.SetSpeed(-300);
+            }
+            else if (context.canceled)
+            {
+                mouthHinge.SetSpeed(300);
+            }
         }
     }
 }
