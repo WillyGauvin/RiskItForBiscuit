@@ -15,7 +15,7 @@ MonoBehaviour:
   obstacleItems:
   - <ItemID>k__BackingField: 0
     <price>k__BackingField: 50
-    <priceIncreasePerPurchase>k__BackingField: 0.2
+    <priceIncreasePerPurchase>k__BackingField: 2
   - <ItemID>k__BackingField: 1
-    <price>k__BackingField: 100
-    <priceIncreasePerPurchase>k__BackingField: 0.5
+    <price>k__BackingField: 250
+    <priceIncreasePerPurchase>k__BackingField: 1.5

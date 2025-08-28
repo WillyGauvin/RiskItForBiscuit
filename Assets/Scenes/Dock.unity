@@ -2373,6 +2373,22 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1233123538170772015, guid: b238442299314fd41826a6dcfffc2f53, type: 3}
+      propertyPath: Run1
+      value: 
+      objectReference: {fileID: 11400000, guid: 5da5014760db9364d83306c1a4208230, type: 2}
+    - target: {fileID: 1233123538170772015, guid: b238442299314fd41826a6dcfffc2f53, type: 3}
+      propertyPath: Run2
+      value: 
+      objectReference: {fileID: 11400000, guid: 9dc4a0f6c89467149b2a185cf1eef8ed, type: 2}
+    - target: {fileID: 1233123538170772015, guid: b238442299314fd41826a6dcfffc2f53, type: 3}
+      propertyPath: Jump1
+      value: 
+      objectReference: {fileID: 11400000, guid: 4df307f955dcb9f4880b6ca59bcacd1f, type: 2}
+    - target: {fileID: 1233123538170772015, guid: b238442299314fd41826a6dcfffc2f53, type: 3}
+      propertyPath: Jump2
+      value: 
+      objectReference: {fileID: 11400000, guid: 4f8a7560f60d1784c903de9233dd8da7, type: 2}
+    - target: {fileID: 1233123538170772015, guid: b238442299314fd41826a6dcfffc2f53, type: 3}
       propertyPath: DockCam
       value: 
       objectReference: {fileID: 2086772810}
@@ -2754,6 +2770,10 @@ PrefabInstance:
     - target: {fileID: 1936067648652370854, guid: ff944a496f7a15c4d8f6dffe1ed6a42e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519368961028384662, guid: ff944a496f7a15c4d8f6dffe1ed6a42e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2752651216837978595, guid: ff944a496f7a15c4d8f6dffe1ed6a42e, type: 3}
       propertyPath: m_AnchorMax.y

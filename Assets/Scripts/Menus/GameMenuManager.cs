@@ -15,6 +15,7 @@ public class GameMenuManager : MonoBehaviour
             {
                 // Spawns GameManager prefab and sets component reference.
                 GameObject manager = Instantiate(Resources.Load<GameObject>("Managers/GameMenuManager"));
+                thisInstance = manager.GetComponent<GameMenuManager>();
             }
 
             return thisInstance;
@@ -57,7 +58,7 @@ public class GameMenuManager : MonoBehaviour
 
     }
 
-    void ResetMenus()
+    public void ResetMenus()
     {
         pauseMenu.SetActive(false);
         settingsMenu.SetActive(false);
