@@ -84,7 +84,7 @@ public class ScoreManager : MonoBehaviour
 
         if (Keyboard.current.minusKey.wasPressedThisFrame)
         {
-            AddToScore(500);
+            AddToTotalScore(500);
         }
 
         if (Keyboard.current.equalsKey.wasPressedThisFrame)
@@ -128,6 +128,15 @@ public class ScoreManager : MonoBehaviour
     #endregion
 
     #region Score
+
+    /// <summary>
+    /// Add a value into total score for that jump.
+    /// </summary>
+    /// <param name="value">Score to add. Unsigned integer to ensure score cannot be negative.</param>
+    void AddToTotalScore(uint value)
+    {
+        totalScore += (int)value;
+    }
 
     /// <summary>
     /// Add a value into earned score for that jump.
@@ -202,9 +211,9 @@ public class ScoreManager : MonoBehaviour
     {
         if (totalScore <= 0) { return; }
 
-        currentMoney = totalScore * scoreMoneyConversion;
+        currentMoney += (totalScore * scoreMoneyConversion);
 
-        UpdateTotalScore.Invoke();
+        UpdateMoney.Invoke();
 
         ResetScore();
     }

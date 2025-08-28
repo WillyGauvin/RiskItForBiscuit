@@ -35,11 +35,13 @@ public class ObstacleItemUI : MonoBehaviour
     private void OnButtonClick()
     {
         //Check if we can purchase item
+        if (ScoreManager.instance.currentMoney < myItem.price) { Debug.Log("Not Enough Cash."); return; }
 
         //Add to inventory
         ObstacleManager.Instance.AddObstacleToInventory(myItem.ItemID);
 
         //Call currency manager to remove price of item
+        ScoreManager.instance.SpendMoney((uint)myItem.price);
 
         //Increase price of item
         myItem.IncreasePrice();

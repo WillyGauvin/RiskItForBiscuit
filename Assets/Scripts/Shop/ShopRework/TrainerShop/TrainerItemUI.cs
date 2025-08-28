@@ -71,7 +71,11 @@ public class TrainerItemUI : MonoBehaviour
     {
         if (!myTrainer.isUnlocked)
         {
+            if (ScoreManager.instance.currentMoney < myTrainer.price) { Debug.Log("Not Enough Cash."); return; }
+
             myTrainer.isUnlocked = true;
+
+            ScoreManager.instance.SpendMoney((uint)myTrainer.price);
 
             purchaseButton.onClick.RemoveAllListeners();
             equipButton.onValueChanged.AddListener(OnActivateToggle);

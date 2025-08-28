@@ -42,7 +42,12 @@ public class UpgradeItemUI : MonoBehaviour
     {
         if (!myUpgrade.isUnlocked)
         {
+            if (ScoreManager.instance.currentMoney < myUpgrade.price) { Debug.Log("Not Enough Cash."); return; }
+
             myUpgrade.isUnlocked = true;
+
+            ScoreManager.instance.SpendMoney((uint)myUpgrade.price);
+
             UpgradeManager.Instance.AddUpgrade(myUpgrade);
 
             UpdateUI();
