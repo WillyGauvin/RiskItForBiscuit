@@ -2,6 +2,7 @@ using System.Collections;
 using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Rendering.LookDev;
 
 public class Dog : MonoBehaviour
@@ -126,7 +127,7 @@ public class Dog : MonoBehaviour
         isRunning = true;
         while (true)
         {
-            currentSpeed = Mathf.MoveTowards(currentSpeed, maxSpeed, accelerationRate * Time.fixedDeltaTime);
+            currentSpeed += accelerationRate * Time.fixedDeltaTime;
 
             body.linearVelocity = transform.forward * currentSpeed;
 
@@ -142,9 +143,9 @@ public class Dog : MonoBehaviour
         }
     }
 
-    public void Jump()
+    public void Jump(bool force)
     {
-        if (!isCharging) return;
+        if (!isCharging && !force) return;
         if (hasJumped) return;
         hasJumped = true;
         StopAllCoroutines();
@@ -206,7 +207,7 @@ public class Dog : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Jump();
+        Jump(true);
     }
 
     /// <summary>
@@ -258,6 +259,34 @@ public class Dog : MonoBehaviour
         else if (upgrade.abilityID == "MaxJump")
         {
             maxJumpForce *= upgrade.multiplier;
+        }
+    }
+
+
+    [Header("Debug")]
+    [SerializeField] UpgradeDataSO Jump1, Jump2, Run1, Run2;
+
+    private void FixedUpdate()
+    {
+        if (Keyboard.current.uKey.wasPressedThisFrame)
+        {
+            ApplyStatIncrease(Run1);
+            Debug.Log("Applied Run1");
+        }
+        if (Keyboard.current.iKey.wasPressedThisFrame)
+        {
+            ApplyStatIncrease(Run2);
+            Debug.Log("Applied Run2");
+        }
+        if (Keyboard.current.oKey.wasPressedThisFrame)
+        {
+            ApplyStatIncrease(Jump1);
+            Debug.Log("Applied Jump1");
+        }
+        if (Keyboard.current.pKey.wasPressedThisFrame)
+        {
+            ApplyStatIncrease(Jump2);
+            Debug.Log("Applied Jump2");
         }
     }
 }

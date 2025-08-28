@@ -11,10 +11,10 @@ public class TakeOutLoanUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI loanButtonText;
     private float loanAmount = 0.0f;
     private float interest = 0.0f;
-    private float minLoan = 100.0f;
-    private float maxLoan = 5000.0f;
-    private float minInterest = 0.05f;
-    private float maxInterest = 0.30f;
+    private float minLoan = 300.0f;
+    private float maxLoan = 1500;
+    private float minInterest = 0.025f;
+    private float maxInterest = 0.10f;
     private int maxAmountOfLoans = 7;
 
     private void Start()
@@ -65,7 +65,7 @@ public class TakeOutLoanUI : MonoBehaviour
         float t = (loanAmount - minLoan) / (maxLoan - minLoan);
 
         // Inverse lerp: bigger loan = closer to minInterest
-        float interestRate = Mathf.Lerp(maxInterest, minInterest, t);
+        float interestRate = Mathf.Lerp(minInterest, maxInterest, t);
 
         return interestRate;
     }

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14f58bb39d22fc54e8432cc1c9c8a007, type: 3}
-  m_Name: MaxJump
+  m_Name: RunAccel_2
   m_EditorClassIdentifier: 
   type: 0
-  abilityID: MaxJump
-  description: Double your maximum jump!
-  price: 1500
+  abilityID: RunAccel
+  description: Accelerate 100% faster!
+  price: 4000
   isUnlocked: 0
   multiplier: 2

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: DebtDataAsset
   m_EditorClassIdentifier: 
   loans:
-  - balance: 15000
+  - balance: 10000
     dailyInterest: 0.045

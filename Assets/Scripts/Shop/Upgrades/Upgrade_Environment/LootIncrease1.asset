@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: LootIncrease1
   m_EditorClassIdentifier: 
   type: 1
-  abilityID: LootIncrease1
-  description: More Loot to catch!
+  abilityID: LootIncrease
+  description: 50% More Loot!
   price: 50
   isUnlocked: 0
   multiplier: 1.5

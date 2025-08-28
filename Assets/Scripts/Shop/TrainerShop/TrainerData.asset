@@ -13,30 +13,30 @@ MonoBehaviour:
   m_Name: TrainerData
   m_EditorClassIdentifier: 
   trainers:
-  - activatedUpgrade: {fileID: 11400000, guid: 2d7f8dfd6edcf3d498655c74addcd19d, type: 2}
-    permanentUpgrades:
-    - {fileID: 11400000, guid: 3ada34c16b052424d9e8d90c3dba89ae, type: 2}
-    - {fileID: 11400000, guid: 4df307f955dcb9f4880b6ca59bcacd1f, type: 2}
-    - {fileID: 11400000, guid: ea61c74d97ccc4141a9faaf66933c600, type: 2}
-    price: 1000
-    isUnlocked: 0
-    icon: {fileID: 21300000, guid: 74ada3847d853e748919a0f848a5d32b, type: 3}
-    name: Kujo
-  - activatedUpgrade: {fileID: 11400000, guid: 9394fc2511b43204caaa78144f3490f8, type: 2}
-    permanentUpgrades:
-    - {fileID: 11400000, guid: 1a3dd1e663e901b41b757810afa013c5, type: 2}
-    - {fileID: 11400000, guid: 4df307f955dcb9f4880b6ca59bcacd1f, type: 2}
-    - {fileID: 11400000, guid: 3ada34c16b052424d9e8d90c3dba89ae, type: 2}
-    price: 500
-    isUnlocked: 0
-    icon: {fileID: 21300000, guid: 1eb5baf7482096b48a9442bb3ef0bff4, type: 3}
-    name: Scout
-  - activatedUpgrade: {fileID: 11400000, guid: 58b3955f6dbbb7c4eaf2b2cf16fd4301, type: 2}
+  - activatedUpgrade: {fileID: 11400000, guid: 1a3dd1e663e901b41b757810afa013c5, type: 2}
     permanentUpgrades:
     - {fileID: 11400000, guid: 4df307f955dcb9f4880b6ca59bcacd1f, type: 2}
     - {fileID: 11400000, guid: 5da5014760db9364d83306c1a4208230, type: 2}
+    - {fileID: 11400000, guid: 4d8d65b2b48c07144a52ca6339b3bfb1, type: 2}
+    price: 300
+    isUnlocked: 0
+    icon: {fileID: 21300000, guid: 74ada3847d853e748919a0f848a5d32b, type: 3}
+    name: Kujo
+  - activatedUpgrade: {fileID: 11400000, guid: 4f8a7560f60d1784c903de9233dd8da7, type: 2}
+    permanentUpgrades:
+    - {fileID: 11400000, guid: 3ada34c16b052424d9e8d90c3dba89ae, type: 2}
     - {fileID: 11400000, guid: ea61c74d97ccc4141a9faaf66933c600, type: 2}
-    price: 500
+    - {fileID: 11400000, guid: 61fd7dc67794fc84eb8ab78f1c2f075b, type: 2}
+    price: 2000
+    isUnlocked: 0
+    icon: {fileID: 21300000, guid: 1eb5baf7482096b48a9442bb3ef0bff4, type: 3}
+    name: Scout
+  - activatedUpgrade: {fileID: 11400000, guid: bb5e96090cd43f24691f6627c5ce2709, type: 2}
+    permanentUpgrades:
+    - {fileID: 11400000, guid: 802856b0065ffc944819d0514d9ed5e8, type: 2}
+    - {fileID: 11400000, guid: 9dc4a0f6c89467149b2a185cf1eef8ed, type: 2}
+    - {fileID: 11400000, guid: 407aa409abbecf14c922620f03ae381e, type: 2}
+    price: 5000
     isUnlocked: 0
     icon: {fileID: 21300000, guid: 0d102975079284e42914aa1c02932965, type: 3}
     name: Milou

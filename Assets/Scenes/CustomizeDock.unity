@@ -2007,7 +2007,7 @@ MonoBehaviour:
   - {fileID: 593079139}
   - {fileID: 1128920934}
   player: {fileID: 2016595083}
-  dockSize: 1
+  dockSize: 4
 --- !u!4 &969018760
 Transform:
   m_ObjectHideFlags: 0
@@ -2358,7 +2358,7 @@ MonoBehaviour:
     AngularDampingMode: 0
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
-  FollowOffset: {x: 0, y: 0, z: -20}
+  FollowOffset: {x: 0, y: 0, z: -50}
 --- !u!114 &1414842437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2411,7 +2411,7 @@ Transform:
   m_GameObject: {fileID: 1414842434}
   serializedVersion: 2
   m_LocalRotation: {x: 8.0819795e-10, y: 0.000000010454093, z: -1.0036592e-15, w: 1}
-  m_LocalPosition: {x: -12.25, y: 2.14, z: -20}
+  m_LocalPosition: {x: -12.25, y: 2.14, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2882,6 +2882,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1233123538170772015, guid: b238442299314fd41826a6dcfffc2f53, type: 3}
+      propertyPath: Run1
+      value: 
+      objectReference: {fileID: 11400000, guid: 5da5014760db9364d83306c1a4208230, type: 2}
+    - target: {fileID: 1233123538170772015, guid: b238442299314fd41826a6dcfffc2f53, type: 3}
+      propertyPath: Run2
+      value: 
+      objectReference: {fileID: 11400000, guid: 9dc4a0f6c89467149b2a185cf1eef8ed, type: 2}
+    - target: {fileID: 1233123538170772015, guid: b238442299314fd41826a6dcfffc2f53, type: 3}
+      propertyPath: Jump1
+      value: 
+      objectReference: {fileID: 11400000, guid: 4df307f955dcb9f4880b6ca59bcacd1f, type: 2}
+    - target: {fileID: 1233123538170772015, guid: b238442299314fd41826a6dcfffc2f53, type: 3}
+      propertyPath: Jump2
+      value: 
+      objectReference: {fileID: 11400000, guid: 4f8a7560f60d1784c903de9233dd8da7, type: 2}
     - target: {fileID: 1233123538170772015, guid: b238442299314fd41826a6dcfffc2f53, type: 3}
       propertyPath: DockCam
       value: 
