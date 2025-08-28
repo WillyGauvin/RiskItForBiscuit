@@ -8,15 +8,18 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Shop.unity
     guid: 808511af22f300644956fe03d06c0835
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ShopRework.unity
     guid: d9db6c0bac4614348a8da7f765a095f1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Dock.unity
     guid: a6e487eea65366c4bb31805088bdd0ad
+  - enabled: 1
+    path: Assets/Scenes/CustomizeDock.unity
+    guid: 458742755aba16d4caecadcaf5acf75a
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 60f00da40c82b874a9cdf5b141d6c70a, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

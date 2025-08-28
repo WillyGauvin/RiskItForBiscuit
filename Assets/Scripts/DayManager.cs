@@ -69,13 +69,6 @@ public class DayManager : MonoBehaviour
             Debug.Log("Debt was not paid off on time. Game Over.");
         }
 
-        // Apply a weekly debt interest.
-        if ((currentDay % 7) == 0)
-        {
-            Debug.Log("Womp womp. It's been a week, debt interest time");
-            DebtSystem.instance.ApplyDebtInterest();
-        }
-
         numDivesRemaining = numDivesPerDay;
 
         UpdateDayCount.Invoke();

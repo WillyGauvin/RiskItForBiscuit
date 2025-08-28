@@ -16,7 +16,6 @@ public class DebugUI : MonoBehaviour
     {
         ShowScoreCounter();
         ShowMoneyCounter();
-        ShowDebtCounter();
         ShowDayCounter();
         ShowDivesCounter();
     }
@@ -25,7 +24,6 @@ public class DebugUI : MonoBehaviour
     {
         ShowScoreCounter();
         ShowMoneyCounter();
-        ShowDebtCounter();
         ShowDayCounter();
         ShowDivesCounter();
     }
@@ -47,21 +45,6 @@ public class DebugUI : MonoBehaviour
         if (Keyboard.current.equalsKey.wasPressedThisFrame)
         {
             ShowMoneyCounter();
-        }
-
-        if (Keyboard.current.backslashKey.wasPressedThisFrame)
-        {
-            ShowDebtCounter();
-        }
-
-        if (Keyboard.current.semicolonKey.wasPressedThisFrame)
-        {
-            ShowDebtCounter();
-        }
-
-        if (Keyboard.current.quoteKey.wasPressedThisFrame)
-        {
-            ShowDebtCounter();
         }
 
         if (Keyboard.current.leftShiftKey.wasReleasedThisFrame)
@@ -107,11 +90,5 @@ public class DebugUI : MonoBehaviour
     public void ShowMoneyCounter()
     {
         moneyCounter.text = ScoreManager.instance.currentMoney.ToString();
-    }
-
-    [SerializeField] TMP_Text debtCounter;
-    public void ShowDebtCounter()
-    {
-        debtCounter.text = DebtSystem.instance.DebtRemaining.ToString();
     }
 }
