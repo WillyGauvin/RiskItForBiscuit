@@ -30,6 +30,11 @@ public class UpgradeItemUI : MonoBehaviour
         UpdateUI();
 
         ScoreManager.instance.UpdateMoney.AddListener(UpdateUI);
+
+        if (myTrainer.isUnlocked)
+        {
+            padlock.gameObject.SetActive(false);
+        }
     }
 
     public void UpdateUI()
