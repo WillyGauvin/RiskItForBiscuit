@@ -37,6 +37,14 @@ public class GameManager : MonoBehaviour
         debtSystem = gameObject.GetComponent<DebtSystem>();
     }
 
+    public void SetPlayer(GameObject obj)
+    {
+        if (player == null) { player = obj; }
+    }
+
+    private GameObject player;
+    public GameObject Player => player;
+
     // Score/Currency
     private static ScoreManager scoreManager;
     public ScoreManager ScoreManager => scoreManager;

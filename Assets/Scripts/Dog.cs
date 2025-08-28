@@ -45,6 +45,7 @@ public class Dog : MonoBehaviour
 
 
     private Rigidbody2D body;
+    public Rigidbody2D Body => body;
 
     [Header("States")]
     public bool isRunning = false;
@@ -53,8 +54,11 @@ public class Dog : MonoBehaviour
 
     private void Awake()
     {
+        GameManager.instance.SetPlayer(gameObject);
+
         body = GetComponent<Rigidbody2D>();
     }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
