@@ -7,6 +7,21 @@ using UnityEngine.InputSystem.Interactions;
 public class LegControls : MonoBehaviour
 {
 
+    private static LegControls _instance;
+
+    public static LegControls instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                // Try to find an existing one in the scene
+                _instance = FindFirstObjectByType<LegControls>();
+            }
+            return _instance;
+        }
+    }
+
     [Header("Hinges")]
     [SerializeField] HingeSetter backCalf;
     private bool contractingBackCalf;
@@ -45,11 +60,9 @@ public class LegControls : MonoBehaviour
 
     [SerializeField] HingeJoint2D head;
 
-
-    [Header("Unlockables")]
-    public bool canFlip;
-    public bool canTouchToes;
-    public bool canWagTail;
+    bool canFlip;
+    bool canTouchToes;
+    bool canWagTail;
 
     private float desiredAngle = 0;
     private bool touchScored;
@@ -75,6 +88,23 @@ public class LegControls : MonoBehaviour
                 contractingBackCalf = true;
                 backCalf.SetSpeed(onMotorSpeed);
             }
+        }
+    }
+
+    public void UnlockUpgrade(string id)
+    {
+        switch (id)
+        {
+            case "Wag":
+                canWagTail = true;
+                break;
+            case "Flip":
+                canFlip = true;
+                break;
+            case "TouchToes":
+                canTouchToes = true;
+                break;
+                
         }
     }
 
