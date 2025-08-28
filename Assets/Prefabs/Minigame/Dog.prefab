@@ -648,6 +648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d70619e45d379584dbb763036f80817c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  input: {fileID: 0}
   minigameDog: {fileID: 0}
 --- !u!114 &1608835117079499653
 MonoBehaviour:
@@ -747,7 +748,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.73, y: 0.33027136}
+  m_Size: {x: 1.03, y: 0.33027136}
   m_EdgeRadius: 0
 --- !u!50 &7900644081892550599
 Rigidbody2D:
@@ -1044,7 +1045,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.98, y: 0.3003645}
+  m_Size: {x: 1.25, y: 0.3003645}
   m_EdgeRadius: 0
 --- !u!50 &1979298995102355824
 Rigidbody2D:
@@ -1235,7 +1236,7 @@ HingeJoint2D:
   m_UseMotor: 1
   m_Motor:
     m_MotorSpeed: 500
-    m_MaximumMotorForce: 5000
+    m_MaximumMotorForce: 1000
   m_UseLimits: 1
   m_AngleLimits:
     m_LowerAngle: -5

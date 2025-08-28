@@ -27,11 +27,11 @@ public class MinigameFrisbee : MonoBehaviour
 
     private void Awake()
     {
-        startPos = frisbeeTransform.position;
+        startPos = frisbeeTransform.localPosition;
     }
 
     private void OnEnable() {
-        frisbeeTransform.position = startPos;
+        frisbeeTransform.localPosition = startPos;
     }
 
     Vector3 FindPointInBox(BoxCollider2D box)
@@ -56,8 +56,7 @@ public class MinigameFrisbee : MonoBehaviour
         //yield return new WaitForSeconds(Random.Range(1f, 3f));
         yield return new WaitForSeconds(1.5f);
         exclamation.gameObject.SetActive(false);
-        rb2d.AddForce(frisbeeTransform.right * 150f, ForceMode2D.Impulse);
-
+        rb2d.AddForce(frisbeeTransform.right * speed, ForceMode2D.Impulse);
     }
 
     public void SetFrisbee()
@@ -86,9 +85,8 @@ public class MinigameFrisbee : MonoBehaviour
         if (hit.point != Vector2.zero)
         {
             Vector3 spawnPosition = hit.point;
-            spawnPosition.z += 300f;
             exclamation = Instantiate(exclamationPrefab, spawnPosition, Quaternion.Euler(0, 0, angle - 90f));
-            exclamation.transform.position -= exclamation.transform.right * 10f;
+            //exclamation.transform.position -= exclamation.transform.right * 0.05f;
         }
 
         //Throw frisbee

@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5300138122126613420}
-  - component: {fileID: 3362328797393962451}
   - component: {fileID: 672231925602729814}
   - component: {fileID: 7397070827055123623}
+  - component: {fileID: 2091584577841105024}
   m_Layer: 0
   m_Name: FrisbeeDetector
   m_TagString: Player
@@ -34,27 +34,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7866121819613619177}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &3362328797393962451
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 53831406935447204}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.23, y: 0.08, z: 0.5}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &672231925602729814
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -94,6 +73,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e548c82fb435fcb4d90b6504e193588b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  miniGame: {fileID: 0}
+--- !u!135 &2091584577841105024
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53831406935447204}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &998484595941248531
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,7 +266,7 @@ FixedJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.57720625, y: 0.85344833}
+  m_ConnectedAnchor: {x: 0.57720643, y: 0.8534485}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!114 &6933968579811083690
@@ -2183,9 +2184,9 @@ MonoBehaviour:
   rb2d: {fileID: 6401950611826806482}
   onMotorSpeed: 80
   head: {fileID: 0}
-  canFlip: 0
-  canTouchToes: 1
-  canWagTail: 0
+  canFlip: 1
+  canTouchToes: 0
+  canWagTail: 1
 --- !u!114 &8151556032207028250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2209,7 +2210,7 @@ Animator:
   m_GameObject: {fileID: 8998372774377999039}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1b08d745e3ef7154bb132a506a45069d, type: 2}
+  m_Controller: {fileID: 9100000, guid: eca06fc6ed5da3d48b4473feffc9e749, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
