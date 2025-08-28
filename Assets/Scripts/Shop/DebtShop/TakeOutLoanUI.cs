@@ -1,0 +1,87 @@
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+public class TakeOutLoanUI : MonoBehaviour
+{
+    [Header("NewLoan")]
+    [SerializeField] Slider takeOutLoanSlider;
+    [SerializeField] TextMeshProUGUI takeOutLoanText;
+    [SerializeField] TextMeshProUGUI takeOutInterestText;
+    [SerializeField] Button takeOutLoanButton;
+    [SerializeField] TextMeshProUGUI loanButtonText;
+    private float loanAmount = 0.0f;
+    private float interest = 0.0f;
+    private float minLoan = 100.0f;
+    private float maxLoan = 5000.0f;
+    private float minInterest = 0.05f;
+    private float maxInterest = 0.30f;
+    private int maxAmountOfLoans = 7;
+
+    private void Start()
+    {
+        takeOutLoanSlider.onValueChanged.AddListener(UpdateNewLoanUI);
+        takeOutLoanButton.onClick.AddListener(TakeOutLoan);
+    }
+
+    private void OnDestroy()
+    {
+        takeOutLoanSlider.onValueChanged.RemoveAllListeners();
+        takeOutLoanButton.onClick.RemoveAllListeners();
+    }
+
+    private void UpdateUI()
+    {
+        if (DebtShop.Instance.GetTotalLoans() >= maxAmountOfLoans)
+        {
+            loanButtonText.text = "Max Loans";
+            takeOutLoanButton.interactable = false;
+        }
+        else
+        {
+            loanButtonText.text = "Take Out Loan";
+            takeOutLoanButton.interactable = true;
+        }
+    }
+
+    public void UpdateNewLoanUI(float percentage)
+    {
+        loanAmount = Mathf.Lerp(minLoan, maxLoan, percentage);
+
+        loanAmount = Mathf.Round(loanAmount);
+
+        takeOutLoanText.text = "$ " + loanAmount.ToString();
+
+        interest = Mathf.Round(CalculateInterestRate(loanAmount) * 1000) / 1000;
+
+        takeOutInterestText.text = (interest * 100).ToString() + "%";
+    }
+
+    public float CalculateInterestRate(float loanAmount)
+    {
+        // Clamp loan within range
+        loanAmount = Mathf.Clamp(loanAmount, minLoan, maxLoan);
+
+        // Normalize (0 = minLoan, 1 = maxLoan)
+        float t = (loanAmount - minLoan) / (maxLoan - minLoan);
+
+        // Inverse lerp: bigger loan = closer to minInterest
+        float interestRate = Mathf.Lerp(maxInterest, minInterest, t);
+
+        return interestRate;
+    }
+
+    public void TakeOutLoan()
+    {
+        if (DebtShop.Instance.GetTotalLoans() >= maxAmountOfLoans)
+        {
+            return;
+        }
+
+        DebtShop.Instance.AddLoan(loanAmount, interest);
+
+        ScoreManager.instance.AddMoney((uint)loanAmount);
+
+        UpdateUI();
+    }
+
+}

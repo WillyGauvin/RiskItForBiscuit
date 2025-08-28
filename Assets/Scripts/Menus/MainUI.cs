@@ -17,8 +17,6 @@ public class MainUI : MonoBehaviour
         ScoreManager.instance.UpdateTotalScore.AddListener(UpdateScoreCounter);
         ScoreManager.instance.UpdateMoney.AddListener(UpdateMoneyCounter);
 
-        DebtSystem.instance.UpdateDebt.AddListener(UpdateDebtCounter);
-
         DayManager.instance.UpdateDayCount.AddListener(UpdateDayCounter);
         DayManager.instance.UpdateDivesCount.AddListener(UpdateDivesCounter);
 
@@ -30,8 +28,6 @@ public class MainUI : MonoBehaviour
         ScoreManager.instance.UpdateTotalScore.RemoveListener(UpdateScoreCounter);
         ScoreManager.instance.UpdateMoney.RemoveListener(UpdateMoneyCounter);
 
-        DebtSystem.instance.UpdateDebt.RemoveListener(UpdateDebtCounter);
-
         DayManager.instance.UpdateDayCount.RemoveListener(UpdateDayCounter);
         DayManager.instance.UpdateDivesCount.RemoveListener(UpdateDivesCounter);
     }
@@ -40,9 +36,6 @@ public class MainUI : MonoBehaviour
     {
         ScoreManager.instance.UpdateTotalScore.RemoveListener(UpdateScoreCounter);
         ScoreManager.instance.UpdateMoney.RemoveListener(UpdateMoneyCounter);
-
-        DebtSystem.instance.UpdateDebt.RemoveListener(UpdateDebtCounter);
-
         DayManager.instance.UpdateDayCount.RemoveListener(UpdateDayCounter);
         DayManager.instance.UpdateDivesCount.RemoveListener(UpdateDivesCounter);
     }
@@ -53,7 +46,6 @@ public class MainUI : MonoBehaviour
         UpdateDivesCounter();
         UpdateScoreCounter();
         UpdateMoneyCounter();
-        UpdateDebtCounter();
     }
 
     void UpdateDayCounter()
@@ -74,10 +66,5 @@ public class MainUI : MonoBehaviour
     void UpdateMoneyCounter()
     {
         if (moneyCounter) { moneyCounter.text = "$" + ScoreManager.instance.currentMoney.ToString(); }
-    }
-
-    void UpdateDebtCounter()
-    {
-        if (debtCounter) { debtCounter.text = "$" + DebtSystem.instance.DebtRemaining.ToString(); }
     }
 }
