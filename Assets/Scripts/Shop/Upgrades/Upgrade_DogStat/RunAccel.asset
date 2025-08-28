@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14f58bb39d22fc54e8432cc1c9c8a007, type: 3}
-  m_Name: JumpBoost
+  m_Name: RunAccel
   m_EditorClassIdentifier: 
   type: 0
-  abilityID: JumpBoost
-  description: Charge your Jump 25% faster
-  price: 40
+  abilityID: RunAccel
+  description: Accelerate 25% faster!
+  price: 50
   isUnlocked: 0
   multiplier: 1.25

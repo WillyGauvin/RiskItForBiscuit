@@ -6,6 +6,21 @@ using UnityEngine.Rendering.LookDev;
 
 public class Dog : MonoBehaviour
 {
+    private static Dog _instance;
+
+    public static Dog instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                // Try to find an existing one in the scene
+                _instance = FindFirstObjectByType<Dog>();
+            }
+            return _instance;
+        }
+    }
+
     [Header("Running")]
     [SerializeField] float accelerationRate;
     [SerializeField] float maxSpeed = 10.0f;
@@ -219,6 +234,30 @@ public class Dog : MonoBehaviour
             body.linearVelocity = -transform.forward * currentSpeed;
 
             yield return new WaitForFixedUpdate();
+        }
+    }
+
+
+    public void ApplyStatIncrease(UpgradeDataSO upgrade)
+    {
+        if (upgrade.abilityID == "JumpAccel")
+        {
+            jumpAccelerationRate *= upgrade.multiplier;
+        }
+
+        else if (upgrade.abilityID == "RunAccel")
+        {
+            accelerationRate *= upgrade.multiplier;
+        }
+
+        else if (upgrade.abilityID == "MaxSpeed")
+        {
+            maxSpeed *= upgrade.multiplier;
+        }
+
+        else if (upgrade.abilityID == "MaxJump")
+        {
+            maxJumpForce *= upgrade.multiplier;
         }
     }
 }

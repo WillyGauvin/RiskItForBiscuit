@@ -19,7 +19,7 @@ public class UpgradeManager : MonoBehaviour
             runtimeData = Instantiate(upgradeDataAsset);
         }
 
-        if (SceneManager.GetActiveScene().name == "Dock")
+        if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             foreach (UpgradeDataSO upgrade in runtimeData.Upgrades)
             {
@@ -41,7 +41,7 @@ public class UpgradeManager : MonoBehaviour
                 break;
 
             case UpgradeType.AbilityUnlock:
-
+                Dog.instance.ApplyStatIncrease(upgradeData);
                 Debug.Log($"Applied Ability Unlock: {upgradeData.abilityID}");
                 break;
 
@@ -50,6 +50,10 @@ public class UpgradeManager : MonoBehaviour
                 break;
 
             case UpgradeType.SceneModifier:
+                if (upgradeData.abilityID == "DockIncrease")
+                {
+                    DockManager.instance.IncreaseDockSize((int)upgradeData.multiplier);
+                }
                 Debug.Log($"Applied Scene Modifier: {upgradeData.abilityID}");
                 break;
         }
