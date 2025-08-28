@@ -7,17 +7,25 @@ public class HingeSetter : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     HingeJoint2D hinge;
 
-    void Start()
+    void Awake()
     {
         hinge = GetComponent<HingeJoint2D>();
     }
 
     public void SetSpeed(float speed)
     {
-        JointMotor2D motor = hinge.motor;
-        motor.motorSpeed = speed;
-        hinge.motor = motor;
-        hinge.useMotor = true;
+        if (hinge)
+        {
+            JointMotor2D motor = hinge.motor;
+            motor.motorSpeed = speed;
+            hinge.motor = motor;
+            hinge.useMotor = true;
+        }
+    }
+
+    public float GetSpeed()
+    {
+        return hinge.motor.motorSpeed;
     }
 
     public float GetAngle()
