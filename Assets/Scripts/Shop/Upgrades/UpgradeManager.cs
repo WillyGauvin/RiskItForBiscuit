@@ -43,6 +43,7 @@ public class UpgradeManager : MonoBehaviour
             case UpgradeType.AbilityUnlock:
                 Dog.instance.ApplyStatIncrease(upgradeData);
                 Debug.Log($"Applied Ability Unlock: {upgradeData.abilityID}");
+                LegControls.instance.UnlockUpgrade(upgradeData.abilityID);
                 break;
 
             case UpgradeType.ScoringModifier:
