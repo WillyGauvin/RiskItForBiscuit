@@ -74,6 +74,7 @@ public class UpgradeItemUI : MonoBehaviour
             {
                 myUpgrade.isUnlocked = true;
                 UpgradeManager.Instance.AddUpgrade(myUpgrade);
+                ScoreManager.instance.SpendMoney((uint)myUpgrade.price);
 
                 UpdateUI();
             }
