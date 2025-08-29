@@ -64,6 +64,8 @@ public class LegControls : MonoBehaviour
     [SerializeField] bool canTouchToes;
     [SerializeField] bool canWagTail;
 
+    [SerializeField] float maxAngularVelocity = 60f;
+
     private float desiredAngle = 0;
     private bool touchScored;
 
@@ -241,13 +243,21 @@ public class LegControls : MonoBehaviour
                 TorqueBackFlip();
                 TorqueFrontFlip();
             }
-
             rb2d.AddTorque(torqueFrontFlipAmount + torqueBackFlipAmount);
+
+            ClampAngularVelocity();
+            Debug.Log(rb2d.angularVelocity);
         }
 
         desiredAngle = torqueFrontFlipAmount + torqueBackFlipAmount;
         //HeadAngle();
     }
+
+    void ClampAngularVelocity()
+{
+    if (rb2d.angularVelocity < -maxAngularVelocity) { rb2d.angularVelocity = -maxAngularVelocity; }
+    if (rb2d.angularVelocity > maxAngularVelocity) { rb2d.angularVelocity = maxAngularVelocity; }
+}
 
     float accumulatedAngle = 0;
     float currentAngle = 0;
