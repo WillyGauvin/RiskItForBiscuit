@@ -41,7 +41,6 @@ public class MinigameManager : MonoBehaviour
 
     bool caughtFrisbee = false;
 
-    public static bool minigameActive;
 
     void OnEnable()
     {
@@ -59,13 +58,6 @@ public class MinigameManager : MonoBehaviour
         {
             mouthHinge.SetSpeed(80f);
         }
-        minigameActive = true;
-    }
-
-    void OnDisable()
-    {
-        _instance = null;
-        minigameActive = true;
     }
 
     void Start()
