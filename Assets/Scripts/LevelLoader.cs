@@ -70,17 +70,8 @@ public class LevelLoader : MonoBehaviour
         //Wait
         yield return new WaitForSeconds(transitionTime);
         //Load Scene
-        SceneManager.LoadScene(levelIndex);
-        AudioManager.instance.SetAmbienceParameter("ambience_transition", (float)levelIndex - 1);
 
-        if (levelIndex == 1)
-        {
-            AudioManager.instance.SetMusicArea(Music_States.newday_street);
-        }
-        else if (levelIndex == 2)
-        {
-            AudioManager.instance.SetMusicArea(Music_States.dock_dive);
-        }
+        SceneManager.LoadScene(levelIndex);
     }
 
     IEnumerator ShowStatsAndLoad(int levelIndex)

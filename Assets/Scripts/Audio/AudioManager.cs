@@ -5,6 +5,7 @@ using FMODUnity;
 using FMOD.Studio;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public enum Music_States
 {
@@ -34,11 +35,12 @@ public class AudioManager : MonoBehaviour
     private Bus ambienceBus;
     private Bus sfxBus;
 
-    private List<EventInstance> eventInstances;
-    private List<StudioEventEmitter> eventEmitters;
+    private List<EventInstance> eventInstances = new List<EventInstance>();
+    private List<StudioEventEmitter> eventEmitters = new List<StudioEventEmitter>();
 
     private EventInstance ambienceEventInstance;
-    private EventInstance musicEventInstance;
+    private EventInstance menuMusicEventInstance;
+    private EventInstance gameMusicEventInstance;
 
     private static AudioManager thisInstance;
 
@@ -70,22 +72,50 @@ public class AudioManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
-
-        eventInstances = new List<EventInstance>();
-        eventEmitters = new List<StudioEventEmitter>();
 
         masterBus = RuntimeManager.GetBus("bus:/");
         musicBus = RuntimeManager.GetBus("bus:/music");
         ambienceBus = RuntimeManager.GetBus("bus:/ambience");
         sfxBus = RuntimeManager.GetBus("bus:/sfx");
+
+        SceneManager.activeSceneChanged += OnActiveSceneChanged;
+
+        LoadPlayerPrefs();
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.activeSceneChanged -= OnActiveSceneChanged;
     }
 
     private void Start()
     {
-        InitializeAmbience(FMODEvents.instance.ambience);
-        InitializeMusic(FMODEvents.instance.gameMusic);
         LoadPlayerPrefs();
+
+        Scene current = SceneManager.GetActiveScene();
+
+        // Initialize music/ambience for the first scene
+        if (current.name == "MainMenu")
+            InitializeMenuMusic(FMODEvents.instance.menuMusic);
+        else
+        {
+            InitializeGameMusic(FMODEvents.instance.gameMusic);
+            InitializeAmbience(FMODEvents.instance.ambience);
+
+            if (current.name == "Dock")
+            {
+                SetMusicArea(Music_States.dock_dive);
+                SetAmbienceParameter("ambience_transition", 1.0f);
+            }
+            else if (current.name == "Shop")
+            {
+                SetMusicArea(Music_States.newday_street);
+                SetAmbienceParameter("ambience_transition", 0.0f);
+            }
+        }
+
     }
 
     private void Update()
@@ -121,12 +151,26 @@ public class AudioManager : MonoBehaviour
         SetAmbienceParameter("ambience_transition", (SceneManager.GetActiveScene().buildIndex == 1) ? 0.0f : 1.0f);
     }
 
-    private void InitializeMusic(EventReference musicEventReference)
+    private void InitializeMenuMusic(EventReference musicEventReference)
     {
-        musicEventInstance = CreateInstance(musicEventReference);
-        musicEventInstance.start();
+        menuMusicEventInstance = CreateInstance(musicEventReference);
 
-        SetMusicArea(Music_States.newday_street);
+        menuMusicEventInstance.start();
+    }
+
+    private void InitializeGameMusic(EventReference musicEventReference)
+    {
+        gameMusicEventInstance = CreateInstance(musicEventReference);
+        gameMusicEventInstance.start();
+
+        if (SceneManager.GetActiveScene().name == "Dock")
+        {
+            SetMusicArea(Music_States.dock_dive);
+        }
+        else if (SceneManager.GetActiveScene().name == "Shop")
+        {
+            SetMusicArea(Music_States.newday_street);
+        }
     }
 
     public void SetAmbienceParameter(string parameterName, float parameterValue)
@@ -135,11 +179,10 @@ public class AudioManager : MonoBehaviour
     }
     public void SetMusicArea(Music_States area)
     {
-        musicEventInstance.getParameterByName("music_ingame", out float currentState);
+        gameMusicEventInstance.getParameterByName("music_ingame", out float currentState);
         previousState = (Music_States)(int)currentState;
 
-        musicEventInstance.setParameterByName("music_ingame", (float)area);
-        Debug.Log("Set music to area: " + (Music_States)area);
+        gameMusicEventInstance.setParameterByName("music_ingame", (float)area);
     }
 
     public void PlayOneShot(EventReference sound, Vector3 worldPos)
@@ -182,11 +225,6 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
-    {
-        CleanUp();
-    }
-
     public void ForceLoad()
     {
 
@@ -202,6 +240,46 @@ public class AudioManager : MonoBehaviour
     {
         SetMusicArea(previousState);
         ambienceEventInstance.setPaused(false);
+    }
 
+    private void OnActiveSceneChanged(Scene previousScene, Scene newScene)
+    {
+        if (newScene.name == "MainMenu")
+        {
+            CleanUp();
+            InitializeMenuMusic(FMODEvents.instance.menuMusic);
+        }
+
+        else if (!gameMusicEventInstance.isValid() &&  newScene.name != "MainMenu")
+        {
+            CleanUp();
+
+            InitializeGameMusic(FMODEvents.instance.gameMusic);
+            InitializeAmbience(FMODEvents.instance.ambience);
+
+            if (newScene.name == "Dock")
+            {
+                SetMusicArea(Music_States.dock_dive);
+                SetAmbienceParameter("ambience_transition", 1.0f);
+            }
+            else if (newScene.name == "Shop")
+            {
+                SetMusicArea(Music_States.newday_street);
+                SetAmbienceParameter("ambience_transition", 0.0f);
+            }
+        }
+        else
+        {
+            if (newScene.name == "Dock")
+            {
+                SetMusicArea(Music_States.dock_dive);
+                SetAmbienceParameter("ambience_transition", 1.0f);
+            }
+            else if (newScene.name == "Shop")
+            {
+                SetMusicArea(Music_States.newday_street);
+                SetAmbienceParameter("ambience_transition", 0.0f);
+            }
+        }
     }
 }
