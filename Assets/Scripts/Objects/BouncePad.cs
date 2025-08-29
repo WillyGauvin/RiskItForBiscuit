@@ -51,6 +51,9 @@ public class BouncePad : MonoBehaviour
 
         dog.Body.AddForce(force, ForceMode2D.Impulse);
 
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.bouncePad);
+
+
         //var rb = objectToLaunch.GetComponents<Rigidbody2D>();
         //if (rb == null) { Debug.LogError("No Rigidbodies found!"); yield break; }
 

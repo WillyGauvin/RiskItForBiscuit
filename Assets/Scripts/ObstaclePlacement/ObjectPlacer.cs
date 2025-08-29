@@ -8,6 +8,8 @@ public class ObjectPlacer : MonoBehaviour
 
     public int PlaceObject(GameObject prefab, Vector3 pos)
     {
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.build_PlaceObject);
+
         GameObject obstacle = Instantiate(prefab);
 
         obstacle.transform.position = pos;
@@ -19,7 +21,12 @@ public class ObjectPlacer : MonoBehaviour
 
     public void RemoveObjectAt(int gameObjectIndex)
     {
-        if (placedObstacles.Count <= gameObjectIndex || placedObstacles[gameObjectIndex] == null) return;
+        if (placedObstacles.Count <= gameObjectIndex || placedObstacles[gameObjectIndex] == null)
+        {
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.build_PlaceError);
+            return;
+        }
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.build_RemoveBuilding);
 
         Destroy(placedObstacles[gameObjectIndex]);
         placedObstacles[gameObjectIndex] = null;

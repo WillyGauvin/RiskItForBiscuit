@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   abilityID: Wag
-  description: Increases the length of the dock. More time to Run!
+  description: 'New Ability: Tail Wag'
   price: 1000
   isUnlocked: 0
   multiplier: 2

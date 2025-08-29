@@ -23,26 +23,6 @@ public class MainUI : MonoBehaviour
         UpdateUIElements();
     }
 
-    private void OnDisable()
-    {
-        ScoreManager.instance.UpdateTotalScore.RemoveListener(UpdateScoreCounter);
-        ScoreManager.instance.UpdateMoney.RemoveListener(UpdateMoneyCounter);
-
-        DayManager.instance.UpdateDayCount.RemoveListener(UpdateDayCounter);
-        DayManager.instance.UpdateDivesCount.RemoveListener(UpdateDivesCounter);
-    }
-
-    private void OnDestroy()
-    {
-        if (GameManager.instance)
-        {
-            ScoreManager.instance.UpdateTotalScore.RemoveListener(UpdateScoreCounter);
-            ScoreManager.instance.UpdateMoney.RemoveListener(UpdateMoneyCounter);
-            DayManager.instance.UpdateDayCount.RemoveListener(UpdateDayCounter);
-            DayManager.instance.UpdateDivesCount.RemoveListener(UpdateDivesCounter);
-        }
-    }
-
     void UpdateUIElements()
     {
         UpdateDayCounter();

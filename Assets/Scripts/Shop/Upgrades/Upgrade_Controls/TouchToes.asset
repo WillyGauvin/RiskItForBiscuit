@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   abilityID: TouchToes
-  description: Increases the length of the dock. More time to Run!
+  description: 'New Ability: Touch Your Toes!'
   price: 2000
   isUnlocked: 0
   multiplier: 2

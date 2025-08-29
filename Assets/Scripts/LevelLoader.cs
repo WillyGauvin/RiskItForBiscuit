@@ -39,11 +39,13 @@ public class LevelLoader : MonoBehaviour
         {
             // Dock
             StartCoroutine(LoadLevel(2));
+
         }
         else
         {
             // Shop
             StartCoroutine(ShowStatsAndLoad(1));
+
         }
     }
 
@@ -69,6 +71,16 @@ public class LevelLoader : MonoBehaviour
         yield return new WaitForSeconds(transitionTime);
         //Load Scene
         SceneManager.LoadScene(levelIndex);
+        AudioManager.instance.SetAmbienceParameter("ambience_transition", (float)levelIndex - 1);
+
+        if (levelIndex == 1)
+        {
+            AudioManager.instance.SetMusicArea(Music_States.newday_street);
+        }
+        else if (levelIndex == 2)
+        {
+            AudioManager.instance.SetMusicArea(Music_States.dock_dive);
+        }
     }
 
     IEnumerator ShowStatsAndLoad(int levelIndex)

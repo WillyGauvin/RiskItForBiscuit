@@ -3,11 +3,20 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum ShopType
+{
+    Obstacle,
+    Trainer,
+    Debt,
+}
+
 public class Shop : MonoBehaviour
 {
     public Animator shopPopUp;
 
     [SerializeField] private ScrollRect scrollRect;
+
+    [SerializeField] private ShopType shopType;
 
     private void Awake()
     {
@@ -19,6 +28,20 @@ public class Shop : MonoBehaviour
         if (shopPopUp != null && shopPopUp.runtimeAnimatorController != null)
         {
             shopPopUp.SetTrigger("Start");
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.shop_enter);
+            AudioManager.instance.SetAmbienceParameter("ambience_transition", 0.5f);
+            switch(shopType)
+            {
+                case ShopType.Obstacle:
+                    AudioManager.instance.SetMusicArea(Music_States.shop_01);
+                    break;
+                case ShopType.Trainer:
+                    AudioManager.instance.SetMusicArea(Music_States.shop_02);
+                    break;
+                case ShopType.Debt:
+                    AudioManager.instance.SetMusicArea(Music_States.loan_shark);
+                    break;
+            }
 
             StartCoroutine(SetScrollBar());
         }
@@ -31,6 +54,11 @@ public class Shop : MonoBehaviour
     public void CloseShop()
     {
         shopPopUp.SetTrigger("End");
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.shop_leave);
+        AudioManager.instance.SetAmbienceParameter("ambience_transition", 0.0f);
+        AudioManager.instance.SetMusicArea(Music_States.newday_street);
+
+
         StopAllCoroutines();
     }
 

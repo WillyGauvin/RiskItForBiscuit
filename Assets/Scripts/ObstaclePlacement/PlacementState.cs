@@ -37,7 +37,11 @@ public class PlacementState : IBuildingState
 
     public void OnAction(Vector3Int gridPosition)
     {
-        if (!CheckPlacementValidity(gridPosition, selectedObjectIndex)) return;
+        if (!CheckPlacementValidity(gridPosition, selectedObjectIndex))
+        {
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.build_PlaceError);
+            return;
+        }
 
         int index = objectPlacer.PlaceObject(database.objectsData[selectedObjectIndex].Prefab, grid.CellToWorld(gridPosition));
 

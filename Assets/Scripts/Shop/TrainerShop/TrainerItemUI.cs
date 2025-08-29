@@ -54,8 +54,6 @@ public class TrainerItemUI : MonoBehaviour
     {
         purchaseButton.onClick.RemoveAllListeners();
         equipButton.onValueChanged.RemoveAllListeners();
-        ScoreManager.instance.UpdateMoney.RemoveListener(UpdateUI);
-
     }
 
     private void OnButtonClick()
@@ -79,8 +77,8 @@ public class TrainerItemUI : MonoBehaviour
 
             myTrainer.isUnlocked = true;
             ScoreManager.instance.SpendMoney((uint)myTrainer.price);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.shop_buyItem);
 
-            ScoreManager.instance.SpendMoney((uint)myTrainer.price);
 
             purchaseButton.onClick.RemoveAllListeners();
             equipButton.onValueChanged.AddListener(OnActivateToggle);

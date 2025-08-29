@@ -27,6 +27,7 @@ public class RemovingState : IBuildingState
     {
         if(obstacleData.CanPlaceObstacleAt(gridPosition, Vector2Int.one))
         {
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.build_PlaceError);
             return;
         }
 

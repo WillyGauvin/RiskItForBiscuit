@@ -41,10 +41,6 @@ public class PayOffLoanUI : MonoBehaviour
     {
         payoffLoanSlider.onValueChanged.RemoveAllListeners();
         payOffLoanButton.onClick.RemoveAllListeners();
-        if (GameManager.instance)
-        {
-            ScoreManager.instance.UpdateMoney.RemoveListener(UpdateUI);
-        }
     }
 
     private void OnSliderChanged(float percent)
@@ -95,6 +91,8 @@ public class PayOffLoanUI : MonoBehaviour
             {
                 ScoreManager.instance.SpendMoney((uint)payOffAmount);
                 currentShownLoan.PayOff(payOffAmount);
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.shop_takeLoan);
+
 
                 if (currentShownLoan.myLoan.balance <= 0.0f)
                 {

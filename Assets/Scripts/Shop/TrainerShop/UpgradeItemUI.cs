@@ -16,7 +16,6 @@ public class UpgradeItemUI : MonoBehaviour
     private void OnDestroy()
     {
         purchaseButton.onClick.RemoveAllListeners();
-        ScoreManager.instance.UpdateMoney.RemoveListener(UpdateUI);
     }
 
     public void Init(UpgradeDataSO upgrade, DogTrainer trainer)
@@ -80,6 +79,8 @@ public class UpgradeItemUI : MonoBehaviour
                 myUpgrade.isUnlocked = true;
                 UpgradeManager.Instance.AddUpgrade(myUpgrade);
                 ScoreManager.instance.SpendMoney((uint)myUpgrade.price);
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.shop_buyItem);
+
 
                 UpdateUI();
             }

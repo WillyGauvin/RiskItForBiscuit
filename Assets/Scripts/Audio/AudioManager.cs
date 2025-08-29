@@ -4,6 +4,18 @@ using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+
+public enum Music_States
+{
+    newday_street = 0,
+    shop_01,
+    shop_02,
+    shop_03,
+    loan_shark,
+    dock_dive,
+    pause,
+}
 
 public class AudioManager : MonoBehaviour
 {
@@ -29,6 +41,8 @@ public class AudioManager : MonoBehaviour
     private EventInstance musicEventInstance;
 
     private static AudioManager thisInstance;
+
+    private Music_States previousState;
 
     public static AudioManager instance
     {
@@ -69,8 +83,8 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        //InitializeAmbience(FMODEvents.instance.ambience);
-        //InitializeMusic(FMODEvents.instance.gameMusic);
+        InitializeAmbience(FMODEvents.instance.ambience);
+        InitializeMusic(FMODEvents.instance.gameMusic);
         LoadPlayerPrefs();
     }
 
@@ -103,22 +117,30 @@ public class AudioManager : MonoBehaviour
         ambienceEventInstance = CreateInstance(ambienceEventReference);
 
         ambienceEventInstance.start();
+
+        SetAmbienceParameter("ambience_transition", (SceneManager.GetActiveScene().buildIndex == 1) ? 0.0f : 1.0f);
     }
 
     private void InitializeMusic(EventReference musicEventReference)
     {
         musicEventInstance = CreateInstance(musicEventReference);
         musicEventInstance.start();
+
+        SetMusicArea(Music_States.newday_street);
     }
 
     public void SetAmbienceParameter(string parameterName, float parameterValue)
     {
         ambienceEventInstance.setParameterByName(parameterName, parameterValue);
     }
-    //public void SetMusicArea(States_Music area)
-    //{
-    //    musicEventInstance.setParameterByName("level_music", (float)area);
-    //}
+    public void SetMusicArea(Music_States area)
+    {
+        musicEventInstance.getParameterByName("music_ingame", out float currentState);
+        previousState = (Music_States)(int)currentState;
+
+        musicEventInstance.setParameterByName("music_ingame", (float)area);
+        Debug.Log("Set music to area: " + (Music_States)area);
+    }
 
     public void PlayOneShot(EventReference sound, Vector3 worldPos)
     {
@@ -163,5 +185,23 @@ public class AudioManager : MonoBehaviour
     private void OnDestroy()
     {
         CleanUp();
+    }
+
+    public void ForceLoad()
+    {
+
+    }
+
+    public void OnGamePause()
+    {
+        SetMusicArea(Music_States.pause);
+        ambienceEventInstance.setPaused(true);
+    }
+
+    public void OnGameUnPause()
+    {
+        SetMusicArea(previousState);
+        ambienceEventInstance.setPaused(false);
+
     }
 }

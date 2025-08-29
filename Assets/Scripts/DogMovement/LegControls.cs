@@ -214,8 +214,9 @@ public class LegControls : MonoBehaviour
                     Debug.Log("Toes scored");
                     touchScored = true;
                     ScoreManager.instance.AddToScore(500);
-                }
+                    AudioManager.instance.PlayOneShot(FMODEvents.instance.point_toeTouch);
             }
+        }
     }
 
     #endregion
