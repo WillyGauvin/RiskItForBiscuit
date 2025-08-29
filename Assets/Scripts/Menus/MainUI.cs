@@ -63,7 +63,7 @@ public class MainUI : MonoBehaviour
 
     void UpdateScoreCounter()
     {
-        if (scoreCounter) { scoreCounter.text = "Score: " + ScoreManager.instance.totalScore.ToString(); }
+        if (scoreCounter) { scoreCounter.text = ScoreManager.instance.totalScore.ToString(); }
     }
 
     void UpdateMoneyCounter()
