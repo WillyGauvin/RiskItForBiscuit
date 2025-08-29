@@ -25,8 +25,6 @@ public class MinigameManager : MonoBehaviour
 
     bool caughtFrisbee = false;
 
-    bool waitingForCatch = true;
-
     void OnEnable()
     {
         allColliders = GetComponentsInChildren<Collider2D>().ToList();
@@ -36,7 +34,6 @@ public class MinigameManager : MonoBehaviour
         }
         input = GetComponent<PlayerInput>();
         caughtFrisbee = false;
-        waitingForCatch = true;
 
         StartCoroutine(WaitForStart());
         if (mouthHinge)
@@ -53,9 +50,8 @@ public class MinigameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (topJaw.touchingFrisbee && bottomJaw.touchingFrisbee && mouthHinge.GetSpeed() < 0f && caughtFrisbee == false && waitingForCatch == true)
+        if (topJaw.touchingFrisbee && bottomJaw.touchingFrisbee && mouthHinge.GetSpeed() < 0f && caughtFrisbee == false)
         {
-            waitingForCatch = false;
             caughtFrisbee = true;
             StopAllCoroutines();
             dog.CantBite();
@@ -80,7 +76,6 @@ public class MinigameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(.5f);
         frisbee.SetFrisbee();
-        waitingForCatch = false;
         StartCoroutine(WaitForFrisbeeCatch());
     }
 
@@ -102,7 +97,6 @@ public class MinigameManager : MonoBehaviour
     IEnumerator WaitForFrisbeeCatch()
     {
         yield return new WaitForSeconds(4f);
-        waitingForCatch = false;
         CloseGame();
     }
 
