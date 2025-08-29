@@ -40,6 +40,8 @@ public class JumpAndLandDetection : MonoBehaviour
             // Do not allow for a double collision with the water.
             if (hasLanded) { return; }
 
+            dog.Landed();
+
             AudioManager.instance.PlayOneShot(FMODEvents.instance.waterSplash);
 
             hasLanded = true;
@@ -135,6 +137,14 @@ public class JumpAndLandDetection : MonoBehaviour
                     if (ScoreManager.instance.numHoops > 0)
                     {
                         StartCoroutine(DisplayStat("Hoops: ", ScoreManager.instance.numHoops));
+                        yield return new WaitForSeconds(timeToDisplay);
+                    }
+                    break;
+
+                case (int)ScoreStats.FlamingHoop:
+                    if (ScoreManager.instance.numFlameHoops > 0)
+                    {
+                        StartCoroutine(DisplayStat("Flaming Hoops: ", ScoreManager.instance.numFlameHoops));
                         yield return new WaitForSeconds(timeToDisplay);
                     }
                     break;

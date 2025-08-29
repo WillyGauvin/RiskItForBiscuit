@@ -16,6 +16,7 @@ public enum ScoreStats
 {
     Flip,
     Hoop,
+    FlamingHoop,
     Frisbee,
     EarnedScore,
     Max
@@ -48,6 +49,9 @@ public class ScoreManager : MonoBehaviour
     const int scoreForFlip = 250;
     [field: SerializeField] public int numHoops { get; private set; }
     const int scoreForHoop = 250;
+    [field: SerializeField] public int numFlameHoops { get; private set; }
+    const int scoreForFlameHoop = 500;
+
     [field: SerializeField] public bool wasFrisbeeCaught { get; private set; }
 
     [field: SerializeField] public int earnedScoreForJump { get; private set; }
@@ -113,6 +117,7 @@ public class ScoreManager : MonoBehaviour
         wasFrisbeeCaught = false;
         numFlips = 0;
         numHoops = 0;
+        numFlameHoops = 0;
         earnedScoreForJump = 0;
     }
 
@@ -176,6 +181,17 @@ public class ScoreManager : MonoBehaviour
     {
         numHoops++;
         earnedScoreForJump += scoreForHoop;
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.point_loop);
+
+    }
+
+    /// <summary>
+    /// Flame hoop jumped through during a dive.
+    /// </summary>
+    public void FlameHoopPerformed()
+    {
+        numFlameHoops++;
+        earnedScoreForJump += scoreForFlameHoop;
         AudioManager.instance.PlayOneShot(FMODEvents.instance.point_loop);
 
     }

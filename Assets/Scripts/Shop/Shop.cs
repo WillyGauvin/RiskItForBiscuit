@@ -14,9 +14,13 @@ public class Shop : MonoBehaviour
 {
     public Animator shopPopUp;
 
-    [SerializeField] private ScrollRect scrollRect;
-
     [SerializeField] private ShopType shopType;
+
+    [SerializeField] string id;
+
+    [SerializeField] ShopTutorial tutorial;
+
+    [SerializeField] TutorialManager tutorialManager;
 
     private void Awake()
     {
@@ -27,6 +31,11 @@ public class Shop : MonoBehaviour
     {
         if (shopPopUp != null && shopPopUp.runtimeAnimatorController != null)
         {
+            if (tutorialManager.CheckIfFirstTime(id))
+            {
+                Debug.Log("Tutorial Started");
+                tutorial.StartTutorial();
+            }
             shopPopUp.SetTrigger("Start");
             AudioManager.instance.PlayOneShot(FMODEvents.instance.shop_enter);
             AudioManager.instance.SetAmbienceParameter("ambience_transition", 0.5f);
@@ -42,8 +51,6 @@ public class Shop : MonoBehaviour
                     AudioManager.instance.SetMusicArea(Music_States.loan_shark);
                     break;
             }
-
-            StartCoroutine(SetScrollBar());
         }
         else
         {
@@ -60,14 +67,5 @@ public class Shop : MonoBehaviour
 
 
         StopAllCoroutines();
-    }
-
-    IEnumerator SetScrollBar()
-    {
-        yield return new WaitForSeconds(0.5f);
-        if (scrollRect != null)
-        {
-            scrollRect.verticalNormalizedPosition = 1f;
-        }
     }
 }
