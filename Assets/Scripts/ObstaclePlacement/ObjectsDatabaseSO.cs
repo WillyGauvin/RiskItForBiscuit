@@ -20,7 +20,7 @@ public class ObjectsData
 
     [field : SerializeField] public GameObject Prefab { get; private set; }
 
-    [field : SerializeField] public Image Icon { get; private set; }
+    [field : SerializeField] public Sprite Icon { get; private set; }
 
     [Tooltip("List of rows this object is allowed on. Leave empty to allow all.")]
     public int[] allowedRows;

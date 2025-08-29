@@ -19,3 +19,9 @@ MonoBehaviour:
   - <ItemID>k__BackingField: 1
     <price>k__BackingField: 250
     <priceIncreasePerPurchase>k__BackingField: 1.5
+  - <ItemID>k__BackingField: 2
+    <price>k__BackingField: 500
+    <priceIncreasePerPurchase>k__BackingField: 1.5
+  - <ItemID>k__BackingField: 3
+    <price>k__BackingField: 750
+    <priceIncreasePerPurchase>k__BackingField: 1.5

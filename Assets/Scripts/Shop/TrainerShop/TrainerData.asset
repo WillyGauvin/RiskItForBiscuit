@@ -20,7 +20,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 4d8d65b2b48c07144a52ca6339b3bfb1, type: 2}
     price: 300
     isUnlocked: 0
-    icon: {fileID: 21300000, guid: 74ada3847d853e748919a0f848a5d32b, type: 3}
+    icon: {fileID: 21300000, guid: 1c57d9c4d03a1b64b9e6e7db8cc36f28, type: 3}
     name: Kujo
   - activatedUpgrade: {fileID: 11400000, guid: 4f8a7560f60d1784c903de9233dd8da7, type: 2}
     permanentUpgrades:
@@ -29,7 +29,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 61fd7dc67794fc84eb8ab78f1c2f075b, type: 2}
     price: 2000
     isUnlocked: 0
-    icon: {fileID: 21300000, guid: 1eb5baf7482096b48a9442bb3ef0bff4, type: 3}
+    icon: {fileID: 21300000, guid: 74ada3847d853e748919a0f848a5d32b, type: 3}
     name: Scout
   - activatedUpgrade: {fileID: 11400000, guid: bb5e96090cd43f24691f6627c5ce2709, type: 2}
     permanentUpgrades:

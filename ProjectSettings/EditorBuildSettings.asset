@@ -14,10 +14,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/ShopRework.unity
     guid: d9db6c0bac4614348a8da7f765a095f1
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Dock.unity
     guid: a6e487eea65366c4bb31805088bdd0ad
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CustomizeDock.unity
     guid: 458742755aba16d4caecadcaf5acf75a
   m_configObjects:

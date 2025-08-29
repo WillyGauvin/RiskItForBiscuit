@@ -22,7 +22,7 @@ public class ObstacleItemUI : MonoBehaviour
 
         purchaseButton.onClick.AddListener(OnButtonClick);
 
-        icon = obstacleDataBase.objectsData[databaseIndex].Icon;
+        icon.sprite = obstacleDataBase.objectsData[databaseIndex].Icon;
         obstacleName.text = obstacleDataBase.objectsData[databaseIndex].Name;
 
         UpdateUI();

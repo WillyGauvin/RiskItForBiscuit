@@ -17,11 +17,27 @@ MonoBehaviour:
     <ID>k__BackingField: 0
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 5387413497508719975, guid: 781c843834f25bd4f8991df40de8c24a, type: 3}
+    <Icon>k__BackingField: {fileID: 21300000, guid: 0bfdc5ef5080487498b3fcf4e06ae4bc, type: 3}
     allowedRows: 
     blockedRows: 
   - <Name>k__BackingField: BouncePad
     <ID>k__BackingField: 1
     <Size>k__BackingField: {x: 2, y: 1}
     <Prefab>k__BackingField: {fileID: 5784697984092272188, guid: c53aaea007c58194d99d3c0a77bd5d40, type: 3}
+    <Icon>k__BackingField: {fileID: 21300000, guid: 6cc2bdc5deaff704999beb4baa56a89a, type: 3}
     allowedRows: 00000000
+    blockedRows: 
+  - <Name>k__BackingField: Flaming Hoop
+    <ID>k__BackingField: 2
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 5784697984092272188, guid: c53aaea007c58194d99d3c0a77bd5d40, type: 3}
+    <Icon>k__BackingField: {fileID: 21300000, guid: 322004c31632b9343b27598630a439a1, type: 3}
+    allowedRows: 
+    blockedRows: 
+  - <Name>k__BackingField: Flying Fan
+    <ID>k__BackingField: 3
+    <Size>k__BackingField: {x: 2, y: 1}
+    <Prefab>k__BackingField: {fileID: 5784697984092272188, guid: c53aaea007c58194d99d3c0a77bd5d40, type: 3}
+    <Icon>k__BackingField: {fileID: 21300000, guid: 1dc9122b9a9f8b3469ee7e5a565db09d, type: 3}
+    allowedRows: 
     blockedRows: 

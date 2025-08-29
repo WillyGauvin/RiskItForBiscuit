@@ -14,9 +14,9 @@ public class ObstacleButton : MonoBehaviour
         button.onClick.RemoveAllListeners();
     }
 
-    public void Init(int ID, Image buttonImage, float count)
+    public void Init(int ID, Sprite buttonImage, float count)
     {
-        button.image = buttonImage;
+        button.image.sprite = buttonImage;
         this.count = count;
         this.ID = ID;
 

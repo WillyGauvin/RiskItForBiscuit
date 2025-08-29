@@ -237,7 +237,7 @@ public class ScoreManager : MonoBehaviour
 
     public bool CanAfford(uint price)
     {
-        return (currentMoney - price > 0);
+        return (currentMoney - price >= 0);
     }
 
     #endregion
