@@ -53,21 +53,6 @@ public class BouncePad : MonoBehaviour
 
         AudioManager.instance.PlayOneShot(FMODEvents.instance.bouncePad);
 
-
-        //var rb = objectToLaunch.GetComponents<Rigidbody2D>();
-        //if (rb == null) { Debug.LogError("No Rigidbodies found!"); yield break; }
-
-        //foreach (var body in rb)
-        //{
-        //    // Set y velocity to 0, so you're not fighting against a negative y vel. Consistent launching.
-        //    body.linearVelocity = new Vector2(
-        //        cancelXVelocity ? 0.0f : body.linearVelocity.x,
-        //        cancelYVelocity ? 0.0f : body.linearVelocity.y);
-
-        //    force = launchDirection * launchPower;
-        //    body.AddForce(force, ForceMode2D.Impulse);
-        //}
-
         yield return new WaitForSeconds(cooldownTime);
 
         isBouncing = false;
