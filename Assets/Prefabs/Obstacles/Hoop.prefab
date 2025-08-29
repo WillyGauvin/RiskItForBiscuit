@@ -91,6 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b6cb1418dbe62f4dbe9cb1bc73ede18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  typeOfHoop: 0
+  hoopCooldown: 2
   hoopRenderer: {fileID: 2494204082750722250}
   triggered: {r: 0.2345163, g: 1, b: 0.12641507, a: 1}
 --- !u!1 &5387413497508719975
@@ -152,13 +154,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8955204522565488683}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.5, y: 0, z: 2.5}
-  m_LocalScale: {x: 5, y: 5, z: 5}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 2.5, y: 0, z: 2.5000002}
+  m_LocalScale: {x: 125, y: 125, z: 125}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1005280737484714371}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &9121284510682723742
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -166,7 +168,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8955204522565488683}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -4703892609595657539, guid: 64116fbd2a205024aa5e23a98e584f9e, type: 3}
 --- !u!23 &2494204082750722250
 MeshRenderer:
   m_ObjectHideFlags: 0
