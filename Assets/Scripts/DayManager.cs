@@ -56,6 +56,12 @@ public class DayManager : MonoBehaviour
     }
 #endif
 
+    private void OnDestroy()
+    {
+        UpdateDayCount.RemoveAllListeners();
+        UpdateDivesCount.RemoveAllListeners();
+    }
+
     /// <summary>
     /// Begins a new day, increasing day counter and resetting the number of dives available.
     /// </summary>
@@ -66,7 +72,8 @@ public class DayManager : MonoBehaviour
         if (currentDay >= totalDays)
         {
             // Debt was not paid off on time. Game Over.
-            Debug.Log("Debt was not paid off on time. Game Over.");
+            GameManager.instance.TriggerGameOver();
+            return;
         }
 
         numDivesRemaining = numDivesPerDay;
@@ -99,9 +106,8 @@ public class DayManager : MonoBehaviour
     {
         ScoreManager.instance.ConvertScoreToMoney();
 
-        LevelLoader.Instance.LoadNextLevel();
-
-        // For now, just immediately start the next day.
         StartNewDay();
+
+        LevelLoader.Instance.LoadNextLevel();
     }
 }

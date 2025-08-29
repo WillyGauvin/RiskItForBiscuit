@@ -34,10 +34,13 @@ public class MainUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        ScoreManager.instance.UpdateTotalScore.RemoveListener(UpdateScoreCounter);
-        ScoreManager.instance.UpdateMoney.RemoveListener(UpdateMoneyCounter);
-        DayManager.instance.UpdateDayCount.RemoveListener(UpdateDayCounter);
-        DayManager.instance.UpdateDivesCount.RemoveListener(UpdateDivesCounter);
+        if (GameManager.instance)
+        {
+            ScoreManager.instance.UpdateTotalScore.RemoveListener(UpdateScoreCounter);
+            ScoreManager.instance.UpdateMoney.RemoveListener(UpdateMoneyCounter);
+            DayManager.instance.UpdateDayCount.RemoveListener(UpdateDayCounter);
+            DayManager.instance.UpdateDivesCount.RemoveListener(UpdateDivesCounter);
+        }
     }
 
     void UpdateUIElements()

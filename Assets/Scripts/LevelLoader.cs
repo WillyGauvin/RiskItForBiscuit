@@ -19,15 +19,43 @@ public class LevelLoader : MonoBehaviour
         
     }
 
+    public void LoadBeginning()
+    {
+        // Load Dock.
+        StartCoroutine(LoadLevel(1));
+    }
+
     public void LoadNextLevel()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0)
+        if (GameManager.instance.IsGameEnded)
         {
-            StartCoroutine(LoadLevel(1));
+            EndGame();
+            return;
+        }
+
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            // Dock
+            StartCoroutine(LoadLevel(2));
         }
         else
         {
-            StartCoroutine(LoadLevel(0));
+            // Shop
+            StartCoroutine(LoadLevel(1));
+        }
+    }
+
+    public void EndGame()
+    {
+        if (GameManager.instance.IsBadEnding)
+        {
+            // Game Over - Bad Ending
+            StartCoroutine(LoadLevel(3));
+        }
+        else
+        {
+            // Victory Screen - Good Ending
+            StartCoroutine(LoadLevel(4));
         }
     }
 

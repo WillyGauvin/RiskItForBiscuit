@@ -26,6 +26,13 @@ public class DebtSystem : MonoBehaviour
             foreach (Loan loan in runtimeData.loans)
             {
                 loan.ApplyInterest();
+
+                // If any loan goes over 25,000 the player loses.
+                if (loan.balance > 25000.0f)
+                {
+                    GameManager.instance.TriggerGameOver();
+                    return;
+                }
             }
         }
     }
