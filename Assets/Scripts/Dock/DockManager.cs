@@ -23,13 +23,15 @@ public class DockManager : MonoBehaviour
     [SerializeField] private Dog player;
 
     [SerializeField] private int dockSize = 1;
+
+    [SerializeField] CinemachineFollow dockCam;
     public int DockSize
     {
         get { return dockSize; }
         set { dockSize = Mathf.Max(value, maxDockSize); }
     }
 
-    private int maxDockSize = 4;
+    private int maxDockSize = 3;
 
     private void Awake()
     {
@@ -40,16 +42,37 @@ public class DockManager : MonoBehaviour
         //Disable renderer of every dock
         foreach(GameObject dock in docks)
         {
-            dock.GetComponentInChildren<Renderer>().enabled = false;
+            Renderer[] renderers = dock.GetComponentsInChildren<Renderer>();
+            foreach (Renderer renderer in renderers)
+            {
+                renderer.enabled = false;
+            }
         }
 
         for (int i = 0; i < dockSize; i++)
         {
-            docks[i].GetComponentInChildren<Renderer>().enabled = true;
+            Renderer[] renderers = docks[i].GetComponentsInChildren<Renderer>();
+            foreach (Renderer renderer in renderers)
+            {
+                renderer.enabled = true;
+            }
         }
 
         player.transform.position = docks[dockSize - 1].transform.position;
 
+
+        switch (dockSize)
+        {
+            case 1:
+                dockCam.FollowOffset.z = -50.0f;
+                break;
+            case 2:
+                dockCam.FollowOffset.z = -90.0f;
+                break;
+            case 3:
+                dockCam.FollowOffset.z = -130.0f;
+                break;
+        }
     }
 
 
@@ -57,8 +80,8 @@ public class DockManager : MonoBehaviour
     /// Increases dock size by a factor of multiplier
     /// </summary>
     /// <param name="multiplier"></param>
-    public void IncreaseDockSize(int multiplier)
+    public void IncreaseDockSize()
     {
-        dockSize *= multiplier;
+        dockSize += 1;
     }
 }

@@ -18,12 +18,12 @@ public class PauseMenu : MonoBehaviour
 
     public void OnResumeClicked()
     {
-        GameMenuManager.instance.UnPause();
+        GameMenuManager.Instance.UnPause();
     }
 
     public void OnQuitClicked()
     {
-        GameMenuManager.instance.UnPause();
+        GameMenuManager.Instance.UnPause();
         SceneManager.LoadScene("MainMenu");
     }
 }

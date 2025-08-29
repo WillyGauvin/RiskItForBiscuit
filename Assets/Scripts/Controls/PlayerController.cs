@@ -144,7 +144,7 @@ public class PlayerController : MonoBehaviour
     {
         if (value.isPressed)
         {
-            GameMenuManager.instance.Pause();
+            GameMenuManager.Instance.Pause();
         }
     }
 
@@ -152,7 +152,7 @@ public class PlayerController : MonoBehaviour
     {
         if (value.isPressed)
         {
-            GameMenuManager.instance.UnPause();
+            GameMenuManager.Instance.UnPause();
         }
     }
 
@@ -172,7 +172,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (context.canceled)
         {
-            myDog.Jump(false);
+            myDog.StopChargeJump();
         }
     }
 

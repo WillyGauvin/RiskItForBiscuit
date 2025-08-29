@@ -35,7 +35,7 @@ MonoBehaviour:
     permanentUpgrades:
     - {fileID: 11400000, guid: 802856b0065ffc944819d0514d9ed5e8, type: 2}
     - {fileID: 11400000, guid: 9dc4a0f6c89467149b2a185cf1eef8ed, type: 2}
-    - {fileID: 11400000, guid: 407aa409abbecf14c922620f03ae381e, type: 2}
+    - {fileID: 11400000, guid: 61fd7dc67794fc84eb8ab78f1c2f075b, type: 2}
     price: 5000
     isUnlocked: 0
     icon: {fileID: 21300000, guid: 0d102975079284e42914aa1c02932965, type: 3}

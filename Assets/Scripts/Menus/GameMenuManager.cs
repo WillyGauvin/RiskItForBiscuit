@@ -5,35 +5,13 @@ using UnityEngine;
 
 public class GameMenuManager : MonoBehaviour
 {
-    private static GameMenuManager thisInstance;
-
-    public static GameMenuManager instance
-    {
-        get
-        {
-            if (!thisInstance)
-            {
-                // Spawns GameManager prefab and sets component reference.
-                GameObject manager = Instantiate(Resources.Load<GameObject>("Managers/GameMenuManager"));
-                thisInstance = manager.GetComponent<GameMenuManager>();
-            }
-
-            return thisInstance;
-        }
-
-        private set => thisInstance = value;
-    }
+    public static GameMenuManager Instance { get; private set; }
 
     private void Awake()
     {
-        if (thisInstance == null)
+        if (Instance == null)
         {
-            thisInstance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
+            Instance = this;
         }
 
         pauseMenu = Object.FindFirstObjectByType<PauseMenu>(FindObjectsInactive.Include).gameObject;

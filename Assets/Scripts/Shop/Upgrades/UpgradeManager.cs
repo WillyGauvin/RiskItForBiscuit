@@ -53,7 +53,7 @@ public class UpgradeManager : MonoBehaviour
             case UpgradeType.SceneModifier:
                 if (upgradeData.abilityID == "DockIncrease")
                 {
-                    DockManager.instance.IncreaseDockSize((int)upgradeData.multiplier);
+                    DockManager.instance.IncreaseDockSize();
                 }
                 Debug.Log($"Applied Scene Modifier: {upgradeData.abilityID}");
                 break;

@@ -52,7 +52,7 @@ public class JumpAndLandDetection : MonoBehaviour
 
         if (other.CompareTag("EdgeOfDock"))
         {
-            dog.Jump(true);
+            dog.Jump();
         }
     }
 

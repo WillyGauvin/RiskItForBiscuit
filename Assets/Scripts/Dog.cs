@@ -68,6 +68,8 @@ public class Dog : MonoBehaviour
     public bool isCharging = false;
     public bool hasJumped = false;
 
+    Coroutine JumpCharge;
+
     private void Awake()
     {
         GameManager.instance.SetPlayer(gameObject);
@@ -139,13 +141,16 @@ public class Dog : MonoBehaviour
     {
         if (!isCharging && isRunning)
         {
-            StartCoroutine(ChargeDogJump());
+            JumpCharge = StartCoroutine(ChargeDogJump());
         }
     }
 
-    public void Jump(bool force)
+    public void StopChargeJump()
     {
-        if (!isCharging && !force) return;
+        StopCoroutine(JumpCharge);
+    }
+    public void Jump()
+    {
         if (hasJumped) return;
         hasJumped = true;
         StopAllCoroutines();
@@ -153,12 +158,6 @@ public class Dog : MonoBehaviour
         animationManager.ActivateRigidbody();
 
         StartCoroutine(RealJump());
-
-        // body.linearVelocity = transform.forward * currentSpeed;
-        // body.AddForce(jumpForce, ForceMode2D.Impulse);
-
-        // if (myTrainer != null) { myTrainer.ThrowFrisbee(projection); }
-        // if (DockCam != null) { DockCam.enabled = false; }
     }
 
     IEnumerator RealJump()
@@ -207,7 +206,7 @@ public class Dog : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Jump(true);
+        Jump();
     }
 
     /// <summary>

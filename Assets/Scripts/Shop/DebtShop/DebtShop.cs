@@ -1,8 +1,4 @@
 using UnityEngine;
-using Unity.UI;
-using TMPro;
-using UnityEngine.UI;
-using Unity.VisualScripting;
 
 public class DebtShop : Shop
 {
