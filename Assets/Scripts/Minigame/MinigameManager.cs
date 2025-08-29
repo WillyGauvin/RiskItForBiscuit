@@ -8,6 +8,22 @@ public class MinigameManager : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
+    private static MinigameManager _instance;
+
+    public static MinigameManager instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                // Try to find an existing one in the scene
+                Debug.Log("Not active");
+            }
+            return _instance;
+        }
+    }
+
+
     [SerializeField] MinigameFrisbeeDetector topJaw;
     [SerializeField] MinigameFrisbeeDetector bottomJaw;
     [SerializeField] HingeSetter mouthHinge;
@@ -25,8 +41,11 @@ public class MinigameManager : MonoBehaviour
 
     bool caughtFrisbee = false;
 
+    public static bool minigameActive;
+
     void OnEnable()
     {
+        _instance = this;
         allColliders = GetComponentsInChildren<Collider2D>().ToList();
         foreach (Collider2D collider in allColliders)
         {
@@ -40,10 +59,22 @@ public class MinigameManager : MonoBehaviour
         {
             mouthHinge.SetSpeed(80f);
         }
+        minigameActive = true;
+    }
+
+    void OnDisable()
+    {
+        _instance = null;
+        minigameActive = true;
     }
 
     void Start()
     {
+    }
+
+    public void DisableGame()
+    {
+        CloseGame();
     }
 
 

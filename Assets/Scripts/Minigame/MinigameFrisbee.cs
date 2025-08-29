@@ -83,7 +83,7 @@ public class MinigameFrisbee : MonoBehaviour
         if (hit.point != Vector2.zero)
         {
             Vector3 spawnPosition = hit.point;
-            spawnPosition.z -= 5f;
+            spawnPosition.z -= 35f;
             exclamation = Instantiate(exclamationPrefab, spawnPosition, Quaternion.Euler(0, 0, angle - 90f));
             exclamation.transform.position -= exclamation.transform.right;
         }
