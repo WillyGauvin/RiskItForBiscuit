@@ -1,0 +1,221 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4165885640281641252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3182920022138220658}
+  - component: {fileID: 7342227268285071995}
+  m_Layer: 0
+  m_Name: FMODEvents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3182920022138220658
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4165885640281641252}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -23.559, y: -3.69568, z: 15.61786}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7342227268285071995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4165885640281641252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 906343f26eb1d5048afb23d22e664617, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ambience>k__BackingField:
+    Guid:
+      Data1: -679564558
+      Data2: 1337313466
+      Data3: -1657635174
+      Data4: 50290664
+    Path: event:/Ambience/ambience_master
+  <gameMusic>k__BackingField:
+    Guid:
+      Data1: -1794132862
+      Data2: 1120499262
+      Data3: -634893903
+      Data4: 125378263
+    Path: event:/Music/music_ingame
+  <menuMusic>k__BackingField:
+    Guid:
+      Data1: -217007582
+      Data2: 1119597991
+      Data3: -753756503
+      Data4: 558042445
+    Path: event:/Music/music_menu
+  <build_Open>k__BackingField:
+    Guid:
+      Data1: -1154624681
+      Data2: 1188087175
+      Data3: 1760731837
+      Data4: -1529561821
+    Path: event:/SFX/Build Menu/build_open
+  <build_PlaceError>k__BackingField:
+    Guid:
+      Data1: -1596836087
+      Data2: 1263021568
+      Data3: 741491876
+      Data4: -49607981
+    Path: event:/SFX/Build Menu/build_place_error
+  <build_PlaceObject>k__BackingField:
+    Guid:
+      Data1: -145244491
+      Data2: 1301878342
+      Data3: -1359320132
+      Data4: -2014751814
+    Path: event:/SFX/Build Menu/build_place_object
+  <build_RemoveBuilding>k__BackingField:
+    Guid:
+      Data1: -742245383
+      Data2: 1279352923
+      Data3: 289139877
+      Data4: -2022819482
+    Path: event:/SFX/Build Menu/build_remove_build
+  <bouncePad>k__BackingField:
+    Guid:
+      Data1: 1309461839
+      Data2: 1207454178
+      Data3: -1441891402
+      Data4: 1098523318
+    Path: event:/SFX/Objects/sfx_bouncepad
+  <fireLoop>k__BackingField:
+    Guid:
+      Data1: 398396537
+      Data2: 1086873518
+      Data3: -1166684791
+      Data4: -1755033135
+    Path: event:/SFX/Objects/sfx_fire_loop
+  <waterSplash>k__BackingField:
+    Guid:
+      Data1: 1855719664
+      Data2: 1179547511
+      Data3: -1233992519
+      Data4: 1393975365
+    Path: event:/SFX/Objects/sfx_watersplash
+  <player_Bark>k__BackingField:
+    Guid:
+      Data1: 1400751763
+      Data2: 1215760205
+      Data3: -1489305693
+      Data4: 1801063260
+    Path: event:/SFX/Player SFX/player_bark
+  <player_CatchFrisbee>k__BackingField:
+    Guid:
+      Data1: 1032594975
+      Data2: 1162250149
+      Data3: -2137153637
+      Data4: -93855752
+    Path: event:/SFX/Player SFX/player_catch_firsbee
+  <player_Jump>k__BackingField:
+    Guid:
+      Data1: -1468384144
+      Data2: 1116692677
+      Data3: 415234219
+      Data4: 1297969518
+    Path: event:/SFX/Player SFX/player_jump
+  <player_Walk>k__BackingField:
+    Guid:
+      Data1: 618083241
+      Data2: 1277770123
+      Data3: 405739420
+      Data4: -31750379
+    Path: event:/SFX/Player SFX/player_walk
+  <countDown>k__BackingField:
+    Guid:
+      Data1: -1701319579
+      Data2: 1280797646
+      Data3: 2008137361
+      Data4: 767130206
+    Path: event:/SFX/Point SFX/Countdown
+  <point_bouncePad>k__BackingField:
+    Guid:
+      Data1: -1947236122
+      Data2: 1297824577
+      Data3: 227447994
+      Data4: -146576702
+    Path: event:/SFX/Point SFX/point_bouncepad
+  <point_flip>k__BackingField:
+    Guid:
+      Data1: -603849260
+      Data2: 1304703766
+      Data3: 1825653435
+      Data4: -331597357
+    Path: event:/SFX/Point SFX/point_flip
+  <point_loop>k__BackingField:
+    Guid:
+      Data1: 1719524068
+      Data2: 1212567204
+      Data3: 198010260
+      Data4: 1305165191
+    Path: event:/SFX/Point SFX/point_going_through_loop
+  <point_toeTouch>k__BackingField:
+    Guid:
+      Data1: -720744465
+      Data2: 1191698450
+      Data3: 448937879
+      Data4: 2003505611
+    Path: event:/SFX/Point SFX/point_toe_touch
+  <shop_buyItem>k__BackingField:
+    Guid:
+      Data1: 541806969
+      Data2: 1195532420
+      Data3: 1767295659
+      Data4: 1029134867
+    Path: event:/SFX/Shop/shop_buy_item
+  <shop_enter>k__BackingField:
+    Guid:
+      Data1: -1548130850
+      Data2: 1131643611
+      Data3: 768547485
+      Data4: 1728386462
+    Path: event:/SFX/Shop/shop_enter
+  <shop_leave>k__BackingField:
+    Guid:
+      Data1: -172916716
+      Data2: 1328215750
+      Data3: 1661938061
+      Data4: 1987422263
+    Path: event:/SFX/Shop/shop_leave
+  <shop_payLoan>k__BackingField:
+    Guid:
+      Data1: -522224479
+      Data2: 1235059338
+      Data3: 828361606
+      Data4: 1607708057
+    Path: event:/SFX/Shop/shop_paying_loan
+  <shop_select>k__BackingField:
+    Guid:
+      Data1: 1918471921
+      Data2: 1248774543
+      Data3: -1294003288
+      Data4: 1430398147
+    Path: event:/SFX/Shop/shop_select
+  <shop_takeLoan>k__BackingField:
+    Guid:
+      Data1: -1355608653
+      Data2: 1331931591
+      Data3: -2081688403
+      Data4: 1347130130
+    Path: event:/SFX/Shop/shop_take_out_loan

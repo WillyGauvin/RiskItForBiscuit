@@ -33,7 +33,6 @@ public class ObstacleItemUI : MonoBehaviour
     public void OnDestroy()
     {
         purchaseButton.onClick.RemoveAllListeners();
-        ScoreManager.instance.UpdateMoney.RemoveListener(UpdateUI);
     }
 
     private void OnButtonClick()
@@ -46,6 +45,8 @@ public class ObstacleItemUI : MonoBehaviour
 
             //Call currency manager to remove price of item
             ScoreManager.instance.SpendMoney((uint)myItem.price);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.shop_buyItem);
+
 
             //Increase price of item
             myItem.IncreasePrice();

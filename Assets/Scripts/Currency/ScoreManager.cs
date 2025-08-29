@@ -165,6 +165,8 @@ public class ScoreManager : MonoBehaviour
     {
         numFlips++;
         earnedScoreForJump += scoreForFlip;
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.point_flip);
+
     }
 
     /// <summary>
@@ -174,6 +176,8 @@ public class ScoreManager : MonoBehaviour
     {
         numHoops++;
         earnedScoreForJump += scoreForHoop;
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.point_loop);
+
     }
 
     /// <summary>

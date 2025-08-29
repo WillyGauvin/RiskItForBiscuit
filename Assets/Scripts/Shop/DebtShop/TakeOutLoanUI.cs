@@ -80,6 +80,8 @@ public class TakeOutLoanUI : MonoBehaviour
         DebtShop.Instance.AddLoan(loanAmount, interest);
 
         ScoreManager.instance.AddMoney((uint)loanAmount);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.shop_payLoan);
+
 
         UpdateUI();
     }

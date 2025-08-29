@@ -152,6 +152,8 @@ public class Dog : MonoBehaviour
     public void Jump()
     {
         if (hasJumped) return;
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.player_Jump);
+
         hasJumped = true;
         StopAllCoroutines();
 

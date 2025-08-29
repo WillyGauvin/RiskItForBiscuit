@@ -53,6 +53,7 @@ public class MinigameManager : MonoBehaviour
         if (topJaw.touchingFrisbee && bottomJaw.touchingFrisbee && mouthHinge.GetSpeed() < 0f && caughtFrisbee == false)
         {
             caughtFrisbee = true;
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.player_CatchFrisbee);
             StopAllCoroutines();
             dog.CantBite();
             StartCoroutine(WaitForCelebration());

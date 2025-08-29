@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
         scoreManager = gameObject.GetComponent<ScoreManager>();
         dayManager = gameObject.GetComponent<DayManager>();
         debtSystem = gameObject.GetComponent<DebtSystem>();
+
+        AudioManager.instance.ForceLoad();
     }
 
     public void TriggerGameOver()

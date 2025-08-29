@@ -11,11 +11,6 @@ public class Wallet : MonoBehaviour
         UpdateWallet();
     }
 
-    private void OnDestroy()
-    {
-        ScoreManager.instance.UpdateMoney.RemoveListener(UpdateWallet);
-    }
-
     private void UpdateWallet()
     {
         money.text = "$ " + ScoreManager.instance.currentMoney.ToString();

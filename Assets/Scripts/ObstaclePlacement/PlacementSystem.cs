@@ -103,7 +103,11 @@ public class PlacementSystem : MonoBehaviour
 
     private void PlaceStructure()
     {
-        if (inputManager.isPointerOverUI()) return;
+        if (inputManager.isPointerOverUI())
+        {
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.build_PlaceError);
+            return;
+        }
 
         Vector3 mousePosition = inputManager.GetSelectedMapPosition();
         Vector3Int gridPosition = grid.WorldToCell(mousePosition);
