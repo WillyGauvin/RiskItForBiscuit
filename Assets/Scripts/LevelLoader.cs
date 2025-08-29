@@ -5,6 +5,8 @@ public class LevelLoader : MonoBehaviour
 {
     public static LevelLoader Instance;
 
+    [SerializeField] GameObject statsScreen;
+
     public void Awake()
     {
         if (Instance != null) Debug.LogError("More than one level loader found");
@@ -16,7 +18,7 @@ public class LevelLoader : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        statsScreen.SetActive(false);
     }
 
     public void LoadBeginning()
@@ -41,7 +43,7 @@ public class LevelLoader : MonoBehaviour
         else
         {
             // Shop
-            StartCoroutine(LoadLevel(1));
+            StartCoroutine(ShowStatsAndLoad(1));
         }
     }
 
@@ -67,5 +69,20 @@ public class LevelLoader : MonoBehaviour
         yield return new WaitForSeconds(transitionTime);
         //Load Scene
         SceneManager.LoadScene(levelIndex);
+    }
+
+    IEnumerator ShowStatsAndLoad(int levelIndex)
+    {
+        //Play animation
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(transitionTime);
+        statsScreen.SetActive(true);
+
+        //Wait
+        yield return new WaitForSeconds(transitionTime * 2.0f);
+
+        //Load Scene
+        SceneManager.LoadScene(levelIndex);
+        ScoreManager.instance.ResetScore();
     }
 }

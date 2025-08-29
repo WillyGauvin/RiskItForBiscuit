@@ -118,7 +118,7 @@ public class ScoreManager : MonoBehaviour
     /// <summary>
     /// Reset total score back to default.
     /// </summary>
-    void ResetScore()
+    public void ResetScore()
     {
         ResetDive();
         totalScore = 0;
@@ -197,6 +197,7 @@ public class ScoreManager : MonoBehaviour
             earnedScoreForJump = (int)(earnedScoreForJump * reductionMultiplier);
         }
         totalScore += earnedScoreForJump;
+
         UpdateTotalScore?.Invoke();
     }
 
@@ -235,10 +236,6 @@ public class ScoreManager : MonoBehaviour
         currentMoney = Mathf.Round(currentMoney * 100) / 100f;
 
         UpdateMoney?.Invoke();
-
-        UpdateTotalScore?.Invoke();
-
-        ResetScore();
     }
 
     /// <summary>
