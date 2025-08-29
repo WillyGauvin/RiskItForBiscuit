@@ -134,7 +134,7 @@ public class JumpAndLandDetection : MonoBehaviour
                     }
                     else
                     {
-                        StartCoroutine(DisplayStat("Frisbee Not Caught! x0.5 Points Earned!"));
+                        StartCoroutine(DisplayStat("Frisbee Not Caught!\nx0.5 Points Earned!"));
                     }
                     yield return new WaitForSeconds(timeToDisplay);
                     break;
