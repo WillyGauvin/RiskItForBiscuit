@@ -14,8 +14,6 @@ public class Shop : MonoBehaviour
 {
     public Animator shopPopUp;
 
-    [SerializeField] private ScrollRect scrollRect;
-
     [SerializeField] private ShopType shopType;
 
     [SerializeField] string id;
@@ -53,8 +51,6 @@ public class Shop : MonoBehaviour
                     AudioManager.instance.SetMusicArea(Music_States.loan_shark);
                     break;
             }
-
-            StartCoroutine(SetScrollBar());
         }
         else
         {
@@ -71,14 +67,5 @@ public class Shop : MonoBehaviour
 
 
         StopAllCoroutines();
-    }
-
-    IEnumerator SetScrollBar()
-    {
-        yield return new WaitForSeconds(0.5f);
-        if (scrollRect != null)
-        {
-            scrollRect.verticalNormalizedPosition = 1f;
-        }
     }
 }

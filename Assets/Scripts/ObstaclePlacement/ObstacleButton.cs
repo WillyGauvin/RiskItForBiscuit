@@ -5,6 +5,7 @@ public class ObstacleButton : MonoBehaviour
 {
     [SerializeField] Button button;
     [SerializeField] TextMeshProUGUI countText;
+    [SerializeField] Image obstacleImage;
 
     private float count;
     public int ID;
@@ -16,9 +17,9 @@ public class ObstacleButton : MonoBehaviour
 
     public void Init(int ID, Sprite buttonImage, float count)
     {
-        button.image.sprite = buttonImage;
         this.count = count;
         this.ID = ID;
+        obstacleImage.sprite = buttonImage;
 
         button.onClick.AddListener(OnButtonClick);
         UpdateUI();

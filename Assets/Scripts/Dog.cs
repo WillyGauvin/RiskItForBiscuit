@@ -31,6 +31,7 @@ public class Dog : MonoBehaviour
     [SerializeField] float jumpAccelerationRate;
     [SerializeField] float maxJumpForce = 20.0f;
     [SerializeField] float currentJumpForce = 0.0f;
+    [SerializeField] float startingJumpForce = 1.0f;
 
     [Header("Trajectory")]
     [SerializeField] Projection projection;
@@ -91,7 +92,7 @@ public class Dog : MonoBehaviour
         if (isRunning && !hasJumped)
         {
             jumpForce = transform.up * currentJumpForce;
-            projection.SimulateTrajectory(transform.position, jumpForce, body.linearVelocity);
+            projection.SimulateTrajectory(jumpForce, body.linearVelocity);
         }
     }
 
@@ -99,13 +100,13 @@ public class Dog : MonoBehaviour
     {
         StopAllCoroutines();
 
-        GetComponent<LineRenderer>().enabled = false;
+        projection._line.enabled = false;
         body.linearVelocity = Vector3.zero;
         transform.position = startingPos;
         transform.rotation = startingRot;
         isRunning = false;
         isCharging = false;
-        currentJumpForce = 0.0f;
+        currentJumpForce = startingJumpForce;
         currentSpeed = 0.0f;
         jumpForce = Vector3.zero;
         hasJumped = false;
@@ -120,7 +121,7 @@ public class Dog : MonoBehaviour
         if (!isRunning)
         {
             StartCoroutine(Run());
-            GetComponent<LineRenderer>().enabled = true;
+            projection._line.enabled = true;
         }
     }
 
@@ -148,6 +149,7 @@ public class Dog : MonoBehaviour
     public void StopChargeJump()
     {
         StopCoroutine(JumpCharge);
+        isCharging = false;
     }
     public void Jump()
     {

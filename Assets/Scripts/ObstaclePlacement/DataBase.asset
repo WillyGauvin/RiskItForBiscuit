@@ -30,14 +30,14 @@ MonoBehaviour:
   - <Name>k__BackingField: Flaming Hoop
     <ID>k__BackingField: 2
     <Size>k__BackingField: {x: 1, y: 1}
-    <Prefab>k__BackingField: {fileID: 5784697984092272188, guid: c53aaea007c58194d99d3c0a77bd5d40, type: 3}
+    <Prefab>k__BackingField: {fileID: 5387413497508719975, guid: 612fd0a37f310f34c9833fd19b97e41b, type: 3}
     <Icon>k__BackingField: {fileID: 21300000, guid: 322004c31632b9343b27598630a439a1, type: 3}
     allowedRows: 
     blockedRows: 
   - <Name>k__BackingField: Flying Fan
     <ID>k__BackingField: 3
     <Size>k__BackingField: {x: 2, y: 1}
-    <Prefab>k__BackingField: {fileID: 5784697984092272188, guid: c53aaea007c58194d99d3c0a77bd5d40, type: 3}
+    <Prefab>k__BackingField: {fileID: 5784697984092272188, guid: 576bfe169cae0f641b11d769b4c43c7a, type: 3}
     <Icon>k__BackingField: {fileID: 21300000, guid: 1dc9122b9a9f8b3469ee7e5a565db09d, type: 3}
     allowedRows: 
     blockedRows: 

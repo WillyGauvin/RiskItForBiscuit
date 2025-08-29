@@ -3,7 +3,15 @@ using UnityEngine;
 
 public class Hoop : MonoBehaviour
 {
+    enum HoopType
+    {
+        Regular,
+        Flame
+    }
+
     bool hasCollided = false;
+
+    [SerializeField] HoopType typeOfHoop = HoopType.Regular;
 
     [SerializeField] float hoopCooldown = 2.0f;
 
@@ -32,7 +40,17 @@ public class Hoop : MonoBehaviour
 
         if (hoopRenderer) { hoopRenderer.material.color = triggered; }
 
-        ScoreManager.instance.HoopPerformed();
+        switch (typeOfHoop)
+        {
+            case HoopType.Flame:
+                ScoreManager.instance.FlameHoopPerformed();
+                break;
+
+            case HoopType.Regular:
+            default:
+                ScoreManager.instance.HoopPerformed();
+                break;
+        }
 
         yield return new WaitForSeconds(hoopCooldown);
 
