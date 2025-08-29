@@ -27,9 +27,12 @@ public class FrisbeeCatcherAndDetector : MonoBehaviour
         {
             if (other.CompareTag("Frisbee"))
             {
-                frisbee = other.gameObject;
-                interactedWithFrisbee = true;
-                StartCoroutine(SlowDownTime());
+                if (MinigameManager.canPlayGame)
+                {
+                    frisbee = other.gameObject;
+                    interactedWithFrisbee = true;
+                    StartCoroutine(SlowDownTime());
+                }
             }
         }
     }

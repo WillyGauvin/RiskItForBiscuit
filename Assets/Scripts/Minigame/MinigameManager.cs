@@ -41,9 +41,12 @@ public class MinigameManager : MonoBehaviour
 
     bool caughtFrisbee = false;
 
+    public static bool canPlayGame = true;
+
 
     void OnEnable()
     {
+        canPlayGame = true;
         _instance = this;
         allColliders = GetComponentsInChildren<Collider2D>().ToList();
         foreach (Collider2D collider in allColliders)
@@ -58,6 +61,11 @@ public class MinigameManager : MonoBehaviour
         {
             mouthHinge.SetSpeed(80f);
         }
+    }
+
+    void OnDisable()
+    {
+        canPlayGame = false;
     }
 
     void Start()
