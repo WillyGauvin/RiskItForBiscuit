@@ -114,7 +114,10 @@ public class PlacementSystem : MonoBehaviour
 
         buildingState.OnAction(gridPosition);
 
-        StopPlacement();
+        if (buildingState is PlacementState)
+        {
+            StopPlacement();
+        }
     }
 
 
@@ -126,6 +129,7 @@ public class PlacementSystem : MonoBehaviour
     public void ExitBuildMode()
     {
         gridVisualization.SetActive(false);
+        StopPlacement();
     }
 
     private void LoadObstacles()
