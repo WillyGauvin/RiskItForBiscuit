@@ -8,11 +8,14 @@ public class StatsMenu : MonoBehaviour
     [SerializeField] TMP_Text scoreEarned;
     [SerializeField] TMP_Text moneyEarned;
 
+    [SerializeField] TMP_Text totalMoney;
+
     private void OnEnable()
     {
         SetDayCount();
         SetScoreEarned();
         SetMoneyEarned();
+        SetTotalMoney();
     }
 
     void SetDayCount()
@@ -27,6 +30,11 @@ public class StatsMenu : MonoBehaviour
 
     void SetMoneyEarned()
     {
-        moneyEarned.text = "Current Balance: $" + ScoreManager.instance.currentMoney.ToString();
+        moneyEarned.text = "Money Earned: $" + ScoreManager.instance.moneyThisDay.ToString();
+    }
+
+    void SetTotalMoney()
+    {
+        totalMoney.text = "Current Balance: $" + ScoreManager.instance.currentMoney.ToString();
     }
 }

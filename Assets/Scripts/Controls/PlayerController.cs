@@ -158,6 +158,8 @@ public class PlayerController : MonoBehaviour
 
     void OnBeginRun(InputValue value)
     {
+        if (!myDog) { return; }
+
         if (value.isPressed)
         {
             myDog.BeginRun();
@@ -166,6 +168,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnPlayerJump(InputAction.CallbackContext context)
     {
+        if (!myDog) { return; }
+
         if (context.started)
         {
             myDog.ChargeJump();
@@ -192,33 +196,33 @@ public class PlayerController : MonoBehaviour
 
     public void OnReset(InputValue value)
     {
-        myDog.Reset();
+        if (myDog) { myDog.Reset(); }
     }
 
 
     public void OnBackCalfContraction(InputAction.CallbackContext context)
     {
-        legControls.OnContractBackCalf(context);
+        if (legControls) { legControls.OnContractBackCalf(context); }
     }
 
     public void OnBackThighContraction(InputAction.CallbackContext context)
     {
-        legControls.OnContractBackThigh(context);
+        if (legControls) { legControls.OnContractBackThigh(context); }
     }
 
     public void OnFrontCalfContraction(InputAction.CallbackContext context)
     {
-        legControls.OnContractFrontCalf(context);
+        if (legControls) { legControls.OnContractFrontCalf(context); }
     }
 
     public void OnFrontThighContraction(InputAction.CallbackContext context)
     {
-        legControls.OnContractFrontThigh(context);
+        if (legControls) { legControls.OnContractFrontThigh(context); }
     }
 
     public void OnTailWag(InputAction.CallbackContext context)
     {
-        legControls.OnTailWag(context);
+        if (legControls) { legControls.OnTailWag(context); }
     }
 
     public void OnMouseMove(InputAction.CallbackContext context)

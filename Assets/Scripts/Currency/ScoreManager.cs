@@ -60,6 +60,7 @@ public class ScoreManager : MonoBehaviour
 
     // Money
     [Header("Money")]
+    [SerializeField] public float moneyThisDay { get; private set; }
     [field: SerializeField] public float currentMoney { get; private set; }
     const float startingFunds = 50.0f;
 
@@ -70,7 +71,7 @@ public class ScoreManager : MonoBehaviour
     private void Awake()
     {
         ResetScore();
-        ResetMoney();
+        ResetCurrentMoney();
 
         currentMoney = startingFunds;
     }
@@ -87,7 +88,7 @@ public class ScoreManager : MonoBehaviour
         if (Keyboard.current.digit0Key.wasPressedThisFrame)
         {
             ResetScore();
-            ResetMoney();
+            ResetCurrentMoney();
         }
 
         if (Keyboard.current.minusKey.wasPressedThisFrame)
@@ -122,12 +123,14 @@ public class ScoreManager : MonoBehaviour
     {
         ResetDive();
         totalScore = 0;
+        moneyThisDay = 0.0f;
+        UpdateTotalScore?.Invoke();
     }
 
     /// <summary>
     /// Reset current money back to default.
     /// </summary>
-    void ResetMoney()
+    void ResetCurrentMoney()
     {
         currentMoney = 0.0f;
         UpdateMoney?.Invoke();
@@ -232,8 +235,10 @@ public class ScoreManager : MonoBehaviour
     {
         if (totalScore <= 0) { return; }
 
-        currentMoney += (totalScore * scoreMoneyConversion);
-        currentMoney = Mathf.Round(currentMoney * 100) / 100f;
+        moneyThisDay += (totalScore * scoreMoneyConversion);
+        moneyThisDay = Mathf.Round(moneyThisDay * 100) / 100f;
+
+        currentMoney += moneyThisDay;
 
         UpdateMoney?.Invoke();
     }
