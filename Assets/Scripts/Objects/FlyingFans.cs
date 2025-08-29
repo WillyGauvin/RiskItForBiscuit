@@ -16,7 +16,7 @@ public class FlyingFans : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float newHeight = startHeight + Mathf.Sin(Time.time * speed) * maxHeight;
+        float newHeight = startHeight - Mathf.Sin(Time.time * speed) * maxHeight;
 
         transform.position = new Vector3(transform.position.x, newHeight, transform.position.z);
     }
