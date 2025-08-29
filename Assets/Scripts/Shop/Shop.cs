@@ -16,6 +16,12 @@ public class Shop : MonoBehaviour
 
     [SerializeField] private ShopType shopType;
 
+    [SerializeField] string id;
+
+    [SerializeField] ShopTutorial tutorial;
+
+    [SerializeField] TutorialManager tutorialManager;
+
     private void Awake()
     {
         gameObject.SetActive(true);
@@ -25,6 +31,11 @@ public class Shop : MonoBehaviour
     {
         if (shopPopUp != null && shopPopUp.runtimeAnimatorController != null)
         {
+            if (tutorialManager.CheckIfFirstTime(id))
+            {
+                Debug.Log("Tutorial Started");
+                tutorial.StartTutorial();
+            }
             shopPopUp.SetTrigger("Start");
             AudioManager.instance.PlayOneShot(FMODEvents.instance.shop_enter);
             AudioManager.instance.SetAmbienceParameter("ambience_transition", 0.5f);
