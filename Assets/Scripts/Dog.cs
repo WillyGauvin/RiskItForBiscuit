@@ -55,6 +55,9 @@ public class Dog : MonoBehaviour
     [Header("AnimationSettings")]
     [SerializeField] DogAnimationManager animationManager;
 
+    [Header("VFX")]
+    [SerializeField] GameObject WaterSplashPrefab;
+
 
     Vector3 jumpForce;
     Vector3 startingPos;
@@ -114,12 +117,15 @@ public class Dog : MonoBehaviour
         if (DockCam != null) { DockCam.enabled = true; }
         frisbeeCatchDetection.Reset();
         animationManager.Reset();
+        transform.rotation = Quaternion.Euler(0, 90, 0);
+
     }
 
     public void BeginRun()
     {
         if (!isRunning)
         {
+            FollowCam.Follow = transform;
             StartCoroutine(Run());
             projection._line.enabled = true;
         }
@@ -229,13 +235,15 @@ public class Dog : MonoBehaviour
     /// <returns></returns>
     IEnumerator BeginSwim()
     {
+        animationManager.Reset();
+        transform.rotation = Quaternion.Euler(0, -90, 0);
         body.linearVelocity = Vector3.zero;
         currentSpeed = 0.0f;
         while (true)
         {
             currentSpeed = Mathf.MoveTowards(currentSpeed, maxSpeed, (accelerationRate / 2.0f) * Time.fixedDeltaTime);
 
-            body.linearVelocity = -transform.forward * currentSpeed;
+            body.linearVelocity = transform.forward * currentSpeed;
 
             yield return new WaitForFixedUpdate();
         }
@@ -291,5 +299,14 @@ public class Dog : MonoBehaviour
             ApplyStatIncrease(Jump2);
             Debug.Log("Applied Jump2");
         }
+    }
+
+    public void Landed()
+    {
+        if (WaterSplashPrefab)
+        {
+            Instantiate(WaterSplashPrefab, transform.position, Quaternion.Euler(new Vector3(-90,0,0)));
+        }
+        //FollowCam.Follow = null;
     }
 }

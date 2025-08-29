@@ -40,6 +40,8 @@ public class JumpAndLandDetection : MonoBehaviour
             // Do not allow for a double collision with the water.
             if (hasLanded) { return; }
 
+            dog.Landed();
+
             AudioManager.instance.PlayOneShot(FMODEvents.instance.waterSplash);
 
             hasLanded = true;

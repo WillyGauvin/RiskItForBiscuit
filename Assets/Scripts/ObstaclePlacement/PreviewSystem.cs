@@ -25,6 +25,12 @@ public class PreviewSystem : MonoBehaviour
         PreparePreview(previewObject);
         PrepareCursor(size);
         cellIndicator.SetActive(true);
+
+        FlyingFans fan = previewObject.GetComponent<FlyingFans>();
+        if (fan)
+        {
+            fan.enabled = false;
+        }
     }
 
     public void StopShowingPreview()
