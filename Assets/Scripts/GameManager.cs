@@ -37,10 +37,28 @@ public class GameManager : MonoBehaviour
         debtSystem = gameObject.GetComponent<DebtSystem>();
     }
 
+    public void TriggerGameOver()
+    {
+        isGameEnded = true;
+        badEnding = true;
+        Debug.Log("Debt was not paid off on time. Game Over.");
+    }
+
+    public void TriggerGameVictory()
+    {
+        isGameEnded = true;
+    }
+
     public void SetPlayer(GameObject obj)
     {
         if (player == null) { player = obj; }
     }
+
+    private bool isGameEnded = false;
+    public bool IsGameEnded => isGameEnded;
+
+    private bool badEnding = false;
+    public bool IsBadEnding => badEnding;
 
     private GameObject player;
     public GameObject Player => player;

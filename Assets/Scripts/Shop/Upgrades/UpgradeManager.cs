@@ -48,6 +48,7 @@ public class UpgradeManager : MonoBehaviour
 
             case UpgradeType.ScoringModifier:
                 Debug.Log($"Applied Scoring Modifier: {upgradeData.abilityID}");
+                ScoreManager.instance.AddScoreMultiplier(upgradeData.multiplier);
                 break;
 
             case UpgradeType.SceneModifier:

@@ -52,6 +52,9 @@ public class DebtShop : Shop
         if (runtimeData.loans.Count <= 0)
         {
             //Call game over
+            GameManager.instance.TriggerGameVictory();
+
+            LevelLoader.Instance.LoadNextLevel();
         }
     }
 

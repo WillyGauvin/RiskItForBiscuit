@@ -41,8 +41,10 @@ public class PayOffLoanUI : MonoBehaviour
     {
         payoffLoanSlider.onValueChanged.RemoveAllListeners();
         payOffLoanButton.onClick.RemoveAllListeners();
-        ScoreManager.instance.UpdateMoney.RemoveListener(UpdateUI);
-
+        if (GameManager.instance)
+        {
+            ScoreManager.instance.UpdateMoney.RemoveListener(UpdateUI);
+        }
     }
 
     private void OnSliderChanged(float percent)

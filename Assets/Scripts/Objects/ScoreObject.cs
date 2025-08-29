@@ -3,7 +3,7 @@ using UnityEngine;
 public class ScoreObject : MonoBehaviour
 {
     [Header("Score")]
-    [SerializeField] int scoreToGive = 250;
+    [SerializeField] int scoreToGive = 500;
 
     [Header("Hover")]
     [SerializeField] float maxHeight = 10.0f;
@@ -24,6 +24,12 @@ public class ScoreObject : MonoBehaviour
         float newHeight = startHeight + Mathf.Sin(Time.time * speed) * maxHeight;
 
         transform.position = new Vector3(transform.position.x, newHeight, transform.position.z);
+    }
+
+    public void SetNewPosition(Vector3 newPosition)
+    {
+        transform.position = newPosition;
+        startHeight = newPosition.y;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

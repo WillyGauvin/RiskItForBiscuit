@@ -42,6 +42,12 @@ public class GameMenuManager : MonoBehaviour
         settingsMenu.SetActive(false);
     }
 
+    public void OpenSettingsMenu()
+    {
+        ResetMenus();
+        settingsMenu.SetActive(true);
+    }
+
     public void Pause()
     {
         Time.timeScale = 0.0f;

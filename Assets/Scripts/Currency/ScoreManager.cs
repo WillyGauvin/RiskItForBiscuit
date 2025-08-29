@@ -56,8 +56,11 @@ public class ScoreManager : MonoBehaviour
     // Allows for score and money to not be 1:1. Huge score = dopamine, but not infinite money.
     [SerializeField, Range(0, 1)] float scoreMoneyConversion = 0.1f;
 
+    [SerializeField] float scoreMultiplier = 1.0f;
+
     // Money
     [Header("Money")]
+    [SerializeField] public float moneyThisDay { get; private set; }
     [field: SerializeField] public float currentMoney { get; private set; }
     const float startingFunds = 50.0f;
 
@@ -68,9 +71,15 @@ public class ScoreManager : MonoBehaviour
     private void Awake()
     {
         ResetScore();
-        ResetMoney();
+        ResetCurrentMoney();
 
         currentMoney = startingFunds;
+    }
+
+    private void OnDestroy()
+    {
+        UpdateTotalScore.RemoveAllListeners();
+        UpdateMoney.RemoveAllListeners();
     }
 
 #if UNITY_EDITOR
@@ -79,7 +88,7 @@ public class ScoreManager : MonoBehaviour
         if (Keyboard.current.digit0Key.wasPressedThisFrame)
         {
             ResetScore();
-            ResetMoney();
+            ResetCurrentMoney();
         }
 
         if (Keyboard.current.minusKey.wasPressedThisFrame)
@@ -110,16 +119,18 @@ public class ScoreManager : MonoBehaviour
     /// <summary>
     /// Reset total score back to default.
     /// </summary>
-    void ResetScore()
+    public void ResetScore()
     {
         ResetDive();
         totalScore = 0;
+        moneyThisDay = 0.0f;
+        UpdateTotalScore?.Invoke();
     }
 
     /// <summary>
     /// Reset current money back to default.
     /// </summary>
-    void ResetMoney()
+    void ResetCurrentMoney()
     {
         currentMoney = 0.0f;
         UpdateMoney?.Invoke();
@@ -179,6 +190,9 @@ public class ScoreManager : MonoBehaviour
     /// </summary>
     public void TotalPointsForJump()
     {
+        // Apply score multiplier
+        earnedScoreForJump = (int)(earnedScoreForJump * scoreMultiplier);
+
         // Keep all points if frisbee was caught- else, point penalty.
         if (!wasFrisbeeCaught)
         {
@@ -186,7 +200,17 @@ public class ScoreManager : MonoBehaviour
             earnedScoreForJump = (int)(earnedScoreForJump * reductionMultiplier);
         }
         totalScore += earnedScoreForJump;
+
         UpdateTotalScore?.Invoke();
+    }
+
+    /// <summary>
+    /// Hello everybody, my name is Score Multiplier.
+    /// </summary>
+    /// <param name="newMultiplier"></param>
+    public void AddScoreMultiplier(float newMultiplier)
+    {
+        scoreMultiplier = newMultiplier;
     }
 
     #endregion
@@ -197,7 +221,7 @@ public class ScoreManager : MonoBehaviour
     /// Adds an amount to your current funds.
     /// </summary>
     /// <param name="value">Amount of money to add.</param>
-    public void AddMoney(uint value)
+    public void AddMoney(float value)
     {
         currentMoney += value;
 
@@ -211,21 +235,19 @@ public class ScoreManager : MonoBehaviour
     {
         if (totalScore <= 0) { return; }
 
-        currentMoney += (totalScore * scoreMoneyConversion);
+        moneyThisDay += (totalScore * scoreMoneyConversion);
+        moneyThisDay = Mathf.Round(moneyThisDay * 100) / 100f;
 
+        currentMoney += moneyThisDay;
 
         UpdateMoney?.Invoke();
-
-        UpdateTotalScore?.Invoke();
-
-        ResetScore();
     }
 
     /// <summary>
     /// Spend your money in the shop.
     /// </summary>
     /// <param name="price">Price of item/upgrade purchased.</param>
-    public void SpendMoney(uint price)
+    public void SpendMoney(float price)
     {
         if (price <= 0 ||
             currentMoney - price < 0) { return; }
@@ -235,7 +257,7 @@ public class ScoreManager : MonoBehaviour
         UpdateMoney?.Invoke();
     }
 
-    public bool CanAfford(uint price)
+    public bool CanAfford(float price)
     {
         return (currentMoney - price >= 0);
     }
