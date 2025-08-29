@@ -76,8 +76,6 @@ public class MinigameFrisbee : MonoBehaviour
 
         target = FindPointInBox(endingBox);
 
-        //Rotate towards that point
-        //Rotate towards that point
         float angle = FindAngle(target, frisbeeTransform.position);
         frisbeeTransform.rotation = Quaternion.Euler(0, 0, angle + 90);
 
@@ -85,8 +83,9 @@ public class MinigameFrisbee : MonoBehaviour
         if (hit.point != Vector2.zero)
         {
             Vector3 spawnPosition = hit.point;
+            spawnPosition.z -= 5f;
             exclamation = Instantiate(exclamationPrefab, spawnPosition, Quaternion.Euler(0, 0, angle - 90f));
-            //exclamation.transform.position -= exclamation.transform.right * 0.05f;
+            exclamation.transform.position -= exclamation.transform.right;
         }
 
         //Throw frisbee
