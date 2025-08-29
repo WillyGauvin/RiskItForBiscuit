@@ -49,6 +49,8 @@ public class JumpAndLandDetection : MonoBehaviour
 
             StartCoroutine(ShowDiveStats());
 
+            MinigameManager.canPlayGame = false;
+
             if (MinigameManager.instance != null)
             {
                 if (MinigameManager.instance.isActiveAndEnabled)

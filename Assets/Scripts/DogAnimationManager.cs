@@ -14,7 +14,7 @@ public class DogAnimationManager : MonoBehaviour
 
     [SerializeField] Animator animator;
 
-    void Start()
+    void OnEnable()
     {
         rbs = GetComponentsInChildren<Rigidbody2D>().ToList();
         rbs.Add(GetComponent<Rigidbody2D>());
@@ -46,5 +46,6 @@ public class DogAnimationManager : MonoBehaviour
             rb.angularVelocity = 0f;
         }
         animator.enabled = true;
+        MinigameManager.canPlayGame = true;
     }
 }

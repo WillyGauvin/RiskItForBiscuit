@@ -19,7 +19,7 @@ public class UpgradeManager : MonoBehaviour
             runtimeData = Instantiate(upgradeDataAsset);
         }
 
-        if (SceneManager.GetActiveScene().buildIndex == 1)
+        if (SceneManager.GetActiveScene().buildIndex == 2)
         {
             foreach (UpgradeDataSO upgrade in runtimeData.Upgrades)
             {

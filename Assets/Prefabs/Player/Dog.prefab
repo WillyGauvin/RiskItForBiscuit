@@ -93,7 +93,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1
+  m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &998484595941248531
 GameObject:
@@ -229,7 +229,7 @@ FixedJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 4.4387093, y: 3.5}
+  m_ConnectedAnchor: {x: 4.438707, y: 3.5}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!114 &6933968579811083690
@@ -497,7 +497,7 @@ HingeJoint2D:
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
-    m_MaximumMotorForce: 10000
+    m_MaximumMotorForce: 500
   m_UseLimits: 1
   m_AngleLimits:
     m_LowerAngle: -45
@@ -789,11 +789,11 @@ HingeJoint2D:
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
-    m_MaximumMotorForce: 10000
+    m_MaximumMotorForce: 500
   m_UseLimits: 1
   m_AngleLimits:
     m_LowerAngle: -65
-    m_UpperAngle: 160
+    m_UpperAngle: 40
 --- !u!114 &2335253790018567743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1064,7 +1064,7 @@ HingeJoint2D:
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
-    m_MaximumMotorForce: 10000
+    m_MaximumMotorForce: 500
   m_UseLimits: 1
   m_AngleLimits:
     m_LowerAngle: 0
@@ -1804,7 +1804,7 @@ HingeJoint2D:
   m_UseMotor: 1
   m_Motor:
     m_MotorSpeed: 0
-    m_MaximumMotorForce: 100
+    m_MaximumMotorForce: 500
   m_UseLimits: 1
   m_AngleLimits:
     m_LowerAngle: -60
@@ -2040,7 +2040,7 @@ HingeJoint2D:
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
-    m_MaximumMotorForce: 10000
+    m_MaximumMotorForce: 500
   m_UseLimits: 1
   m_AngleLimits:
     m_LowerAngle: 0
@@ -2449,10 +2449,10 @@ MonoBehaviour:
   isRunning: 0
   isCharging: 0
   hasJumped: 0
-  Jump1: {fileID: 0}
-  Jump2: {fileID: 0}
-  Run1: {fileID: 0}
-  Run2: {fileID: 0}
+  Jump1: {fileID: 11400000, guid: 4df307f955dcb9f4880b6ca59bcacd1f, type: 2}
+  Jump2: {fileID: 11400000, guid: 4f8a7560f60d1784c903de9233dd8da7, type: 2}
+  Run1: {fileID: 11400000, guid: 5da5014760db9364d83306c1a4208230, type: 2}
+  Run2: {fileID: 11400000, guid: 9dc4a0f6c89467149b2a185cf1eef8ed, type: 2}
 --- !u!114 &3023763661538049832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2491,7 +2491,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 04469e789e736874fa02823c7d717735, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2522,8 +2522,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.20512772
+        time: 0.03155899
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -2535,8 +2535,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0, b: 0, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 0, g: 1, b: 0.14495587, a: 1}
+      key1: {r: 1, g: 0, b: 0, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -2566,7 +2566,7 @@ LineRenderer:
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 0
+    textureMode: 1
     textureScale: {x: 1, y: 1}
     shadowBias: 0.5
     generateLightingData: 0
@@ -2621,10 +2621,13 @@ MonoBehaviour:
   - {fileID: 817295629636319039}
   - {fileID: 1524019212036668504}
   calfFlipInfluence: 0.5
-  maxTorqueAmount: 10
+  maxTorqueAmount: 0.5
   rb2d: {fileID: 6401950611826806482}
-  onMotorSpeed: 80
+  onMotorSpeed: 50
   head: {fileID: 0}
+  canFlip: 0
+  canTouchToes: 0
+  canWagTail: 0
 --- !u!114 &8151556032207028250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3008,7 +3011,7 @@ HingeJoint2D:
   m_UseMotor: 1
   m_Motor:
     m_MotorSpeed: 0
-    m_MaximumMotorForce: 100
+    m_MaximumMotorForce: 500
   m_UseLimits: 1
   m_AngleLimits:
     m_LowerAngle: 0

@@ -44,7 +44,7 @@ public class LegControls : MonoBehaviour
     [SerializeField] float calfFlipInfluence = .25f;
     float thighFlipInfluence;
 
-    [Range(10, 50)]
+    [Range(.1f, 1f)]
     [SerializeField] float maxTorqueAmount;
 
     private bool touchingToes;
@@ -60,9 +60,9 @@ public class LegControls : MonoBehaviour
 
     [SerializeField] HingeJoint2D head;
 
-    bool canFlip;
-    bool canTouchToes;
-    bool canWagTail;
+    [SerializeField] bool canFlip;
+    [SerializeField] bool canTouchToes;
+    [SerializeField] bool canWagTail;
 
     private float desiredAngle = 0;
     private bool touchScored;
@@ -98,7 +98,7 @@ public class LegControls : MonoBehaviour
             case "Wag":
                 canWagTail = true;
                 break;
-            case "Flip":
+            case "Flips":
                 canFlip = true;
                 break;
             case "TouchToes":
@@ -193,6 +193,7 @@ public class LegControls : MonoBehaviour
     {
         if (contractingBackCalf && contractingBackThigh && contractingFrontCalf && contractingFrontThigh)
         {
+            Debug.Log("Attempting to touch toes");
             if (touchingToes == false)
             {
                 touchingToes = true;
@@ -339,7 +340,7 @@ public class LegControls : MonoBehaviour
                 if (joint.motor.motorSpeed == 0)
                 {
                     JointMotor2D motor2D = joint.motor;
-                    motor2D.motorSpeed = 100f;
+                    motor2D.motorSpeed = 300f;
                     joint.motor = motor2D;
                 }
 
