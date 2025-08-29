@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class Projection : MonoBehaviour
 {
-    [SerializeField] private LineRenderer _line;
+    [SerializeField] public LineRenderer _line;
     [SerializeField] private float timeStep = 0.02f; // simulation interval per point
 
     /// <summary>
     /// Simulates the trajectory analytically from start to landing
     /// </summary>
-    public void SimulateTrajectory(Vector3 startPos, Vector3 launchForce, Vector3 currentVelocity)
+    public void SimulateTrajectory(Vector3 launchForce, Vector3 currentVelocity)
     {
         if (_line == null) return;
 
@@ -18,7 +18,7 @@ public class Projection : MonoBehaviour
         // Solve for total flight time using quadratic equation: y = y0 + vy*t + 0.5*g*t^2
         float a = 0.5f * Physics.gravity.y;
         float b = initialVelocity.y;
-        float c = startPos.y;
+        float c = _line.transform.position.y;
         
         float discriminant = b * b - 4 * a * c;
         float totalTime = 0f;
@@ -35,7 +35,7 @@ public class Projection : MonoBehaviour
         for (int i = 0; i < pointsCount; i++)
         {
             float t = i * timeStep;
-            Vector3 position = startPos + initialVelocity * t + 0.5f * Physics.gravity * t * t;
+            Vector3 position = _line.transform.position + initialVelocity * t + 0.5f * Physics.gravity * t * t;
             _line.SetPosition(i, position);
         }
     }
