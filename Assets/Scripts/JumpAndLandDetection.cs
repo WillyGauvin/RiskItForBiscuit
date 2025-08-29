@@ -48,6 +48,14 @@ public class JumpAndLandDetection : MonoBehaviour
             ScoreManager.instance.TotalPointsForJump();
 
             StartCoroutine(ShowDiveStats());
+
+            if (MinigameManager.instance != null)
+            {
+                if (MinigameManager.instance.isActiveAndEnabled)
+                {
+                    MinigameManager.instance.DisableGame();
+                }
+            }
         }
 
         if (other.CompareTag("EdgeOfDock"))

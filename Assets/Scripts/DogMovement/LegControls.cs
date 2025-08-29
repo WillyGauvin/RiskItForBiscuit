@@ -76,7 +76,7 @@ public class LegControls : MonoBehaviour
 
     public void OnContractBackCalf(InputAction.CallbackContext context)
     {
-        if (canFlip)
+        if (canFlip || canTouchToes)
         {
             if (context.canceled)
             {
@@ -110,7 +110,7 @@ public class LegControls : MonoBehaviour
 
     public void OnContractBackThigh(InputAction.CallbackContext context)
     {
-        if (canFlip)
+        if (canFlip || canTouchToes)
         {
             if (context.canceled)
             {
@@ -128,7 +128,7 @@ public class LegControls : MonoBehaviour
 
     public void OnContractFrontCalf(InputAction.CallbackContext context)
     {
-        if (canFlip)
+        if (canFlip || canTouchToes)
         {
             if (context.canceled)
             {
@@ -146,7 +146,7 @@ public class LegControls : MonoBehaviour
 
     public void OnContractFrontThigh(InputAction.CallbackContext context)
     {
-        if (canFlip)
+        if (canFlip || canTouchToes)
         {
             if (context.canceled)
             {
