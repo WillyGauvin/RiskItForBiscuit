@@ -139,6 +139,14 @@ public class JumpAndLandDetection : MonoBehaviour
                     }
                     break;
 
+                case (int)ScoreStats.FlamingHoop:
+                    if (ScoreManager.instance.numFlameHoops > 0)
+                    {
+                        StartCoroutine(DisplayStat("Flaming Hoops: ", ScoreManager.instance.numFlameHoops));
+                        yield return new WaitForSeconds(timeToDisplay);
+                    }
+                    break;
+
                 case (int)ScoreStats.Frisbee:
                     if (ScoreManager.instance.wasFrisbeeCaught)
                     {
