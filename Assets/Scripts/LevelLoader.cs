@@ -24,7 +24,7 @@ public class LevelLoader : MonoBehaviour
     public void LoadBeginning()
     {
         // Load Dock.
-        StartCoroutine(LoadLevel(1));
+        StartCoroutine(LoadLevel("Shop"));
     }
 
     public void LoadNextLevel()
@@ -35,16 +35,15 @@ public class LevelLoader : MonoBehaviour
             return;
         }
 
-        if (SceneManager.GetActiveScene().buildIndex == 1)
+        if (SceneManager.GetActiveScene().name == "Shop")
         {
             // Dock
-            StartCoroutine(LoadLevel(2));
-
+            StartCoroutine(LoadLevel("Dock"));
         }
-        else
+        else if (SceneManager.GetActiveScene().name == "Dock")
         {
             // Shop
-            StartCoroutine(ShowStatsAndLoad(1));
+            StartCoroutine(ShowStatsAndLoad("Shop"));
 
         }
     }
@@ -54,16 +53,16 @@ public class LevelLoader : MonoBehaviour
         if (GameManager.instance.IsBadEnding)
         {
             // Game Over - Bad Ending
-            StartCoroutine(LoadLevel(3));
+            StartCoroutine(LoadLevel("GameOver"));
         }
         else
         {
             // Victory Screen - Good Ending
-            StartCoroutine(LoadLevel(4));
+            StartCoroutine(LoadLevel("GameVictory"));
         }
     }
 
-    IEnumerator LoadLevel(int levelIndex)
+    IEnumerator LoadLevel(string levelName)
     {
         //Play animation
         transition.SetTrigger("Start");
@@ -71,10 +70,10 @@ public class LevelLoader : MonoBehaviour
         yield return new WaitForSeconds(transitionTime);
         //Load Scene
 
-        SceneManager.LoadScene(levelIndex);
+        SceneManager.LoadScene(levelName);
     }
 
-    IEnumerator ShowStatsAndLoad(int levelIndex)
+    IEnumerator ShowStatsAndLoad(string levelName)
     {
         //Play animation
         transition.SetTrigger("Start");
@@ -85,7 +84,7 @@ public class LevelLoader : MonoBehaviour
         yield return new WaitForSeconds(transitionTime * 2.0f);
 
         //Load Scene
-        SceneManager.LoadScene(levelIndex);
+        SceneManager.LoadScene(levelName);
         ScoreManager.instance.ResetScore();
     }
 }
