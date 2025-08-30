@@ -47,6 +47,10 @@ public class LevelLoader : MonoBehaviour
                 tutorialActive = true;
                 firstTimeJumping = false;
             }
+            else if (BoughItemStart.boughItemDone == false && ObstacleManager.buildTutorialNeeded)
+            {
+                BoughItemStart.boughItemDone = true;
+            }
             StartCoroutine(LoadLevel("Dock"));
         }
         else if (SceneManager.GetActiveScene().name == "Dock")

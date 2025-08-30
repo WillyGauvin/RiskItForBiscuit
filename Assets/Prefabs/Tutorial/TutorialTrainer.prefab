@@ -402,20 +402,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5be85dd6fc1dd94fa97c1a1726734ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialSentences:
-  - {fileID: 4714184093720707966}
-  - {fileID: 8943285409200057917}
-  - {fileID: 9131599888638784807}
-  - {fileID: 7637929234029055129}
   tutorialMaskTransforms:
-  - position: {x: 0, y: 0}
-    size: {x: 0, y: 0}
-  - position: {x: 0, y: 0}
-    size: {x: 0, y: 0}
-  - position: {x: 360, y: 0}
-    size: {x: 1000, y: 800}
-  - position: {x: 0, y: 0}
-    size: {x: 0, y: 0}
+  - maskPosition: {x: 0, y: 0}
+    maskSize: {x: 0, y: 0}
+    textBox: {fileID: 4714184093720707966}
+    maskRotation: 0
+  - maskPosition: {x: 0, y: 0}
+    maskSize: {x: 0, y: 0}
+    textBox: {fileID: 8943285409200057917}
+    maskRotation: 0
+  - maskPosition: {x: 0, y: 0}
+    maskSize: {x: 0, y: 0}
+    textBox: {fileID: 9131599888638784807}
+    maskRotation: 0
+  - maskPosition: {x: 0, y: 0}
+    maskSize: {x: 0, y: 0}
+    textBox: {fileID: 7637929234029055129}
+    maskRotation: 0
   image: {fileID: 9100387406503575154}
   mask: {fileID: 0}
 --- !u!222 &780180845544414616

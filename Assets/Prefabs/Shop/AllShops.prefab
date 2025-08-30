@@ -8215,10 +8215,6 @@ PrefabInstance:
       propertyPath: image
       value: 
       objectReference: {fileID: 4736157098113211857}
-    - target: {fileID: 4384932534233545182, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
-      propertyPath: tutorialMaskTransforms.Array.size
-      value: 7
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 4172369377439350449, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}

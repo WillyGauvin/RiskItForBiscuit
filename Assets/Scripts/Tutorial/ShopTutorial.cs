@@ -10,11 +10,11 @@ public class TutorialMask
     public Vector2 maskPosition;
     public Vector2 maskSize;
     public TextMeshProUGUI textBox;
+    public float maskRotation;
 }
 
 public class ShopTutorial : MonoBehaviour
 {
-    [SerializeField] List<TextMeshProUGUI> tutorialSentences;
     [SerializeField] List<TutorialMask> tutorialMaskTransforms;
 
     int tutorialStep = 0;
@@ -32,20 +32,24 @@ public class ShopTutorial : MonoBehaviour
         image.enabled = true;
         mask.enabled = true;
         input.SwitchCurrentActionMap("Tutorial");
-        tutorialSentences[tutorialStep].enabled = true;
+        //tutorialSentences[tutorialStep].enabled = true;
+        tutorialMaskTransforms[tutorialStep].textBox.enabled = true;
     }
 
     public void OnClick()
     {
         if (tutorialActive)
         {
-            if (tutorialStep < tutorialSentences.Count - 1)
+            if (tutorialStep < tutorialMaskTransforms.Count - 1)
             {
-                tutorialSentences[tutorialStep].enabled = false;
+                tutorialMaskTransforms[tutorialStep].textBox.enabled = false;
+                //tutorialSentences[tutorialStep].enabled = false;
                 tutorialStep += 1;
-                tutorialSentences[tutorialStep].enabled = true;
+                //tutorialSentences[tutorialStep].enabled = true;
+                tutorialMaskTransforms[tutorialStep].textBox.enabled = true;
                 mask.transform.localPosition = tutorialMaskTransforms[tutorialStep].maskPosition;
                 mask.transform.localScale = tutorialMaskTransforms[tutorialStep].maskSize;
+                mask.transform.localRotation = Quaternion.Euler(0, 0, tutorialMaskTransforms[tutorialStep].maskRotation);
             }
             else
             {

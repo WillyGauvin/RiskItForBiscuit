@@ -444,6 +444,7 @@ MonoBehaviour:
     maskSize: {x: 100, y: 600}
     sentence: Oh, keep in mind the floating extra money! Don't question it!
   input: {fileID: 3362544777076111190}
+  boughtItemTutorial: {fileID: 0}
 --- !u!114 &3362544777076111190
 MonoBehaviour:
   m_ObjectHideFlags: 0
