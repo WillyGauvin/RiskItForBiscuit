@@ -151,10 +151,12 @@ public class MinigameManager : MonoBehaviour
         if (caughtFrisbee)
         {
             Debug.Log("Yay!");
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.crowd_good);
         }
         else
         {
             Debug.Log("Aww! :(");
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.crowd_bad);
         }
         float motorSpeed = mouthHinge.GetSpeed();
         input.SwitchCurrentActionMap("Game");

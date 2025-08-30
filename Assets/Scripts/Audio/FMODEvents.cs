@@ -64,6 +64,10 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference minigame_open { get; private set; }
     [field: SerializeField] public EventReference minigame_close { get; private set; }
 
+    [field: Header("Crowd Reaction")]
+    [field: SerializeField] public EventReference crowd_bad { get; private set; }
+    [field: SerializeField] public EventReference crowd_good { get; private set; }
+
 
 
 

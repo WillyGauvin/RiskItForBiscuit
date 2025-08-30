@@ -296,3 +296,17 @@ MonoBehaviour:
       Data3: 1936840889
       Data4: -2005649458
     Path: event:/Minigame Woosh/minigame_close
+  <crowd_bad>k__BackingField:
+    Guid:
+      Data1: 988995592
+      Data2: 1313014045
+      Data3: -1688302427
+      Data4: -317201283
+    Path: event:/Crowd reaction/crowd_bad
+  <crowd_good>k__BackingField:
+    Guid:
+      Data1: -774870174
+      Data2: 1177642270
+      Data3: -1767427412
+      Data4: 218170306
+    Path: event:/Crowd reaction/crowd_good

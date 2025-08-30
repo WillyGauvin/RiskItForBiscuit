@@ -87,7 +87,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/Desktop/sfx.bank
   Name: sfx
   StudioPath: bank:/sfx
-  lastModified: 638921540690719399
+  lastModified: 638921644766263918
   FileSizes: []
   Exists: 1
 --- !u!114 &-5526525181311652256
@@ -300,10 +300,10 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638921540690048996
+  lastModified: 638921644766197240
   FileSizes:
   - Name: 
-    Value: 3380
+    Value: 3482
   Exists: 1
 --- !u!114 &-2933697709175969914
 MonoBehaviour:
@@ -686,13 +686,15 @@ MonoBehaviour:
   - {fileID: 8181747991955100506}
   - {fileID: 2301628067757560608}
   - {fileID: -2933697709175969914}
+  - {fileID: 6809668712866531159}
+  - {fileID: 5976464564009439694}
   EditorParameters: []
   MasterBanks:
   - {fileID: -2393210679365145146}
   StringsBanks:
   - {fileID: -3186124532658125374}
   cacheVersion: 131848
-  cacheTime: 638921540690719399
+  cacheTime: 638921644766263918
   SerializableEventsDict:
   - key: event:/Ambience/ambience_master
     index: 0
@@ -772,6 +774,10 @@ MonoBehaviour:
     index: 37
   - key: event:/SFX/UI_click
     index: 38
+  - key: event:/Crowd reaction/crowd_bad
+    index: 39
+  - key: event:/Crowd reaction/crowd_good
+    index: 40
 --- !u!114 &275478525091793592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1179,6 +1185,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 387500
+--- !u!114 &5976464564009439694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Crowd reaction/crowd_good
+  m_EditorClassIdentifier: 
+  Path: event:/Crowd reaction/crowd_good
+  Guid:
+    Data1: -774870174
+    Data2: 1177642270
+    Data3: -1767427412
+    Data4: 218170306
+  Banks:
+  - {fileID: -6360771981101184072}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &6346714842735606737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1224,6 +1257,33 @@ MonoBehaviour:
     Data2: 1116692677
     Data3: 415234219
     Data4: 1297969518
+  Banks:
+  - {fileID: -6360771981101184072}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &6809668712866531159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Crowd reaction/crowd_bad
+  m_EditorClassIdentifier: 
+  Path: event:/Crowd reaction/crowd_bad
+  Guid:
+    Data1: 988995592
+    Data2: 1313014045
+    Data3: -1688302427
+    Data4: -317201283
   Banks:
   - {fileID: -6360771981101184072}
   IsStream: 0
