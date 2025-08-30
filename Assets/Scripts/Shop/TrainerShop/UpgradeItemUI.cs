@@ -80,6 +80,12 @@ public class UpgradeItemUI : MonoBehaviour
                 UpgradeManager.Instance.AddUpgrade(myUpgrade);
                 ScoreManager.instance.SpendMoney((uint)myUpgrade.price);
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.shop_buyItem);
+                if (myUpgrade.type == UpgradeType.AbilityUnlock)
+                {
+                    VideoManager.instance.OnBuy(myUpgrade.abilityID);
+                }
+                
+
                 UpdateUI();
             }
         }
