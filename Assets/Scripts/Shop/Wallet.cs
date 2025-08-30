@@ -10,6 +10,10 @@ public class Wallet : MonoBehaviour
         ScoreManager.instance.UpdateMoney.AddListener(UpdateWallet);
         UpdateWallet();
     }
+    private void OnDestroy()
+    {
+        ScoreManager.instance.UpdateMoney.RemoveListener(UpdateWallet);
+    }
 
     private void UpdateWallet()
     {
