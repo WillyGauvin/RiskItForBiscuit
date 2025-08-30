@@ -13,6 +13,9 @@ public class LevelLoader : MonoBehaviour
         Instance = this;
     }
 
+    static bool firstTimeJumping = true;
+    public static bool tutorialActive = false;
+
     public Animator transition;
     public float transitionTime = 1.0f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -38,13 +41,18 @@ public class LevelLoader : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Shop")
         {
             // Dock
+            if (firstTimeJumping)
+            {
+                Debug.Log("First Jump");
+                tutorialActive = true;
+                firstTimeJumping = false;
+            }
             StartCoroutine(LoadLevel("Dock"));
         }
         else if (SceneManager.GetActiveScene().name == "Dock")
         {
             // Shop
             StartCoroutine(ShowStatsAndLoad("Shop"));
-
         }
     }
 
