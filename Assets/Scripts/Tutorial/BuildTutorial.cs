@@ -41,6 +41,7 @@ public class BuildTutorial : MonoBehaviour
         overlay.enabled = true;
         text.enabled = true;
         input.SwitchCurrentActionMap("Tutorial");
+        Dog.instance.isInTutorial = true;
 
         text.text = sentences[index].sentence;
         mask.transform.localScale = sentences[index].maskSize;
@@ -58,6 +59,7 @@ public class BuildTutorial : MonoBehaviour
         }
         else
         {
+            Dog.instance.isInTutorial = false;
             input.SwitchCurrentActionMap("Game");
             this.gameObject.SetActive(false);
         }

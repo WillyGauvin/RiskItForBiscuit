@@ -176,7 +176,10 @@ public class PlayerController : MonoBehaviour
         }
         else if (context.canceled)
         {
-            myDog.StopChargeJump();
+            if (myDog.isCharging)
+            {
+                myDog.StopChargeJump();
+            }
         }
     }
 
