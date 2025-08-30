@@ -93,14 +93,18 @@ public class PayOffLoanUI : MonoBehaviour
             {
                 ScoreManager.instance.SpendMoney((uint)payOffAmount);
                 currentShownLoan.PayOff(payOffAmount);
-                AudioManager.instance.PlayOneShot(FMODEvents.instance.shop_takeLoan);
-
 
                 if (currentShownLoan.myLoan.balance <= 0.0f)
                 {
+                    AudioManager.instance.PlayOneShot(FMODEvents.instance.shop_paidOffLoan);
                     DebtShop.Instance.RemoveLoan(currentShownLoan.myLoan);
                     Destroy(currentShownLoan.gameObject);
                     currentShownLoan = null;
+                }
+                else
+                {
+                    AudioManager.instance.PlayOneShot(FMODEvents.instance.shop_payLoan);
+
                 }
                 UpdateUI();
             }

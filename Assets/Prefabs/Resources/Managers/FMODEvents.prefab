@@ -65,6 +65,20 @@ MonoBehaviour:
       Data3: -753756503
       Data4: 558042445
     Path: event:/Music/music_menu
+  <gameOverMusic>k__BackingField:
+    Guid:
+      Data1: 1600883445
+      Data2: 1291889159
+      Data3: 952666792
+      Data4: -1507476145
+    Path: event:/Music/music_game_over
+  <newDayMusic>k__BackingField:
+    Guid:
+      Data1: -2082493537
+      Data2: 1305396920
+      Data3: 216827301
+      Data4: -1166189134
+    Path: event:/Music/music_new_day
   <build_Open>k__BackingField:
     Guid:
       Data1: -1154624681
@@ -184,6 +198,27 @@ MonoBehaviour:
       Data3: 1767295659
       Data4: 1029134867
     Path: event:/SFX/Shop/shop_buy_item
+  <shop_buy_trainer1>k__BackingField:
+    Guid:
+      Data1: 1063946374
+      Data2: 1220137451
+      Data3: -969741934
+      Data4: 496462099
+    Path: event:/SFX/Shop/shop_buy_trainer_01
+  <shop_buy_trainer2>k__BackingField:
+    Guid:
+      Data1: 669368586
+      Data2: 1197245993
+      Data3: 2119046300
+      Data4: -940932882
+    Path: event:/SFX/Shop/shop_buy_trainer_02
+  <shop_buy_trainer3>k__BackingField:
+    Guid:
+      Data1: 1884309008
+      Data2: 1200917203
+      Data3: 985558441
+      Data4: 1757642625
+    Path: event:/SFX/Shop/shop_buy_trainer_03
   <shop_enter>k__BackingField:
     Guid:
       Data1: -1548130850
@@ -191,6 +226,13 @@ MonoBehaviour:
       Data3: 768547485
       Data4: 1728386462
     Path: event:/SFX/Shop/shop_enter
+  <shop_equipTrainer>k__BackingField:
+    Guid:
+      Data1: 204988625
+      Data2: 1245532726
+      Data3: 1050683787
+      Data4: -210293447
+    Path: event:/SFX/Shop/shop_equip_trainer
   <shop_leave>k__BackingField:
     Guid:
       Data1: -172916716
@@ -198,6 +240,13 @@ MonoBehaviour:
       Data3: 1661938061
       Data4: 1987422263
     Path: event:/SFX/Shop/shop_leave
+  <shop_loan_slider_change>k__BackingField:
+    Guid:
+      Data1: 990947204
+      Data2: 1099978048
+      Data3: 1558494621
+      Data4: -1735647641
+    Path: event:/SFX/Shop/shop_loan_slider_change
   <shop_payLoan>k__BackingField:
     Guid:
       Data1: -522224479
@@ -205,6 +254,13 @@ MonoBehaviour:
       Data3: 828361606
       Data4: 1607708057
     Path: event:/SFX/Shop/shop_paying_loan
+  <shop_paidOffLoan>k__BackingField:
+    Guid:
+      Data1: -1994073687
+      Data2: 1263135659
+      Data3: -893579592
+      Data4: 204088466
+    Path: event:/SFX/Shop/shop_paid_off_loan
   <shop_select>k__BackingField:
     Guid:
       Data1: 1918471921

@@ -81,6 +81,8 @@ public class TrainerShop : Shop
             if (runtimeData.activeTrainer.activatedUpgrade != null)
             {
                 UpgradeManager.Instance.AddUpgrade(runtimeData.activeTrainer.activatedUpgrade);
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.shop_equipTrainer);
+
             }
         }
     }

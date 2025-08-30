@@ -45,6 +45,8 @@ public class TakeOutLoanUI : MonoBehaviour
 
     public void UpdateNewLoanUI(float percentage)
     {
+        Debug.Log("Changed");
+
         loanAmount = Mathf.Lerp(minLoan, maxLoan, percentage);
 
         loanAmount = Mathf.Round(loanAmount);
@@ -80,7 +82,8 @@ public class TakeOutLoanUI : MonoBehaviour
         DebtShop.Instance.AddLoan(loanAmount, interest);
 
         ScoreManager.instance.AddMoney((uint)loanAmount);
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.shop_payLoan);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.shop_buy_trainer3);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.shop_takeLoan);
 
 
         UpdateUI();

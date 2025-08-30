@@ -47,6 +47,7 @@ public class ObstacleItemUI : MonoBehaviour
             //Call currency manager to remove price of item
             ScoreManager.instance.SpendMoney((uint)myItem.price);
             AudioManager.instance.PlayOneShot(FMODEvents.instance.shop_buyItem);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.shop_buy_trainer1);
 
 
             //Increase price of item
