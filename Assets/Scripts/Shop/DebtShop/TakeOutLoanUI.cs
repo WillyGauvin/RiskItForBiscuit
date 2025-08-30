@@ -9,10 +9,10 @@ public class TakeOutLoanUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI takeOutInterestText;
     [SerializeField] Button takeOutLoanButton;
     [SerializeField] TextMeshProUGUI loanButtonText;
-    private float loanAmount = 0.0f;
+    private int loanAmount = 0;
     private float interest = 0.0f;
-    private float minLoan = 300.0f;
-    private float maxLoan = 1500;
+    private int minLoan = 300;
+    private int maxLoan = 1500;
     private float minInterest = 0.025f;
     private float maxInterest = 0.10f;
     private int maxAmountOfLoans = 7;
@@ -45,11 +45,7 @@ public class TakeOutLoanUI : MonoBehaviour
 
     public void UpdateNewLoanUI(float percentage)
     {
-        Debug.Log("Changed");
-
-        loanAmount = Mathf.Lerp(minLoan, maxLoan, percentage);
-
-        loanAmount = Mathf.Round(loanAmount);
+        loanAmount = (int)Mathf.Lerp(minLoan, maxLoan, percentage);
 
         takeOutLoanText.text = "$ " + loanAmount.ToString();
 
@@ -81,7 +77,7 @@ public class TakeOutLoanUI : MonoBehaviour
 
         DebtShop.Instance.AddLoan(loanAmount, interest);
 
-        ScoreManager.instance.AddMoney((uint)loanAmount);
+        ScoreManager.instance.AddMoney(loanAmount);
         AudioManager.instance.PlayOneShot(FMODEvents.instance.shop_buy_trainer3);
         AudioManager.instance.PlayOneShot(FMODEvents.instance.shop_takeLoan);
 

@@ -15,8 +15,8 @@ public class PayOffLoanUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI payoffLoanText;
 
     private LoanItemUI currentShownLoan;
-    private float payOffAmount = 0.0f;
-    private float minPayOffAmount = 0.0f;
+    private int payOffAmount = 0;
+    private float minPayOffAmount = 0;
 
     private void Awake()
     {
@@ -49,9 +49,7 @@ public class PayOffLoanUI : MonoBehaviour
     {
         if (currentShownLoan != null)
         {
-            payOffAmount = Mathf.Lerp(minPayOffAmount, currentShownLoan.myLoan.balance, percent);
-
-            payOffAmount = Mathf.Round(payOffAmount);
+            payOffAmount = (int)Mathf.Lerp(minPayOffAmount, currentShownLoan.myLoan.balance, percent);
 
             UpdateUI();
         }
@@ -91,7 +89,7 @@ public class PayOffLoanUI : MonoBehaviour
         {
             if (ScoreManager.instance.CanAfford((uint)payOffAmount))
             {
-                ScoreManager.instance.SpendMoney((uint)payOffAmount);
+                ScoreManager.instance.SpendMoney((int)payOffAmount);
                 currentShownLoan.PayOff(payOffAmount);
 
                 if (currentShownLoan.myLoan.balance <= 0.0f)
