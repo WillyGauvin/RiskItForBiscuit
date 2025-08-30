@@ -23,7 +23,7 @@ public class GameTutorial : MonoBehaviour
 
     PlayerInput myInput;
 
-    [SerializeField] BoughItemStart boughtItemTutorial;
+    [SerializeField] BoughtItemStart boughtItemTutorial;
     int index = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,6 +35,7 @@ public class GameTutorial : MonoBehaviour
             overlay.enabled = true;
             text.enabled = true;
             input.SwitchCurrentActionMap("Tutorial");
+            Dog.instance.isInTutorial = true;
             LevelLoader.tutorialActive = false;
 
             text.text = sentences[index].sentence;
@@ -54,16 +55,10 @@ public class GameTutorial : MonoBehaviour
         }
         else
         {
-            if (ObstacleManager.buildTutorialNeeded && BoughItemStart.boughItemDone == false)
-            {
-                //Start build tutorial
-                BoughItemStart.boughItemDone = true;
-                BoughItemStart.instance.StartTutorial();
-            }
-            else
-            {
-                input.SwitchCurrentActionMap("Game");
-            }
+            Dog.instance.isInTutorial = false;
+            //BoughtItemStart.boughItemDone = true;
+            BoughtItemStart.instance.StartTutorial();
+            input.SwitchCurrentActionMap("Game");
             this.gameObject.SetActive(false);
         }
     }

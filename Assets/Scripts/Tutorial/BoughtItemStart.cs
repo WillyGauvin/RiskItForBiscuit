@@ -5,12 +5,12 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 
-public class BoughItemStart : MonoBehaviour
+public class BoughtItemStart : MonoBehaviour
 {
 
-    private static BoughItemStart _instance;
+    private static BoughtItemStart _instance;
 
-    public static BoughItemStart instance
+    public static BoughtItemStart instance
     {
         get
         {
@@ -23,8 +23,6 @@ public class BoughItemStart : MonoBehaviour
         }
     }
 
-    public static bool boughItemDone = false;
-    static bool didTutorial;
     public Image mask;
     public Image overlay;
     public TextMeshProUGUI text;
@@ -36,11 +34,11 @@ public class BoughItemStart : MonoBehaviour
     void OnEnable()
     {
         _instance = this;
-        if (boughItemDone && didTutorial == false)
-        {
-            didTutorial = true;
-            StartTutorial();
-        }
+        // if (boughItemDone && didTutorial == false)
+        // {
+        //     didTutorial = true;
+        //     StartTutorial();
+        // }
     }
 
     public void StartTutorial()
@@ -49,6 +47,7 @@ public class BoughItemStart : MonoBehaviour
         overlay.enabled = true;
         text.enabled = true;
         input.SwitchCurrentActionMap("Tutorial");
+        Dog.instance.isInTutorial = true;
         LevelLoader.tutorialActive = false;
 
         text.text = sentences[index].sentence;
@@ -67,6 +66,7 @@ public class BoughItemStart : MonoBehaviour
         }
         else
         {
+            Dog.instance.isInTutorial = false;
             input.SwitchCurrentActionMap("Game");
             this.gameObject.SetActive(false);
         }
