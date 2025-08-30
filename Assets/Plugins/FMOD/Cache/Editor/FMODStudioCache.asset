@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/Desktop/ambience.bank
   Name: ambience
   StudioPath: bank:/ambience
-  lastModified: 638921540690441308
+  lastModified: 638921995543866849
   FileSizes: []
   Exists: 1
 --- !u!114 &-6782159385869487279
@@ -87,7 +87,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/Desktop/sfx.bank
   Name: sfx
   StudioPath: bank:/sfx
-  lastModified: 638921644766263918
+  lastModified: 638921994153779983
   FileSizes: []
   Exists: 1
 --- !u!114 &-5526525181311652256
@@ -252,7 +252,7 @@ MonoBehaviour:
   Banks:
   - {fileID: -6360771981101184072}
   IsStream: 0
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 0
   Parameters: []
   MinDistance: 1
@@ -300,10 +300,10 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638921644766197240
+  lastModified: 638921999639836926
   FileSizes:
   - Name: 
-    Value: 3482
+    Value: 3574
   Exists: 1
 --- !u!114 &-2933697709175969914
 MonoBehaviour:
@@ -365,7 +365,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638921540690033500
+  lastModified: 638921999639831601
   FileSizes: []
   Exists: 1
 --- !u!114 &-2361536482721705955
@@ -388,7 +388,7 @@ MonoBehaviour:
     Data4: 1801063260
   Banks:
   - {fileID: -6360771981101184072}
-  IsStream: 1
+  IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters: []
@@ -541,7 +541,7 @@ MonoBehaviour:
   Banks:
   - {fileID: -6360771981101184072}
   IsStream: 0
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 0
   Parameters: []
   MinDistance: 1
@@ -694,7 +694,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: -3186124532658125374}
   cacheVersion: 131848
-  cacheTime: 638921644766263918
+  cacheTime: 638921999639836926
   SerializableEventsDict:
   - key: event:/Ambience/ambience_master
     index: 0
@@ -1184,7 +1184,7 @@ MonoBehaviour:
   - {fileID: -3611287939941749229}
   MinDistance: 1
   MaxDistance: 20
-  Length: 387500
+  Length: 384694
 --- !u!114 &5976464564009439694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1470,6 +1470,6 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/Desktop/music.bank
   Name: music
   StudioPath: bank:/music
-  lastModified: 638921540690678078
+  lastModified: 638921965885347132
   FileSizes: []
   Exists: 1
