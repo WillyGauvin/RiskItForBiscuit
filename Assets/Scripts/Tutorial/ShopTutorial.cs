@@ -4,13 +4,23 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
+[System.Serializable]
+public class TutorialMask
+{
+    public Vector2 maskPosition;
+    public Vector2 maskSize;
+    public TextMeshProUGUI textBox;
+}
+
 public class ShopTutorial : MonoBehaviour
 {
     [SerializeField] List<TextMeshProUGUI> tutorialSentences;
+    [SerializeField] List<TutorialMask> tutorialMaskTransforms;
 
     int tutorialStep = 0;
 
     [SerializeField] Image image;
+    [SerializeField] Image mask;
 
     bool tutorialActive = false;
 
@@ -20,6 +30,7 @@ public class ShopTutorial : MonoBehaviour
         tutorialActive = true;
         input = GetComponent<PlayerInput>();
         image.enabled = true;
+        mask.enabled = true;
         input.SwitchCurrentActionMap("Tutorial");
         tutorialSentences[tutorialStep].enabled = true;
     }
@@ -33,6 +44,8 @@ public class ShopTutorial : MonoBehaviour
                 tutorialSentences[tutorialStep].enabled = false;
                 tutorialStep += 1;
                 tutorialSentences[tutorialStep].enabled = true;
+                mask.transform.localPosition = tutorialMaskTransforms[tutorialStep].maskPosition;
+                mask.transform.localScale = tutorialMaskTransforms[tutorialStep].maskSize;
             }
             else
             {

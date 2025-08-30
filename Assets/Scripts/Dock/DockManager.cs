@@ -59,6 +59,7 @@ public class DockManager : MonoBehaviour
         }
 
         player.transform.position = docks[dockSize - 1].transform.position;
+        player.startingPos = docks[dockSize - 1].transform.position;
 
 
         switch (dockSize)

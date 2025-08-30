@@ -54,6 +54,8 @@ public class TrainerItemUI : MonoBehaviour
     {
         purchaseButton.onClick.RemoveAllListeners();
         equipButton.onValueChanged.RemoveAllListeners();
+        ScoreManager.instance.UpdateMoney.RemoveListener(UpdateUI);
+
     }
 
     private void OnButtonClick()
