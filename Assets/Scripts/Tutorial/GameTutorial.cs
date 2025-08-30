@@ -20,10 +20,15 @@ public class GameTutorial : MonoBehaviour
     public TextMeshProUGUI text;
     public List<GameMask> sentences;
     [SerializeField] PlayerInput input;
+
+    PlayerInput myInput;
+
+    [SerializeField] BoughItemStart boughtItemTutorial;
     int index = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        myInput = GetComponent<PlayerInput>();
         if (LevelLoader.tutorialActive)
         {
             mask.enabled = true;
@@ -49,7 +54,16 @@ public class GameTutorial : MonoBehaviour
         }
         else
         {
-            input.SwitchCurrentActionMap("Game");
+            if (ObstacleManager.buildTutorialNeeded && BoughItemStart.boughItemDone == false)
+            {
+                //Start build tutorial
+                BoughItemStart.boughItemDone = true;
+                BoughItemStart.instance.StartTutorial();
+            }
+            else
+            {
+                input.SwitchCurrentActionMap("Game");
+            }
             this.gameObject.SetActive(false);
         }
     }
