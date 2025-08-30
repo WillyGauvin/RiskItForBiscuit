@@ -242,7 +242,8 @@ MonoBehaviour:
     sentence: This grid is where you can place it!
   - maskPosition: {x: 0, y: 0}
     maskSize: {x: 0, y: 0}
-    sentence: Drag the item on and click! Easy as that!
+    sentence: Want to place an item? Easy! Simply click to select it, and then click
+      the map to place it.
   - maskPosition: {x: 0, y: 0}
     maskSize: {x: 0, y: 0}
     sentence: If the square is red, that means you can't place there, you have to
