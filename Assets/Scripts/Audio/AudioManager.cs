@@ -15,6 +15,9 @@ public enum Music_States
     loan_shark,
     dock_dive,
     pause,
+    day_over,
+    game_over,
+    game_win,
 }
 
 public class AudioManager : MonoBehaviour
@@ -244,6 +247,15 @@ public class AudioManager : MonoBehaviour
 
     private void OnActiveSceneChanged(Scene previousScene, Scene newScene)
     {
+        if (newScene.name == "GameVictory")
+        {
+            SetMusicArea(Music_States.game_win);
+        }
+        else if (newScene.name == "GameOver")
+        {
+            SetMusicArea(Music_States.game_over);
+        }
+
         if (newScene.name == "MainMenu")
         {
             CleanUp();

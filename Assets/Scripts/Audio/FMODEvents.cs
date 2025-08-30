@@ -30,7 +30,6 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference fireLoop { get; private set; }
     [field: SerializeField] public EventReference waterSplash { get; private set; }
 
-
     [field: Header("PlayerSFX")]
     [field: SerializeField] public EventReference player_Bark { get; private set; }
     [field: SerializeField] public EventReference player_CatchFrisbee { get; private set; }
@@ -43,7 +42,6 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference point_flip { get; private set; }
     [field: SerializeField] public EventReference point_loop { get; private set; }
     [field: SerializeField] public EventReference point_toeTouch { get; private set; }
-
 
     [field: Header("Shop")]
     [field: SerializeField] public EventReference shop_buyItem { get; private set; }
@@ -58,6 +56,15 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference shop_paidOffLoan { get; private set; }
     [field: SerializeField] public EventReference shop_select { get; private set; }
     [field: SerializeField] public EventReference shop_takeLoan { get; private set; }
+
+    [field: Header("UI")]
+    [field: SerializeField] public EventReference ui_Click { get; private set; }
+
+    [field: Header("MiniGame")]
+    [field: SerializeField] public EventReference minigame_open { get; private set; }
+    [field: SerializeField] public EventReference minigame_close { get; private set; }
+
+
 
 
     public static FMODEvents instance { get; private set; }

@@ -41,6 +41,7 @@ public class ObstacleItemUI : MonoBehaviour
         //Check if we can purchase item
         if(ScoreManager.instance.CanAfford((uint)myItem.price))
         {
+
             //Add to inventory
             ObstacleManager.Instance.AddObstacleToInventory(myItem.ItemID);
 

@@ -95,6 +95,8 @@ public class MinigameManager : MonoBehaviour
 
     void StartMinigame()
     {
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.minigame_open);
+
         input = GetComponent<PlayerInput>();
         input.SwitchCurrentActionMap("Minigame");
 
@@ -159,6 +161,7 @@ public class MinigameManager : MonoBehaviour
         mouthHinge.SetSpeed(motorSpeed);
         animator.SetTrigger("EndGame");
         StartCoroutine(WaitForEndOfClose());
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.minigame_close);
     }
 
     IEnumerator WaitForEndOfClose()

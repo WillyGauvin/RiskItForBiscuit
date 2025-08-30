@@ -89,6 +89,7 @@ public class PayOffLoanUI : MonoBehaviour
         {
             if (ScoreManager.instance.CanAfford((uint)payOffAmount))
             {
+
                 ScoreManager.instance.SpendMoney((int)payOffAmount);
                 currentShownLoan.PayOff(payOffAmount);
 

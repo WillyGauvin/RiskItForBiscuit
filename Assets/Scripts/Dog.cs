@@ -131,6 +131,7 @@ public class Dog : MonoBehaviour
             StartCoroutine(Run());
             projection._line.enabled = true;
             BuildModeButton.instance.DisableBuildModeButton();
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.countDown);
         }
     }
 

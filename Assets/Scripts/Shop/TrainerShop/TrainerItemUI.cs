@@ -63,6 +63,7 @@ public class TrainerItemUI : MonoBehaviour
         //Check if we can purchase item
         if (ScoreManager.instance.CanAfford((uint)myTrainer.price))
         {
+
             //Call currency manager to remove price of item
             PurchaseTrainer();
 

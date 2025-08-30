@@ -275,3 +275,24 @@ MonoBehaviour:
       Data3: -2081688403
       Data4: 1347130130
     Path: event:/SFX/Shop/shop_take_out_loan
+  <ui_Click>k__BackingField:
+    Guid:
+      Data1: 539030741
+      Data2: 1306529222
+      Data3: -1004895832
+      Data4: 1486616569
+    Path: event:/SFX/UI_click
+  <minigame_open>k__BackingField:
+    Guid:
+      Data1: -237038217
+      Data2: 1243783472
+      Data3: 2094569884
+      Data4: 365989080
+    Path: event:/Minigame Woosh/minigame_open
+  <minigame_close>k__BackingField:
+    Guid:
+      Data1: 948058779
+      Data2: 1152823973
+      Data3: 1936840889
+      Data4: -2005649458
+    Path: event:/Minigame Woosh/minigame_close

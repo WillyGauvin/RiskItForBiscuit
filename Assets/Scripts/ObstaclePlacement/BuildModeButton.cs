@@ -33,6 +33,7 @@ public class BuildModeButton : MonoBehaviour
         UpdateBuildMode();
         EventSystem.current.SetSelectedGameObject(null);
         AudioManager.instance.PlayOneShot(FMODEvents.instance.build_Open);
+
     }
 
     public void DisableBuildModeButton()
