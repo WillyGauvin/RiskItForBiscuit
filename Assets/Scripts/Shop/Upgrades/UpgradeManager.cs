@@ -19,7 +19,7 @@ public class UpgradeManager : MonoBehaviour
             runtimeData = Instantiate(upgradeDataAsset);
         }
 
-        if (SceneManager.GetActiveScene().buildIndex == 2)
+        if (SceneManager.GetActiveScene().name == "Dock")
         {
             foreach (UpgradeDataSO upgrade in runtimeData.Upgrades)
             {

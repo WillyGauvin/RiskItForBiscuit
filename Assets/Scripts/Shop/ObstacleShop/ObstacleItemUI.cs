@@ -33,6 +33,7 @@ public class ObstacleItemUI : MonoBehaviour
     public void OnDestroy()
     {
         purchaseButton.onClick.RemoveAllListeners();
+        ScoreManager.instance.UpdateMoney.RemoveListener(UpdateUI);
     }
 
     private void OnButtonClick()

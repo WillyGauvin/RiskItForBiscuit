@@ -60,7 +60,7 @@ public class Dog : MonoBehaviour
 
 
     Vector3 jumpForce;
-    Vector3 startingPos;
+    public Vector3 startingPos;
     Quaternion startingRot;
 
 
@@ -103,6 +103,7 @@ public class Dog : MonoBehaviour
     {
         StopAllCoroutines();
 
+        transform.rotation = Quaternion.Euler(0, 90, 0);
         projection._line.enabled = false;
         body.linearVelocity = Vector3.zero;
         transform.position = startingPos;
@@ -117,7 +118,6 @@ public class Dog : MonoBehaviour
         if (DockCam != null) { DockCam.enabled = true; }
         frisbeeCatchDetection.Reset();
         animationManager.Reset();
-        transform.rotation = Quaternion.Euler(0, 90, 0);
 
     }
 
