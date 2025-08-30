@@ -12,7 +12,6 @@ public enum Music_States
     newday_street = 0,
     shop_01,
     shop_02,
-    shop_03,
     loan_shark,
     dock_dive,
     pause,
@@ -53,6 +52,7 @@ public class AudioManager : MonoBehaviour
             if (!thisInstance)
             {
                 // Spawns GameManager prefab and sets component reference.
+                Debug.Log("Instance was null");
                 GameObject manager = Instantiate(Resources.Load<GameObject>("Managers/AudioManager"));
             }
 
@@ -272,11 +272,13 @@ public class AudioManager : MonoBehaviour
         {
             if (newScene.name == "Dock")
             {
+                Debug.Log("Going To Dock Scene");
                 SetMusicArea(Music_States.dock_dive);
                 SetAmbienceParameter("ambience_transition", 1.0f);
             }
             else if (newScene.name == "Shop")
             {
+                Debug.Log("Going To Shop Scene");
                 SetMusicArea(Music_States.newday_street);
                 SetAmbienceParameter("ambience_transition", 0.0f);
             }

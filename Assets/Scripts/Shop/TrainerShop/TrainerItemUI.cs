@@ -80,6 +80,7 @@ public class TrainerItemUI : MonoBehaviour
             myTrainer.isUnlocked = true;
             ScoreManager.instance.SpendMoney((uint)myTrainer.price);
             AudioManager.instance.PlayOneShot(FMODEvents.instance.shop_buyItem);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.shop_buy_trainer2);
 
 
             purchaseButton.onClick.RemoveAllListeners();
@@ -110,6 +111,7 @@ public class TrainerItemUI : MonoBehaviour
     private void OnActivateToggle(bool isActive)
     {
         TrainerShop.Instance.SetTrainer((isActive) ? myTrainer : null);
+
         UpdateUI();
     }
 

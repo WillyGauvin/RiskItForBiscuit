@@ -196,7 +196,10 @@ public class PlayerController : MonoBehaviour
 
     public void OnReset(InputValue value)
     {
-        if (myDog) { myDog.Reset(); }
+        if (Application.isEditor)
+        {
+            if (myDog) { myDog.Reset(); }
+        }
     }
 
 
