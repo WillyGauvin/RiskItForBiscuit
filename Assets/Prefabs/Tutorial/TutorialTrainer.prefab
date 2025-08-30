@@ -407,7 +407,17 @@ MonoBehaviour:
   - {fileID: 8943285409200057917}
   - {fileID: 9131599888638784807}
   - {fileID: 7637929234029055129}
+  tutorialMaskTransforms:
+  - position: {x: 0, y: 0}
+    size: {x: 0, y: 0}
+  - position: {x: 0, y: 0}
+    size: {x: 0, y: 0}
+  - position: {x: 360, y: 0}
+    size: {x: 1000, y: 800}
+  - position: {x: 0, y: 0}
+    size: {x: 0, y: 0}
   image: {fileID: 9100387406503575154}
+  mask: {fileID: 0}
 --- !u!222 &780180845544414616
 CanvasRenderer:
   m_ObjectHideFlags: 0

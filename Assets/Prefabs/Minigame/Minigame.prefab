@@ -70,7 +70,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!114 &1781138247233676688
 MonoBehaviour:
@@ -426,7 +426,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0.5125196, b: 1, a: 1}
   m_FlipX: 0
@@ -739,6 +739,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1233124025684790719}
     m_Modifications:
     - target: {fileID: 14616651785104314, guid: ac28adf8eb06af34b86f1d6c0ac74eea, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 14616651785104314, guid: ac28adf8eb06af34b86f1d6c0ac74eea, type: 3}
       propertyPath: m_MaskInteraction
       value: 1
       objectReference: {fileID: 0}
@@ -921,6 +925,10 @@ PrefabInstance:
       value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 1803940927827023589, guid: 674afd47db04fa747ae7b3589017c459, type: 3}
+      propertyPath: m_SortingOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803940927827023589, guid: 674afd47db04fa747ae7b3589017c459, type: 3}
       propertyPath: m_MaskInteraction
       value: 1
       objectReference: {fileID: 0}
@@ -1041,6 +1049,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3066772706326070128, guid: 674afd47db04fa747ae7b3589017c459, type: 3}
+      propertyPath: m_SortingOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3066772706326070128, guid: 674afd47db04fa747ae7b3589017c459, type: 3}
       propertyPath: m_MaskInteraction
       value: 1
       objectReference: {fileID: 0}
@@ -1053,12 +1065,24 @@ PrefabInstance:
       value: 0.37
       objectReference: {fileID: 0}
     - target: {fileID: 3840893416838866157, guid: 674afd47db04fa747ae7b3589017c459, type: 3}
+      propertyPath: m_SortingOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840893416838866157, guid: 674afd47db04fa747ae7b3589017c459, type: 3}
       propertyPath: m_MaskInteraction
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4970546100125016674, guid: 674afd47db04fa747ae7b3589017c459, type: 3}
+      propertyPath: m_SortingOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4970546100125016674, guid: 674afd47db04fa747ae7b3589017c459, type: 3}
       propertyPath: m_MaskInteraction
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989287940468504877, guid: 674afd47db04fa747ae7b3589017c459, type: 3}
+      propertyPath: m_SortingOrder
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4989287940468504877, guid: 674afd47db04fa747ae7b3589017c459, type: 3}
       propertyPath: m_MaskInteraction
@@ -1070,11 +1094,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5052196919952060470, guid: 674afd47db04fa747ae7b3589017c459, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -56.300026
+      value: -56.3
       objectReference: {fileID: 0}
     - target: {fileID: 5052196919952060470, guid: 674afd47db04fa747ae7b3589017c459, type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: -99.60001
+      value: -98.8113
       objectReference: {fileID: 0}
     - target: {fileID: 5418760722781306178, guid: 674afd47db04fa747ae7b3589017c459, type: 3}
       propertyPath: m_Mass
@@ -1234,7 +1258,7 @@ FixedJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 2.0528774, y: -5.5292425}
+  m_ConnectedAnchor: {x: 2.064758, y: -5.4953117}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!255 &475297403560281398
@@ -1253,7 +1277,7 @@ FixedJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 2.0528774, y: -5.5292425}
+  m_ConnectedAnchor: {x: 2.064758, y: -5.4953117}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!60 &4928988447069950718
@@ -1435,7 +1459,7 @@ FixedJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 2.4573724, y: -2.5134492}
+  m_ConnectedAnchor: {x: 2.461454, y: -2.50179}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!255 &27994776479862438
@@ -1454,7 +1478,7 @@ FixedJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 2.4573724, y: -2.5134492}
+  m_ConnectedAnchor: {x: 2.461454, y: -2.50179}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!60 &122875922900306812

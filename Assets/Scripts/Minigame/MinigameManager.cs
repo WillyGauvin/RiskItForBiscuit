@@ -23,6 +23,8 @@ public class MinigameManager : MonoBehaviour
         }
     }
 
+    static bool playedMinigame = false;
+
 
     [SerializeField] MinigameFrisbeeDetector topJaw;
     [SerializeField] MinigameFrisbeeDetector bottomJaw;
@@ -100,7 +102,17 @@ public class MinigameManager : MonoBehaviour
         {
             collider.enabled = true;
         }
+        if (playedMinigame == false)
+        {
+            MinigameTutorialManager.instance.StartTutorial();
+            playedMinigame = true;
+            return;
+        }
+        StartCoroutine(WaitForSetup());
+    }
 
+    public void RestartMinigame()
+    {
         StartCoroutine(WaitForSetup());
     }
 
