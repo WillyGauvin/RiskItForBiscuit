@@ -49,6 +49,7 @@ public class BoughItemStart : MonoBehaviour
         overlay.enabled = true;
         text.enabled = true;
         input.SwitchCurrentActionMap("Tutorial");
+        Dog.instance.isInTutorial = true;
         LevelLoader.tutorialActive = false;
 
         text.text = sentences[index].sentence;
@@ -67,6 +68,7 @@ public class BoughItemStart : MonoBehaviour
         }
         else
         {
+            Dog.instance.isInTutorial = false;
             input.SwitchCurrentActionMap("Game");
             this.gameObject.SetActive(false);
         }

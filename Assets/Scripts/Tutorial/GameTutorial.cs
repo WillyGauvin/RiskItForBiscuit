@@ -35,6 +35,7 @@ public class GameTutorial : MonoBehaviour
             overlay.enabled = true;
             text.enabled = true;
             input.SwitchCurrentActionMap("Tutorial");
+            Dog.instance.isInTutorial = true;
             LevelLoader.tutorialActive = false;
 
             text.text = sentences[index].sentence;
@@ -54,6 +55,7 @@ public class GameTutorial : MonoBehaviour
         }
         else
         {
+            Dog.instance.isInTutorial = false;
             if (ObstacleManager.buildTutorialNeeded && BoughItemStart.boughItemDone == false)
             {
                 //Start build tutorial
