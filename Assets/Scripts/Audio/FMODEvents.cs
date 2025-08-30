@@ -29,6 +29,7 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference bouncePad { get; private set; }
     [field: SerializeField] public EventReference fireLoop { get; private set; }
     [field: SerializeField] public EventReference waterSplash { get; private set; }
+    [field: SerializeField] public EventReference fan { get; private set; }
 
     [field: Header("PlayerSFX")]
     [field: SerializeField] public EventReference player_Bark { get; private set; }
