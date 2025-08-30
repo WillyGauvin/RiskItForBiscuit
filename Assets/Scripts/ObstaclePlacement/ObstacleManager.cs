@@ -15,6 +15,8 @@ public class ObstacleManager : MonoBehaviour
 
     public event Action<int, int> OnInventoryChanged;
 
+    public static bool buildTutorialNeeded = true;
+
     void Awake()
     {
         if (Instance == null)

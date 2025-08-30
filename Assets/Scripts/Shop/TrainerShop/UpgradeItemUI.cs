@@ -80,8 +80,10 @@ public class UpgradeItemUI : MonoBehaviour
             {
                 myUpgrade.isUnlocked = true;
                 UpgradeManager.Instance.AddUpgrade(myUpgrade);
-                ScoreManager.instance.SpendMoney((uint)myUpgrade.price);
+                ScoreManager.instance.SpendMoney((int)myUpgrade.price);
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.shop_buyItem);
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.shop_buy_trainer2);
+
                 if (myUpgrade.type == UpgradeType.AbilityUnlock)
                 {
                     VideoManager.instance.OnBuy(myUpgrade.abilityID);

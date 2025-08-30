@@ -104,6 +104,8 @@ public class DayManager : MonoBehaviour
     /// </summary>
     void EndCurrentDay()
     {
+        AudioManager.instance.SetMusicArea(Music_States.day_over);
+
         ScoreManager.instance.ConvertScoreToMoney();
 
         StartNewDay();

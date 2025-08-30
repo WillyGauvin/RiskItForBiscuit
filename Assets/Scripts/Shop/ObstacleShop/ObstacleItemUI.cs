@@ -41,12 +41,14 @@ public class ObstacleItemUI : MonoBehaviour
         //Check if we can purchase item
         if(ScoreManager.instance.CanAfford((uint)myItem.price))
         {
+
             //Add to inventory
             ObstacleManager.Instance.AddObstacleToInventory(myItem.ItemID);
 
             //Call currency manager to remove price of item
-            ScoreManager.instance.SpendMoney((uint)myItem.price);
+            ScoreManager.instance.SpendMoney((int)myItem.price);
             AudioManager.instance.PlayOneShot(FMODEvents.instance.shop_buyItem);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.shop_buy_trainer1);
 
 
             //Increase price of item

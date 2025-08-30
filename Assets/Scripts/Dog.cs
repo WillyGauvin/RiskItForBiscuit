@@ -74,6 +74,8 @@ public class Dog : MonoBehaviour
 
     Coroutine JumpCharge;
 
+    public bool isInTutorial = false;
+
     private void Awake()
     {
         GameManager.instance.SetPlayer(gameObject);
@@ -118,16 +120,18 @@ public class Dog : MonoBehaviour
         if (DockCam != null) { DockCam.enabled = true; }
         frisbeeCatchDetection.Reset();
         animationManager.Reset();
-
+        BuildModeButton.instance.EnableBuildModeButton();
     }
 
     public void BeginRun()
     {
-        if (!isRunning)
+        if (!isRunning && !BuildModeButton.instance.isInBuildMode && !isInTutorial)
         {
             FollowCam.Follow = transform;
             StartCoroutine(Run());
             projection._line.enabled = true;
+            BuildModeButton.instance.DisableBuildModeButton();
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.countDown);
         }
     }
 

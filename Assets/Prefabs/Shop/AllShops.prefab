@@ -8123,9 +8123,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4282387133593510206}
     m_Modifications:
+    - target: {fileID: 109616723461300513, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 109616723461300513, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 290667230877045573, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 380
+      objectReference: {fileID: 0}
+    - target: {fileID: 290667230877045573, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -165
+      objectReference: {fileID: 0}
     - target: {fileID: 480608895727616069, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
       propertyPath: m_Name
       value: TutorialDebt
+      objectReference: {fileID: 0}
+    - target: {fileID: 599778947702630382, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 190
+      objectReference: {fileID: 0}
+    - target: {fileID: 599778947702630382, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 145
+      objectReference: {fileID: 0}
+    - target: {fileID: 599778947702630382, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 599778947702630382, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1752911532503986531, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
       propertyPath: m_Pivot.x
@@ -8207,6 +8239,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4245322380498634578, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
+      propertyPath: m_text
+      value: Warning though, we don't take kindly to ANY outstanding debts.
+      objectReference: {fileID: 0}
     - target: {fileID: 4384932534233545182, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
       propertyPath: mask
       value: 
@@ -8215,9 +8251,78 @@ PrefabInstance:
       propertyPath: image
       value: 
       objectReference: {fileID: 4736157098113211857}
-    - target: {fileID: 4384932534233545182, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
-      propertyPath: tutorialMaskTransforms.Array.size
-      value: 7
+    - target: {fileID: 4443841436872454533, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 170
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443841436872454533, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 145
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443841436872454533, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 345
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443841436872454533, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5609760468115600988, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
+      propertyPath: m_text
+      value: And start paying it off here.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6424044382458292969, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 170
+      objectReference: {fileID: 0}
+    - target: {fileID: 6424044382458292969, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 345
+      objectReference: {fileID: 0}
+    - target: {fileID: 6424044382458292969, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 135
+      objectReference: {fileID: 0}
+    - target: {fileID: 6496678007564852679, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 6496678007564852679, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758244795339879210, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 190
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758244795339879210, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758244795339879210, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770977744145412279, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 190
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770977744145412279, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 145
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770977744145412279, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770977744145412279, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222484962093893759, guid: ba6e5f7a3f4049e4ba60894d5bb83178, type: 3}
+      propertyPath: m_text
+      value: And if you're ever in a pickle, here's where you can take out your own
+        loan
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

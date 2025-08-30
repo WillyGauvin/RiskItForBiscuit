@@ -45,8 +45,7 @@ public class LoanItemUI : MonoBehaviour
     void OnPriceTagClicked()
     {
         PayOffLoanUI.instance.ShowLoanStats(this);
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.shop_select);
-
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.ui_Click);
     }
 
     public void PayOff(float amount)

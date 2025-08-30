@@ -20,16 +20,22 @@ public class GameTutorial : MonoBehaviour
     public TextMeshProUGUI text;
     public List<GameMask> sentences;
     [SerializeField] PlayerInput input;
+
+    PlayerInput myInput;
+
+    [SerializeField] BoughtItemStart boughtItemTutorial;
     int index = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        myInput = GetComponent<PlayerInput>();
         if (LevelLoader.tutorialActive)
         {
             mask.enabled = true;
             overlay.enabled = true;
             text.enabled = true;
             input.SwitchCurrentActionMap("Tutorial");
+            Dog.instance.isInTutorial = true;
             LevelLoader.tutorialActive = false;
 
             text.text = sentences[index].sentence;
@@ -49,6 +55,9 @@ public class GameTutorial : MonoBehaviour
         }
         else
         {
+            Dog.instance.isInTutorial = false;
+            //BoughtItemStart.boughItemDone = true;
+            BoughtItemStart.instance.StartTutorial();
             input.SwitchCurrentActionMap("Game");
             this.gameObject.SetActive(false);
         }

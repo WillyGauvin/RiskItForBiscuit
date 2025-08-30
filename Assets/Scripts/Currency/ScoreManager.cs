@@ -64,9 +64,9 @@ public class ScoreManager : MonoBehaviour
 
     // Money
     [Header("Money")]
-    [SerializeField] public float moneyThisDay { get; private set; }
-    [field: SerializeField] public float currentMoney { get; private set; }
-    const float startingFunds = 50.0f;
+    [SerializeField] public int moneyThisDay { get; private set; }
+    [field: SerializeField] public int currentMoney { get; private set; }
+    const int startingFunds = 50;
 
     [Header("Events")]
     [SerializeField] public UnityEvent UpdateTotalScore = new UnityEvent();
@@ -128,7 +128,7 @@ public class ScoreManager : MonoBehaviour
     {
         ResetDive();
         totalScore = 0;
-        moneyThisDay = 0.0f;
+        moneyThisDay = 0;
         UpdateTotalScore?.Invoke();
     }
 
@@ -137,7 +137,7 @@ public class ScoreManager : MonoBehaviour
     /// </summary>
     void ResetCurrentMoney()
     {
-        currentMoney = 0.0f;
+        currentMoney = 0;
         UpdateMoney?.Invoke();
     }
 
@@ -249,7 +249,7 @@ public class ScoreManager : MonoBehaviour
     /// Adds an amount to your current funds.
     /// </summary>
     /// <param name="value">Amount of money to add.</param>
-    public void AddMoney(float value)
+    public void AddMoney(int value)
     {
         currentMoney += value;
 
@@ -263,8 +263,7 @@ public class ScoreManager : MonoBehaviour
     {
         if (totalScore <= 0) { return; }
 
-        moneyThisDay += (totalScore * scoreMoneyConversion);
-        moneyThisDay = Mathf.Round(moneyThisDay * 100) / 100f;
+        moneyThisDay += (int)(totalScore * scoreMoneyConversion);
 
         currentMoney += moneyThisDay;
 
@@ -275,7 +274,7 @@ public class ScoreManager : MonoBehaviour
     /// Spend your money in the shop.
     /// </summary>
     /// <param name="price">Price of item/upgrade purchased.</param>
-    public void SpendMoney(float price)
+    public void SpendMoney(int price)
     {
         if (price <= 0 ||
             currentMoney - price < 0) { return; }

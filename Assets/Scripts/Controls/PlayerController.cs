@@ -176,7 +176,10 @@ public class PlayerController : MonoBehaviour
         }
         else if (context.canceled)
         {
-            myDog.StopChargeJump();
+            if (myDog.isCharging)
+            {
+                myDog.StopChargeJump();
+            }
         }
     }
 
@@ -196,7 +199,10 @@ public class PlayerController : MonoBehaviour
 
     public void OnReset(InputValue value)
     {
-        if (myDog) { myDog.Reset(); }
+        if (Application.isEditor)
+        {
+            if (myDog) { myDog.Reset(); }
+        }
     }
 
 

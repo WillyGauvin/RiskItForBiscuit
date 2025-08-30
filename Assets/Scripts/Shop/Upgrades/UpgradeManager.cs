@@ -56,6 +56,10 @@ public class UpgradeManager : MonoBehaviour
                 {
                     DockManager.instance.IncreaseDockSize();
                 }
+                if (upgradeData.abilityID == "LootIncrease")
+                {
+                    ScoreObjectPlacer.instance.IncreaseNumberOfObject(upgradeData.multiplier);
+                }
                 Debug.Log($"Applied Scene Modifier: {upgradeData.abilityID}");
                 break;
         }

@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/Desktop/ambience.bank
   Name: ambience
   StudioPath: bank:/ambience
-  lastModified: 638921105783638634
+  lastModified: 638921540690441308
   FileSizes: []
   Exists: 1
 --- !u!114 &-6782159385869487279
@@ -87,7 +87,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/Desktop/sfx.bank
   Name: sfx
   StudioPath: bank:/sfx
-  lastModified: 638921105783746954
+  lastModified: 638921644766263918
   FileSizes: []
   Exists: 1
 --- !u!114 &-5526525181311652256
@@ -213,7 +213,7 @@ MonoBehaviour:
   Name: music_ingame
   StudioPath: 
   Min: 0
-  Max: 5
+  Max: 8
   Default: 0
   ID:
     data1: 355142699
@@ -227,6 +227,9 @@ MonoBehaviour:
   - loan_shark
   - dock_dive
   - pause
+  - day_over
+  - game_over
+  - game_win
   Exists: 1
 --- !u!114 &-3346688774101234693
 MonoBehaviour:
@@ -297,11 +300,38 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638921105783535074
+  lastModified: 638921644766197240
   FileSizes:
   - Name: 
-    Value: 3178
+    Value: 3482
   Exists: 1
+--- !u!114 &-2933697709175969914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/UI_click
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/UI_click
+  Guid:
+    Data1: 539030741
+    Data2: 1306529222
+    Data3: -1004895832
+    Data4: 1486616569
+  Banks:
+  - {fileID: -6360771981101184072}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-2399030371286778859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,7 +365,7 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638921105783531492
+  lastModified: 638921540690033500
   FileSizes: []
   Exists: 1
 --- !u!114 &-2361536482721705955
@@ -653,13 +683,18 @@ MonoBehaviour:
   - {fileID: 4320791380063839242}
   - {fileID: 5391136457782763459}
   - {fileID: 8084855507044734666}
+  - {fileID: 8181747991955100506}
+  - {fileID: 2301628067757560608}
+  - {fileID: -2933697709175969914}
+  - {fileID: 6809668712866531159}
+  - {fileID: 5976464564009439694}
   EditorParameters: []
   MasterBanks:
   - {fileID: -2393210679365145146}
   StringsBanks:
   - {fileID: -3186124532658125374}
   cacheVersion: 131848
-  cacheTime: 638921105783746954
+  cacheTime: 638921644766263918
   SerializableEventsDict:
   - key: event:/Ambience/ambience_master
     index: 0
@@ -733,6 +768,16 @@ MonoBehaviour:
     index: 34
   - key: event:/SFX/Shop/shop_equip_trainer
     index: 35
+  - key: event:/Minigame Woosh/minigame_open
+    index: 36
+  - key: event:/Minigame Woosh/minigame_close
+    index: 37
+  - key: event:/SFX/UI_click
+    index: 38
+  - key: event:/Crowd reaction/crowd_bad
+    index: 39
+  - key: event:/Crowd reaction/crowd_good
+    index: 40
 --- !u!114 &275478525091793592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -867,6 +912,33 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
+  Length: 0
+--- !u!114 &2301628067757560608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Minigame Woosh/minigame_close
+  m_EditorClassIdentifier: 
+  Path: event:/Minigame Woosh/minigame_close
+  Guid:
+    Data1: 948058779
+    Data2: 1152823973
+    Data3: 1936840889
+    Data4: -2005649458
+  Banks:
+  - {fileID: -6360771981101184072}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
   Length: 0
 --- !u!114 &2622823594641919014
 MonoBehaviour:
@@ -1112,7 +1184,34 @@ MonoBehaviour:
   - {fileID: -3611287939941749229}
   MinDistance: 1
   MaxDistance: 20
-  Length: 338937
+  Length: 387500
+--- !u!114 &5976464564009439694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Crowd reaction/crowd_good
+  m_EditorClassIdentifier: 
+  Path: event:/Crowd reaction/crowd_good
+  Guid:
+    Data1: -774870174
+    Data2: 1177642270
+    Data3: -1767427412
+    Data4: 218170306
+  Banks:
+  - {fileID: -6360771981101184072}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &6346714842735606737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1158,6 +1257,33 @@ MonoBehaviour:
     Data2: 1116692677
     Data3: 415234219
     Data4: 1297969518
+  Banks:
+  - {fileID: -6360771981101184072}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &6809668712866531159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Crowd reaction/crowd_bad
+  m_EditorClassIdentifier: 
+  Path: event:/Crowd reaction/crowd_bad
+  Guid:
+    Data1: 988995592
+    Data2: 1313014045
+    Data3: -1688302427
+    Data4: -317201283
   Banks:
   - {fileID: -6360771981101184072}
   IsStream: 0
@@ -1302,6 +1428,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &8181747991955100506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Minigame Woosh/minigame_open
+  m_EditorClassIdentifier: 
+  Path: event:/Minigame Woosh/minigame_open
+  Guid:
+    Data1: -237038217
+    Data2: 1243783472
+    Data3: 2094569884
+    Data4: 365989080
+  Banks:
+  - {fileID: -6360771981101184072}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &8476238014336823741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1317,6 +1470,6 @@ MonoBehaviour:
   Path: Assets/StreamingAssets/Desktop/music.bank
   Name: music
   StudioPath: bank:/music
-  lastModified: 638921105783730991
+  lastModified: 638921540690678078
   FileSizes: []
   Exists: 1

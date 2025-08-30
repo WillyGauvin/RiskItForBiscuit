@@ -3,11 +3,13 @@ using UnityEngine;
 public class ScoreObject : MonoBehaviour
 {
     [Header("Score")]
-    [SerializeField] int scoreToGive = 500;
+    [SerializeField] int scoreToGive = 200;
 
     [Header("Hover")]
-    [SerializeField] float maxHeight = 10.0f;
-    [SerializeField] float speed = 1.0f;
+    private float maxHeight = 10.0f;
+    private float speed = 1.0f;
+
+    private float randomOffset = 0.0f;
 
     float startHeight;
 
@@ -16,12 +18,13 @@ public class ScoreObject : MonoBehaviour
     private void Start()
     {
         startHeight = transform.position.y;
+        randomOffset = Random.Range(0, 7);
     }
 
     // Update is called once per frame
     void Update()
     {
-        float newHeight = startHeight + Mathf.Sin(Time.time * speed) * maxHeight;
+        float newHeight = startHeight + Mathf.Sin(Time.time * speed + randomOffset) * maxHeight;
 
         transform.position = new Vector3(transform.position.x, newHeight, transform.position.z);
     }
@@ -48,5 +51,12 @@ public class ScoreObject : MonoBehaviour
     void AwardScore()
     {
         ScoreManager.instance.AddToScore((uint)scoreToGive);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.point_toeTouch);
+    }
+
+    public void Init(float height, float speed)
+    {
+        maxHeight = height;
+        this.speed = speed;
     }
 }

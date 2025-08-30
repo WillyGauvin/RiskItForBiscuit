@@ -37,6 +37,8 @@ public class PlacementSystem : MonoBehaviour
     private bool pendingClick = false;
     private Vector2 pendingClickPosition;
 
+    public static bool tutorialNeeded = true;
+
     private void Start()
     {
         StopPlacement();
@@ -124,6 +126,11 @@ public class PlacementSystem : MonoBehaviour
     public void EnterBuildMode()
     {
         gridVisualization.SetActive(true);
+        if (tutorialNeeded)
+        {
+            BuildTutorial.instance.StartTutorial();
+            tutorialNeeded = false;
+        }
     }
 
     public void ExitBuildMode()

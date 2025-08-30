@@ -95,6 +95,8 @@ public class MinigameManager : MonoBehaviour
 
     void StartMinigame()
     {
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.minigame_open);
+
         input = GetComponent<PlayerInput>();
         input.SwitchCurrentActionMap("Minigame");
 
@@ -149,16 +151,19 @@ public class MinigameManager : MonoBehaviour
         if (caughtFrisbee)
         {
             Debug.Log("Yay!");
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.crowd_good);
         }
         else
         {
             Debug.Log("Aww! :(");
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.crowd_bad);
         }
         float motorSpeed = mouthHinge.GetSpeed();
         input.SwitchCurrentActionMap("Game");
         mouthHinge.SetSpeed(motorSpeed);
         animator.SetTrigger("EndGame");
         StartCoroutine(WaitForEndOfClose());
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.minigame_close);
     }
 
     IEnumerator WaitForEndOfClose()
