@@ -201,7 +201,6 @@ public class ScoreManager : MonoBehaviour
     public void FlameHoopHit()
     {
         earnedScoreForJump -= scoreForFlameHoop;
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.fireLoop);
     }
 
     /// <summary>

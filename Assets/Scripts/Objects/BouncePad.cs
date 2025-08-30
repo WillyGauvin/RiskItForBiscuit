@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using UnityEngine;
 
@@ -15,11 +16,17 @@ public class BouncePad : MonoBehaviour
     [SerializeField] bool cancelXVelocity = false;
     [SerializeField] bool cancelYVelocity = true;
 
+    private StudioEventEmitter emitter;
+
     #endregion
 
     private void Start()
     {
         launchDirection.Normalize();
+
+        emitter = AudioManager.instance.InitializeEventEmitter(FMODEvents.instance.fan, this.gameObject);
+        emitter.Play();
+
     }
 
     #region OnTrigger and Launch Function

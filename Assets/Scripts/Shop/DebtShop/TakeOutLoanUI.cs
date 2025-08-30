@@ -21,6 +21,8 @@ public class TakeOutLoanUI : MonoBehaviour
     {
         takeOutLoanSlider.onValueChanged.AddListener(UpdateNewLoanUI);
         takeOutLoanButton.onClick.AddListener(TakeOutLoan);
+        loanAmount = minLoan;
+        interest = minInterest;
     }
 
     private void OnDestroy()
