@@ -148,7 +148,7 @@ public class AudioManager : MonoBehaviour
 
         ambienceEventInstance.start();
 
-        SetAmbienceParameter("ambience_transition", (SceneManager.GetActiveScene().buildIndex == 1) ? 0.0f : 1.0f);
+        SetAmbienceParameter("ambience_transition", (SceneManager.GetActiveScene().name == "Shop") ? 0.0f : 1.0f);
     }
 
     private void InitializeMenuMusic(EventReference musicEventReference)

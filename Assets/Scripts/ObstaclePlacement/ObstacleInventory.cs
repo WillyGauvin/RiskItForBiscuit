@@ -9,14 +9,19 @@ public class ObstacleInventory : MonoBehaviour
 
     private List<ObstacleButton> obstacleButtons = new List<ObstacleButton>();
 
-    public void OnDestroy()
+    private void Start()
     {
-        ObstacleManager.Instance.OnInventoryChanged -= (Id, newCount) => InventoryChanged(Id, newCount);
-    }
-    public void Start()
-    {
-        ObstacleManager.Instance.OnInventoryChanged += (Id, newCount) => InventoryChanged(Id, newCount);
         InitializeList(ObstacleManager.Instance.GetInventoryData());
+
+        ObstacleManager.Instance.OnInventoryChanged += InventoryChanged;
+    }
+
+    private void OnDestroy()
+    {
+        if (ObstacleManager.Instance != null)
+        {
+            ObstacleManager.Instance.OnInventoryChanged -= InventoryChanged;
+        }
     }
 
     void InitializeList(Dictionary<int, int> inventory)
