@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Video;
@@ -9,9 +10,18 @@ public class VideoAnimationController : MonoBehaviour
 
     [SerializeField] PlayerInput input;
 
+    [SerializeField] UpgradeDataSO item;
+
+    [NonSerialized] public string id;
+
     bool playingVideo;
 
     [SerializeField] bool triggerPlay;
+
+    void Start()
+    {
+        id = item.abilityID;
+    }
 
     void Update()
     {
