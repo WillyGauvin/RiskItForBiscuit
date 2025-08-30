@@ -195,6 +195,14 @@ public class ScoreManager : MonoBehaviour
         AudioManager.instance.PlayOneShot(FMODEvents.instance.point_loop);
 
     }
+    /// <summary>
+    /// Dog Hit Fire ontop of flame hoop
+    /// </summary>
+    public void FlameHoopHit()
+    {
+        earnedScoreForJump -= scoreForFlameHoop;
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.fireLoop);
+    }
 
     /// <summary>
     /// Frisbee caught during a dive.

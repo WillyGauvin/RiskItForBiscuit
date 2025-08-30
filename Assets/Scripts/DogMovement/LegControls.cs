@@ -246,7 +246,6 @@ public class LegControls : MonoBehaviour
             rb2d.AddTorque(torqueFrontFlipAmount + torqueBackFlipAmount);
 
             ClampAngularVelocity();
-            Debug.Log(rb2d.angularVelocity);
         }
 
         desiredAngle = torqueFrontFlipAmount + torqueBackFlipAmount;
