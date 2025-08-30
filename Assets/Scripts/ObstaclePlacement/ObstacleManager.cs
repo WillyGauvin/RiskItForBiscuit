@@ -15,9 +15,7 @@ public class ObstacleManager : MonoBehaviour
 
     public event Action<int, int> OnInventoryChanged;
 
-    static bool firstItem;
-
-    public static bool buildTutorialNeeded;
+    public static bool buildTutorialNeeded = true;
 
     void Awake()
     {
@@ -49,11 +47,6 @@ public class ObstacleManager : MonoBehaviour
     {
         runtimeData.placeableObstacles[ID]++;
         OnInventoryChanged?.Invoke(ID, runtimeData.placeableObstacles[ID]);
-        if (firstItem == false)
-        {
-            firstItem = true;
-            buildTutorialNeeded = true;
-        }
     }
 
     public void RemoveObstacleFromInventory(int ID)
