@@ -2969,6 +2969,10 @@ PrefabInstance:
       propertyPath: dockCam
       value: 
       objectReference: {fileID: 2086772815}
+    - target: {fileID: 5216588052065294948, guid: e1422658d830a524285825d381529028, type: 3}
+      propertyPath: dockSize
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
