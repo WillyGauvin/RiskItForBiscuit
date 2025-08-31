@@ -117,7 +117,7 @@ public class Dog : MonoBehaviour
         jumpForce = Vector3.zero;
         hasJumped = false;
         //detector.Reset();
-        if (DockCam != null) { DockCam.enabled = true; }
+        if (DockCam != null) { DockCam.gameObject.SetActive(true);}
         frisbeeCatchDetection.Reset();
         animationManager.Reset();
         BuildModeButton.instance.EnableBuildModeButton();
@@ -184,7 +184,7 @@ public class Dog : MonoBehaviour
         jumpLandDetection.IncrementScore();
 
         if (myTrainer != null) { myTrainer.ThrowFrisbee(projection); }
-        if (DockCam != null) { DockCam.enabled = false; }
+        if (DockCam != null) { DockCam.gameObject.SetActive(false); }
     }
 
     IEnumerator ChargeDogJump()
