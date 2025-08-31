@@ -16,7 +16,6 @@ public class BouncePad : MonoBehaviour
     [SerializeField] bool cancelXVelocity = false;
     [SerializeField] bool cancelYVelocity = true;
 
-    private StudioEventEmitter emitter;
 
     #endregion
 
@@ -24,8 +23,7 @@ public class BouncePad : MonoBehaviour
     {
         launchDirection.Normalize();
 
-        emitter = AudioManager.instance.InitializeEventEmitter(FMODEvents.instance.fan, this.gameObject);
-        emitter.Play();
+
 
     }
 

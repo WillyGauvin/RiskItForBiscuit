@@ -1,3 +1,4 @@
+using FMODUnity;
 using UnityEngine;
 
 public class FlyingFans : MonoBehaviour
@@ -8,9 +9,13 @@ public class FlyingFans : MonoBehaviour
 
     float startHeight;
 
+    private StudioEventEmitter emitter;
     private void Start()
     {
         startHeight = transform.position.y;
+
+        emitter = AudioManager.instance.InitializeEventEmitter(FMODEvents.instance.fan, this.gameObject);
+        emitter.Play();
     }
 
     // Update is called once per frame

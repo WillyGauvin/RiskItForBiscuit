@@ -41,6 +41,7 @@ public class Loan
     public void ApplyInterest()
     {
         balance = GetBalanceWithInterest();
+        Debug.Log("new Balance: " + balance);
     }
 
     public void PayOff(float amount)

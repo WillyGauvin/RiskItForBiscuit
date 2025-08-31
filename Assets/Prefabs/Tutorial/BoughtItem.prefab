@@ -154,10 +154,10 @@ MonoBehaviour:
   sentences:
   - maskPosition: {x: 0, y: 0}
     maskSize: {x: 0, y: 0}
-    sentence: Looks like you got yourself a nice item from the shop!
+    sentence: Nice! You scored yourself a sweet item from the shop!
   - maskPosition: {x: -855, y: -490}
     maskSize: {x: 200, y: 70}
-    sentence: Click down here to use it!
+    sentence: Click down here to try it out!
   input: {fileID: 2067989092185032983}
 --- !u!1 &3274275221611396990
 GameObject:

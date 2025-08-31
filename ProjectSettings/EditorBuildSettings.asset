@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: eb2d6e7a705d6f049a1038608b17490f
   - enabled: 1
+    path: Assets/Scenes/Intro.unity
+    guid: d6419a55f82103e42816857b4a044121
+  - enabled: 1
     path: Assets/Scenes/Shop.unity
     guid: 808511af22f300644956fe03d06c0835
   - enabled: 0
@@ -26,9 +29,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/CustomizeDock.unity
     guid: 458742755aba16d4caecadcaf5acf75a
-  - enabled: 1
-    path: Assets/Scenes/GameOver.unity
-    guid: d6419a55f82103e42816857b4a044121
   - enabled: 1
     path: Assets/Scenes/GameVictory.unity
     guid: 5c9a10bebbb29c143b2f18f150c7eebc

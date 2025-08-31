@@ -418,21 +418,21 @@ MonoBehaviour:
       over it again.
   - maskPosition: {x: 0, y: 430}
     maskSize: {x: 500, y: 150}
-    sentence: Here you can see what day of the tournament it is and how many dives
+    sentence: Here, you can see what day of the tournament it is and how many dives
       you have left today
   - maskPosition: {x: 0, y: -450}
     maskSize: {x: 500, y: 150}
     sentence: Right down here is your daily score total. That turns into prize money
-      at the end of the day which we heard the mafia absolutely loves!
+      at the end of the day, which we heard the mafia absolutely loves!
   - maskPosition: {x: -700, y: -170}
     maskSize: {x: 250, y: 150}
     sentence: And right down on this dock is you, the professional dock jumper!
   - maskPosition: {x: -430, y: -190}
     maskSize: {x: 955, y: 450}
-    sentence: Press shift to start running down the dock.
+    sentence: Press Shift to start running down the dock.
   - maskPosition: {x: -430, y: -190}
     maskSize: {x: 955, y: 450}
-    sentence: Hold space to charge your jump.
+    sentence: Hold Space to charge your jump.
   - maskPosition: {x: -25, y: -190}
     maskSize: {x: 150, y: 450}
     sentence: Once you get to the end of the dock, you'll leap off!
@@ -441,7 +441,7 @@ MonoBehaviour:
     sentence: Catch the frisbee! Judges don't like it when you don't do that! (Who
       would have guessed...)
   - maskPosition: {x: 400, y: -25}
-    maskSize: {x: 100, y: 600}
+    maskSize: {x: 500, y: 600}
     sentence: Oh, keep in mind the floating extra money! Don't question it!
   input: {fileID: 3362544777076111190}
   boughtItemTutorial: {fileID: 0}

@@ -24,6 +24,10 @@ public class LevelLoader : MonoBehaviour
         statsScreen.SetActive(false);
     }
 
+    public void LoadIntro()
+    {
+        StartCoroutine(LoadLevel("Intro"));
+    }
     public void LoadBeginning()
     {
         // Load Dock.

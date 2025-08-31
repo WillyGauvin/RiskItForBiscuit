@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3820225190561001124}
+  - component: {fileID: 5003541787537614724}
   - component: {fileID: 3519393292110818650}
   - component: {fileID: 7884826956764978512}
   - component: {fileID: 8833359853229348169}
   - component: {fileID: 5316925090355485511}
-  - component: {fileID: 5003541787537614724}
   m_Layer: 5
   m_Name: MinigameTutorial
   m_TagString: Untagged
@@ -43,6 +43,58 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &5003541787537614724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907249715671793893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4852a70c2d4f5348a6a2770fea091ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overlay: {fileID: 4650026672098166313}
+  mask: {fileID: 6917068552428408104}
+  input: {fileID: 5316925090355485511}
+  sentences:
+  - maskPosition: {x: 0, y: -25}
+    maskSize: {x: 1010, y: 1010}
+    sentence: Looks like you're getting close to that frisbee! Time to catch!
+    maskSprite: {fileID: 21300000, guid: f7e777c9ff30313478d6fc71ef11e19d, type: 3}
+  - maskPosition: {x: -250, y: -200}
+    maskSize: {x: 400, y: 600}
+    sentence: This is you!
+    maskSprite: {fileID: 21300000, guid: 51fcad88de8c5cd47842ba0a7bfd4bae, type: 3}
+  - maskPosition: {x: -250, y: -200}
+    maskSize: {x: 400, y: 600}
+    sentence: You can rotate clockwise by pressing D or Right Arrow, and counterclockwise
+      by pressing A or Left Arrow.
+    maskSprite: {fileID: 21300000, guid: 51fcad88de8c5cd47842ba0a7bfd4bae, type: 3}
+  - maskPosition: {x: -250, y: -200}
+    maskSize: {x: 400, y: 600}
+    sentence: You can rotate clockwise by pressing Left or D, and counter clockwise
+      by pressing Right or A
+    maskSprite: {fileID: 21300000, guid: 51fcad88de8c5cd47842ba0a7bfd4bae, type: 3}
+  - maskPosition: {x: 300, y: -25}
+    maskSize: {x: 300, y: 900}
+    sentence: Here is where the frisbee is going to be coming from.
+    maskSprite: {fileID: 21300000, guid: 51fcad88de8c5cd47842ba0a7bfd4bae, type: 3}
+  - maskPosition: {x: 300, y: -25}
+    maskSize: {x: 300, y: 900}
+    sentence: Be on the lookout, you'll get some signs when it's about to show up!
+    maskSprite: {fileID: 21300000, guid: 51fcad88de8c5cd47842ba0a7bfd4bae, type: 3}
+  - maskPosition: {x: 300, y: -25}
+    maskSize: {x: 300, y: 900}
+    sentence: Make sure to bite down on the frisbee! You're going to have to press
+      Space to close your mouth.
+    maskSprite: {fileID: 21300000, guid: 51fcad88de8c5cd47842ba0a7bfd4bae, type: 3}
+  - maskPosition: {x: 300, y: -25}
+    maskSize: {x: 0, y: 0}
+    sentence: Good luck catching!
+    maskSprite: {fileID: 21300000, guid: 51fcad88de8c5cd47842ba0a7bfd4bae, type: 3}
+  text: {fileID: 3461642781668210705}
 --- !u!223 &3519393292110818650
 Canvas:
   m_ObjectHideFlags: 0
@@ -136,57 +188,6 @@ MonoBehaviour:
   m_DefaultActionMap: Game
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &5003541787537614724
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907249715671793893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4852a70c2d4f5348a6a2770fea091ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  overlay: {fileID: 4650026672098166313}
-  mask: {fileID: 6917068552428408104}
-  input: {fileID: 5316925090355485511}
-  sentences:
-  - maskPosition: {x: 0, y: -25}
-    maskSize: {x: 1010, y: 1010}
-    sentence: Looks like you're getting close to that frisbee! Time to catch!
-    maskSprite: {fileID: 21300000, guid: f7e777c9ff30313478d6fc71ef11e19d, type: 3}
-  - maskPosition: {x: -250, y: -200}
-    maskSize: {x: 400, y: 600}
-    sentence: Here is you
-    maskSprite: {fileID: 21300000, guid: 51fcad88de8c5cd47842ba0a7bfd4bae, type: 3}
-  - maskPosition: {x: -250, y: -200}
-    maskSize: {x: 400, y: 600}
-    sentence: You can move up and down by pressing the arrow keys or WS
-    maskSprite: {fileID: 21300000, guid: 51fcad88de8c5cd47842ba0a7bfd4bae, type: 3}
-  - maskPosition: {x: -250, y: -200}
-    maskSize: {x: 400, y: 600}
-    sentence: You can rotate clockwise by pressing Left or D, and counter clockwise
-      by pressing Right or A
-    maskSprite: {fileID: 21300000, guid: 51fcad88de8c5cd47842ba0a7bfd4bae, type: 3}
-  - maskPosition: {x: 300, y: -25}
-    maskSize: {x: 300, y: 900}
-    sentence: Here is where the frisbee is going to be coming from
-    maskSprite: {fileID: 21300000, guid: 51fcad88de8c5cd47842ba0a7bfd4bae, type: 3}
-  - maskPosition: {x: 300, y: -25}
-    maskSize: {x: 300, y: 900}
-    sentence: Be on the look out, you'll get some signs when it's about to show up!
-    maskSprite: {fileID: 21300000, guid: 51fcad88de8c5cd47842ba0a7bfd4bae, type: 3}
-  - maskPosition: {x: 300, y: -25}
-    maskSize: {x: 300, y: 900}
-    sentence: Make sure to bite down on the frisbee! You're going to have to press
-      space to close your mouth.
-    maskSprite: {fileID: 21300000, guid: 51fcad88de8c5cd47842ba0a7bfd4bae, type: 3}
-  - maskPosition: {x: 300, y: -25}
-    maskSize: {x: 0, y: 0}
-    sentence: Good luck catching!
-    maskSprite: {fileID: 21300000, guid: 51fcad88de8c5cd47842ba0a7bfd4bae, type: 3}
-  text: {fileID: 3461642781668210705}
 --- !u!1 &5025642787484044460
 GameObject:
   m_ObjectHideFlags: 0

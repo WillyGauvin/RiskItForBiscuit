@@ -62,4 +62,12 @@ public class DebtShop : Shop
     {
         return runtimeData.loans.Count;
     }
+
+    public void DebugAddInterest()
+    {
+        foreach (Loan loan in runtimeData.loans)
+        {
+            loan.ApplyInterest();
+        }
+    }
 }

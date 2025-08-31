@@ -279,6 +279,11 @@ public class AudioManager : MonoBehaviour
                 SetMusicArea(Music_States.newday_street);
                 SetAmbienceParameter("ambience_transition", 0.0f);
             }
+            else if (newScene.name == "Intro")
+            {
+                SetMusicArea(Music_States.loan_shark);
+                SetAmbienceParameter("ambience_transition", 0.5f);
+            }
         }
         else
         {

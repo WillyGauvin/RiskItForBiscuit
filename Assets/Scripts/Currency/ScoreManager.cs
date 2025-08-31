@@ -104,6 +104,10 @@ public class ScoreManager : MonoBehaviour
         {
             AddMoney(500);
         }
+        if (Keyboard.current.oKey.wasPressedThisFrame)
+        {
+            DebtShop.Instance.DebugAddInterest();
+        }
     }
 #endif
 

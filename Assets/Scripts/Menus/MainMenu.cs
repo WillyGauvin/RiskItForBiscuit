@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        LevelLoader.Instance.LoadBeginning();
+        LevelLoader.Instance.LoadIntro();
     }
 
     public void OpenSettings()
