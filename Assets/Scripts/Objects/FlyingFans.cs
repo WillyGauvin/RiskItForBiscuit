@@ -1,28 +1,19 @@
+using DG.Tweening;
 using FMODUnity;
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FlyingFans : MonoBehaviour
 {
-    [Header("Hover")]
-    [SerializeField] float maxHeight = 10.0f;
-    [SerializeField] float speed = 1.0f;
-
-    float startHeight;
+    [SerializeField] GameObject fanBlade;
 
     private StudioEventEmitter emitter;
     private void Start()
     {
-        startHeight = transform.position.y;
-
         emitter = AudioManager.instance.InitializeEventEmitter(FMODEvents.instance.fan, this.gameObject);
         emitter.Play();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        float newHeight = startHeight - Mathf.Sin(Time.time * speed) * maxHeight;
-
-        transform.position = new Vector3(transform.position.x, newHeight, transform.position.z);
+        fanBlade.transform.DORotate(new Vector3(0, 0, 360), 0.3f, RotateMode.LocalAxisAdd).SetLoops(-1, LoopType.Restart).SetEase(Ease.Linear); // Uses degreesPerSecond instead of duration
     }
 }

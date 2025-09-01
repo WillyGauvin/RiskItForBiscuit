@@ -44,7 +44,6 @@ public class ScoreObjectPlacer : MonoBehaviour
                 availableSpaces.Add(newLocation);
             }
         }
-        Debug.Log("Available Spaces:" + availableSpaces.Count);
 
         for (int i = 0; i < numberOfObjectsToPlace; i++)
         {

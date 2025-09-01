@@ -14,13 +14,13 @@ public class ObstacleItem
 {
     [field: SerializeField] public int ItemID { get; private set; }
 
-    [field: SerializeField] public float price { get; private set; }
+    [field: SerializeField] public int price { get; private set; }
 
     [Tooltip("Percentage price will increase by. 0 meaning 0% increase 1 meaning 100% increase")]
     [field: SerializeField] public float priceIncreasePerPurchase { get; private set; }
 
     public void IncreasePrice()
     {
-        price = price + price * priceIncreasePerPurchase;
+        price = price + (int)(price * priceIncreasePerPurchase);
     }
 }

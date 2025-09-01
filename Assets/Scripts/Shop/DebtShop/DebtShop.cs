@@ -37,7 +37,7 @@ public class DebtShop : Shop
         }
     }
 
-    public void AddLoan(float loanAmount, float interest)
+    public void AddLoan(int loanAmount, float interest)
     {
         Loan newLoan = new Loan(loanAmount, interest);
 

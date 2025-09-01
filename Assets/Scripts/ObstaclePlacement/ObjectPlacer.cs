@@ -4,31 +4,30 @@ using UnityEngine;
 
 public class ObjectPlacer : MonoBehaviour
 {
-    private List<GameObject> placedObstacles = new();
+    private Dictionary<Vector3Int, GameObject> placedObstacles = new();
 
-    public int PlaceObject(GameObject prefab, Vector3 pos)
+    public void PlaceObject(GameObject prefab, Vector3Int gridPos, Vector3 worldPos)
     {
         AudioManager.instance.PlayOneShot(FMODEvents.instance.build_PlaceObject);
 
-        GameObject obstacle = Instantiate(prefab);
+        GameObject obstacle = Instantiate(prefab, worldPos, prefab.transform.rotation);
 
-        obstacle.transform.position = pos;
-
-        placedObstacles.Add(obstacle);
-
-        return placedObstacles.Count - 1;
+        placedObstacles[gridPos] = obstacle;
     }
 
-    public void RemoveObjectAt(int gameObjectIndex)
+    public void RemoveObjectAt(Vector3Int gridPos)
     {
-        if (placedObstacles.Count <= gameObjectIndex || placedObstacles[gameObjectIndex] == null)
+        if (!placedObstacles.TryGetValue(gridPos, out GameObject obj) || obj == null)
         {
+            Debug.Log("No obstacle at grid position " + gridPos);
             AudioManager.instance.PlayOneShot(FMODEvents.instance.build_PlaceError);
             return;
         }
+
         AudioManager.instance.PlayOneShot(FMODEvents.instance.build_RemoveBuilding);
 
-        Destroy(placedObstacles[gameObjectIndex]);
-        placedObstacles[gameObjectIndex] = null;
+        Debug.Log("Destroyed: " + obj.name);
+        Destroy(obj);
+        placedObstacles.Remove(gridPos);
     }
 }

@@ -15,6 +15,6 @@ MonoBehaviour:
   type: 0
   abilityID: JumpAccel
   description: Charge your jump 100% faster!
-  price: 40
+  price: 800
   isUnlocked: 0
   multiplier: 2

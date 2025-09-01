@@ -142,17 +142,26 @@ public class PlacementSystem : MonoBehaviour
     private void LoadObstacles()
     {
         GridData tempObstacleData = new();
-        if (obstacleData.placedObjects.Count > 0)
+        HashSet<PlacementData> processed = new HashSet<PlacementData>();
+
+        foreach (var kvp in obstacleData.placedObjects)
         {
-            foreach(KeyValuePair<Vector3Int,PlacementData> placedObject in obstacleData.placedObjects)
+            PlacementData data = kvp.Value;
+            if (processed.Contains(data)) continue; // skip duplicates
+
+            int index = dataBase.objectsData.FindIndex(obj => obj.ID == data.ID);
+            if (index == -1) continue;
+
+            // Use the anchor cell for positioning
+            Vector3Int anchorCell = data.occupiedPositions[0];
+            if (tempObstacleData.CanPlaceObstacleAt(anchorCell, dataBase.objectsData[index].Size))
             {
-                int index = dataBase.objectsData.FindIndex(data => data.ID == placedObject.Value.ID);
-                if (tempObstacleData.CanPlaceObstacleAt(placedObject.Key, dataBase.objectsData[index].Size))
-                {
-                    int ObjectIndex = objectPlacer.PlaceObject(dataBase.objectsData[index].Prefab, grid.CellToWorld(placedObject.Key));
-                    tempObstacleData.AddObjectAt(placedObject.Key, dataBase.objectsData[index].Size, placedObject.Value.ID, ObjectIndex);
-                }
+                Vector3 worldPos = grid.CellToWorld(anchorCell);
+                objectPlacer.PlaceObject(dataBase.objectsData[index].Prefab, anchorCell, worldPos);
+                tempObstacleData.AddObjectAt(anchorCell, dataBase.objectsData[index].Size, data.ID);
             }
+
+            processed.Add(data);
         }
     }
 }

@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class RemovingState : IBuildingState
 {
-    private int gameObjectIndex = -1;
     Grid grid;
     PreviewSystem previewSystem;
     GridData obstacleData;
@@ -25,24 +24,31 @@ public class RemovingState : IBuildingState
 
     public void OnAction(Vector3Int gridPosition)
     {
-        if(obstacleData.CanPlaceObstacleAt(gridPosition, Vector2Int.one))
+        if (obstacleData.CanPlaceObstacleAt(gridPosition, Vector2Int.one))
         {
             AudioManager.instance.PlayOneShot(FMODEvents.instance.build_PlaceError);
             return;
         }
 
-        gameObjectIndex = obstacleData.GetRepresentationIndex(gridPosition);
-        if (gameObjectIndex == -1) return;
+        // Get the placement data from ANY occupied cell
+        if (!obstacleData.placedObjects.TryGetValue(gridPosition, out PlacementData data))
+            return;
 
-        ObstacleManager.Instance.AddObstacleToInventory(obstacleData.placedObjects[gridPosition].ID);
+        int objectID = data.ID;
 
+        // Return to inventory
+        ObstacleManager.Instance.AddObstacleToInventory(objectID);
+
+        // Remove from logical grid
         obstacleData.RemoveObjectAt(gridPosition);
-        objectPlacer.RemoveObjectAt(gameObjectIndex);
 
+        // Remove visual object – use the anchor (first cell)
+        Vector3Int anchorCell = data.occupiedPositions[0];
+        objectPlacer.RemoveObjectAt(anchorCell);
+
+        // Update preview
         Vector3 cellPosition = grid.CellToWorld(gridPosition);
         previewSystem.UpdatePosition(cellPosition, false);
-
-
     }
 
     public void UpdateState(Vector3Int gridPosition)

@@ -20,20 +20,19 @@ public class DebtDataSO : ScriptableObject
 [Serializable]
 public class Loan
 {
-    [field: SerializeField] public float balance;
+    [field: SerializeField] public int balance;
 
     [field: SerializeField] public float dailyInterest;
 
-    public Loan(float balance, float dailyInterest)
+    public Loan(int balance, float dailyInterest)
     {
         this.balance = balance;
         this.dailyInterest = dailyInterest;
     }
 
-    public float GetBalanceWithInterest()
+    public int GetBalanceWithInterest()
     {
-        float newBalance = balance + balance * dailyInterest;
-        newBalance = Mathf.Round(newBalance * 100) / 100f;
+        int newBalance = balance + (int)(balance * dailyInterest);
 
         return newBalance;
     }
@@ -44,7 +43,7 @@ public class Loan
         Debug.Log("new Balance: " + balance);
     }
 
-    public void PayOff(float amount)
+    public void PayOff(int amount)
     {
         balance -= amount;
         balance = Mathf.Max(balance, 0);

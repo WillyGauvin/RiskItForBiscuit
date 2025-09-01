@@ -99,6 +99,9 @@ public class PayOffLoanUI : MonoBehaviour
                     DebtShop.Instance.RemoveLoan(currentShownLoan.myLoan);
                     Destroy(currentShownLoan.gameObject);
                     currentShownLoan = null;
+
+                    TakeOutLoanUI.instance.UpdateUI();
+
                 }
                 else
                 {

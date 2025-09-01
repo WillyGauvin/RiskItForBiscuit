@@ -230,8 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a3e38897e2cb44e9f72c868986d434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHeight: 10
-  speed: 1
+  fanBlade: {fileID: 1613402657006294111}
 --- !u!114 &8395902283243614674
 MonoBehaviour:
   m_ObjectHideFlags: 0

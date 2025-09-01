@@ -22,7 +22,10 @@ public class PlacementState : IBuildingState
         selectedObjectIndex = database.objectsData.FindIndex(data => data.ID == ID);
         if (selectedObjectIndex > -1)
         {
-            previewSystem.StartShowingPlacementPreview(database.objectsData[selectedObjectIndex].Prefab, database.objectsData[selectedObjectIndex].Size);
+            previewSystem.StartShowingPlacementPreview(
+                database.objectsData[selectedObjectIndex].Prefab,
+                database.objectsData[selectedObjectIndex].Size
+            );
         }
         else
         {
@@ -43,20 +46,27 @@ public class PlacementState : IBuildingState
             return;
         }
 
-        int index = objectPlacer.PlaceObject(database.objectsData[selectedObjectIndex].Prefab, grid.CellToWorld(gridPosition));
+        // place visually
+        Vector3 worldPos = grid.CellToWorld(gridPosition);
+        objectPlacer.PlaceObject(database.objectsData[selectedObjectIndex].Prefab, gridPosition, worldPos);
 
-        obstacleData.AddObjectAt(gridPosition, database.objectsData[selectedObjectIndex].Size, database.objectsData[selectedObjectIndex].ID, index);
+        // record in logical grid
+        obstacleData.AddObjectAt(gridPosition,
+            database.objectsData[selectedObjectIndex].Size,
+            database.objectsData[selectedObjectIndex].ID);
 
-        previewSystem.UpdatePosition(grid.CellToWorld(gridPosition), false);
+        // update preview
+        previewSystem.UpdatePosition(worldPos, false);
 
+        // update inventory
         ObstacleManager.Instance.RemoveObstacleFromInventory(database.objectsData[selectedObjectIndex].ID);
     }
 
     private bool CheckPlacementValidity(Vector3Int pos, int objectIndex)
     {
-        return 
+        return
             (
-            obstacleData.CanPlaceObstacleAt(pos, database.objectsData[selectedObjectIndex].Size) 
+            obstacleData.CanPlaceObstacleAt(pos, database.objectsData[objectIndex].Size)
             &&
             CanPlaceOnRow(pos.z)
             );

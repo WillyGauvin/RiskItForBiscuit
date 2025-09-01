@@ -1,18 +1,14 @@
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
-using System.Runtime.ExceptionServices;
-using System;
 
 public class GridData
 {
     public Dictionary<Vector3Int, PlacementData> placedObjects = new();
 
-    public void AddObjectAt(Vector3Int gridPosition, Vector2Int objectSize, int ID, int placedObjectIndex)
+    public void AddObjectAt(Vector3Int gridPosition, Vector2Int objectSize, int ID)
     {
         List<Vector3Int> positionsToOccupy = CalculatePostions(gridPosition, objectSize);
-        PlacementData data = new PlacementData(positionsToOccupy, ID, placedObjectIndex);
+        PlacementData data = new PlacementData(positionsToOccupy, ID);
 
         foreach (Vector3Int pos in positionsToOccupy)
         {
@@ -41,26 +37,29 @@ public class GridData
     public bool CanPlaceObstacleAt(Vector3Int gridPos, Vector2Int objectSize)
     {
         List<Vector3Int> positionsToOccupy = CalculatePostions(gridPos, objectSize);
-        foreach(Vector3Int pos in positionsToOccupy)
+        foreach (Vector3Int pos in positionsToOccupy)
         {
             if (placedObjects.ContainsKey(pos)) return false;
         }
         return true;
     }
 
-    public int GetRepresentationIndex(Vector3Int gridPosition)
+    public int GetObjectID(Vector3Int gridPosition)
     {
-        if(!placedObjects.ContainsKey(gridPosition))
+        if (!placedObjects.ContainsKey(gridPosition))
         {
             return -1;
         }
-        return placedObjects[gridPosition].PlacedObjectIndex;
+        return placedObjects[gridPosition].ID;
     }
 
     public void RemoveObjectAt(Vector3Int gridPosition)
     {
-        foreach(Vector3Int pos in placedObjects[gridPosition].occupiedPositions)
+        if (!placedObjects.ContainsKey(gridPosition)) return;
+
+        foreach (Vector3Int pos in placedObjects[gridPosition].occupiedPositions)
         {
+            Debug.Log("Removed Obstacle at position: " + pos);
             placedObjects.Remove(pos);
         }
     }
@@ -70,12 +69,10 @@ public class PlacementData
 {
     public List<Vector3Int> occupiedPositions;
     public int ID { get; private set; }
-    public int PlacedObjectIndex { get; private set; }
 
-    public PlacementData(List<Vector3Int> occupiedPositions, int iD, int placedObjectIndex)
+    public PlacementData(List<Vector3Int> occupiedPositions, int iD)
     {
         this.occupiedPositions = occupiedPositions;
         ID = iD;
-        PlacedObjectIndex = placedObjectIndex;
     }
 }

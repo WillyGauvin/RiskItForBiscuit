@@ -3,6 +3,9 @@ using UnityEngine;
 using UnityEngine.UI;
 public class TakeOutLoanUI : MonoBehaviour
 {
+    public static TakeOutLoanUI instance { get; private set; }
+
+
     [Header("NewLoan")]
     [SerializeField] Slider takeOutLoanSlider;
     [SerializeField] TextMeshProUGUI takeOutLoanText;
@@ -17,6 +20,10 @@ public class TakeOutLoanUI : MonoBehaviour
     private float maxInterest = 0.10f;
     private int maxAmountOfLoans = 7;
 
+    private void Awake()
+    {
+        instance = this;
+    }
     private void Start()
     {
         takeOutLoanSlider.onValueChanged.AddListener(UpdateNewLoanUI);
@@ -31,7 +38,7 @@ public class TakeOutLoanUI : MonoBehaviour
         takeOutLoanButton.onClick.RemoveAllListeners();
     }
 
-    private void UpdateUI()
+    public void UpdateUI()
     {
         if (DebtShop.Instance.GetTotalLoans() >= maxAmountOfLoans)
         {

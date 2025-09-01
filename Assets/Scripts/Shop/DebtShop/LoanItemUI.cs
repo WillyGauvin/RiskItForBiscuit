@@ -48,7 +48,7 @@ public class LoanItemUI : MonoBehaviour
         AudioManager.instance.PlayOneShot(FMODEvents.instance.ui_Click);
     }
 
-    public void PayOff(float amount)
+    public void PayOff(int amount)
     {
         myLoan.PayOff(amount);
         UpdateUI();

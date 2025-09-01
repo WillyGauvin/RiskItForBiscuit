@@ -39,7 +39,7 @@ MonoBehaviour:
     price: 5000
     isUnlocked: 0
     icon: {fileID: 21300000, guid: 0d102975079284e42914aa1c02932965, type: 3}
-    name: Milou
+    name: Willow
   activeTrainer:
     activatedUpgrade: {fileID: 0}
     permanentUpgrades: []
